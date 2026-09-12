@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zero Tuktours — Electric Tuk-Tuk Tours in Lisbon</title>
+<meta name="description" id="meta-description" content="Private, 100% electric tuk-tuk tours in Lisbon. Alfama, Belém and a stadiums route for football fans. Book on WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" id="og-title" content="Zero Tuktours — Electric Tuk-Tuk Tours in Lisbon">
+<meta property="og:description" id="og-description" content="Private, 100% electric tuk-tuk tours in Lisbon. Alfama, Belém and a stadiums route for football fans.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23163A4D'/%3E%3Cpath d='M10 40 Q10 24 26 24 L46 24 Q58 24 58 40 L58 46 L10 46 Z' fill='%23F2A93C'/%3E%3Ccircle cx='20' cy='46' r='7' fill='%230F2A38'/%3E%3Ccircle cx='48' cy='46' r='7' fill='%230F2A38'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #20242B;
+    --paper: #EDE8DC;
+    --tejo: #163A4D;
+    --tejo-deep: #0F2A38;
+    --electrico: #F2A93C;
+    --telha: #A8543B;
+    --line: rgba(32,36,43,0.14);
+    --line-light: rgba(237,232,220,0.22);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  /* ---- Header ---- */
+  header {
+    background: var(--tejo);
+    color: var(--paper);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 32px;
+    max-width: 1080px;
+    margin: 0 auto;
+    gap: 16px;
+  }
+
+  .brand {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .brand span { color: var(--electrico); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .lang-select {
+    background: transparent;
+    color: var(--paper);
+    border: 1px solid rgba(237,232,220,0.35);
+    border-radius: 3px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 10px;
+    cursor: pointer;
+  }
+
+  .lang-select option {
+    color: var(--ink);
+    background: var(--paper);
+  }
+
+  .nav-cta {
+    background: var(--electrico);
+    color: var(--tejo-deep);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 3px;
+    transition: transform 0.15s ease;
+  }
+
+  .nav-cta:hover { transform: translateY(-1px); }
+
+  /* ---- Hero ---- */
+  .hero {
+    background: var(--tejo);
+    color: var(--paper);
+    padding: 56px 32px 0;
+    overflow: hidden;
+  }
+
+  .hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: end;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 6vw, 64px);
+    max-width: 13ch;
+  }
+
+  .hero p {
+    margin-top: 20px;
+    font-size: 18px;
+    max-width: 42ch;
+    color: rgba(237,232,220,0.82);
+  }
+
+  .hero-cta {
+    display: inline-block;
+    margin-top: 28px;
+    background: var(--electrico);
+    color: var(--tejo-deep);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 26px;
+    border-radius: 3px;
+    transition: transform 0.15s ease;
+  }
+
+  .hero-cta:hover { transform: translateY(-1px); }
+
+  .hero-fine {
+    margin-top: 14px;
+    font-size: 13px;
+    color: rgba(237,232,220,0.55);
+  }
+
+  .skyline {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .tuktuk-group {
+    transform: translate(30px, 168px);
+    animation: driveIn 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes driveIn {
+    0%   { transform: translate(-40px, 168px); opacity: 0; }
+    70%  { transform: translate(36px, 168px);  opacity: 1; }
+    100% { transform: translate(30px, 168px);  opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tuktuk-group { animation: none; }
+  }
+
+  /* ---- Why ---- */
+  .why {
+    padding: 88px 32px;
+  }
+
+  .why-head {
+    max-width: 46ch;
+    margin-bottom: 48px;
+  }
+
+  .why-head h2 {
+    font-size: clamp(28px, 4vw, 36px);
+  }
+
+  .why-head p {
+    margin-top: 14px;
+    color: rgba(32,36,43,0.68);
+    font-size: 16px;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .why-item {
+    border-top: 2px solid var(--ink);
+    padding-top: 16px;
+  }
+
+  .why-item h3 {
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .why-item p {
+    font-size: 15px;
+    color: rgba(32,36,43,0.7);
+  }
+
+  /* ---- Planner (quiz) ---- */
+  .planner {
+    background: var(--paper);
+    padding: 88px 32px;
+    border-top: 1px solid var(--line);
+  }
+
+  .planner h2 {
+    font-size: clamp(26px, 4vw, 34px);
+  }
+
+  .planner-intro {
+    margin-top: 10px;
+    color: rgba(32,36,43,0.6);
+    font-size: 15px;
+  }
+
+  .planner-card {
+    margin-top: 32px;
+    background: #FFFFFF;
+    border: 2px dashed rgba(32,36,43,0.3);
+    border-radius: 10px;
+    padding: 32px;
+  }
+
+  .planner-q { margin-bottom: 24px; }
+  .planner-q:last-of-type { margin-bottom: 0; }
+
+  .planner-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(32,36,43,0.55);
+    margin-bottom: 10px;
+  }
+
+  .planner-opts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .planner-opt {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid rgba(32,36,43,0.25);
+    border-radius: 999px;
+    padding: 9px 16px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .planner-opt:hover { border-color: rgba(32,36,43,0.5); }
+
+  .planner-opt.active {
+    background: var(--electrico);
+    border-color: var(--electrico);
+    color: var(--tejo-deep);
+  }
+
+  .planner-result {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(32,36,43,0.15);
+  }
+
+  .planner-result-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(32,36,43,0.5);
+  }
+
+  .planner-result-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin-top: 4px;
+  }
+
+  .planner-result-desc {
+    margin-top: 8px;
+    font-size: 14px;
+    color: rgba(32,36,43,0.65);
+    max-width: 50ch;
+  }
+
+  .planner-result-note {
+    margin-top: 8px;
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(32,36,43,0.5);
+    max-width: 50ch;
+  }
+
+  .planner-result-cta {
+    display: inline-block;
+    margin-top: 16px;
+    background: var(--tejo);
+    color: var(--paper);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 22px;
+    border-radius: 3px;
+  }
+
+  /* ---- Routes (departure board) ---- */
+  .routes {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 88px 32px 96px;
+  }
+
+  .routes-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .routes-head h2 {
+    font-size: clamp(28px, 4vw, 36px);
+    color: var(--paper);
+  }
+
+  .routes-head p {
+    font-size: 14px;
+    color: rgba(237,232,220,0.55);
+    max-width: 32ch;
+  }
+
+  .board {
+    border-top: 1px solid var(--line-light);
+  }
+
+  .board-row {
+    display: grid;
+    grid-template-columns: 1.6fr 0.6fr 0.7fr 2fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line-light);
+    transition: background 0.15s ease;
+  }
+
+  .board-row:hover {
+    background: rgba(237,232,220,0.04);
+  }
+
+  .board-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 19px;
+  }
+
+  .board-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--electrico);
+    border: 1px solid rgba(242,169,60,0.4);
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-top: 6px;
+  }
+
+  .board-duration {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    color: rgba(237,232,220,0.85);
+  }
+
+  .board-price-wrap { display: flex; flex-direction: column; gap: 2px; }
+
+  .board-price {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    color: rgba(237,232,220,0.85);
+  }
+
+  .board-cap {
+    font-size: 11px;
+    color: rgba(237,232,220,0.4);
+  }
+
+  .board-detail { display: flex; flex-direction: column; gap: 4px; }
+
+  .board-desc {
+    font-size: 14px;
+    color: rgba(237,232,220,0.6);
+  }
+
+  .board-co2 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: rgba(242,169,60,0.8);
+  }
+
+  .board-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--electrico);
+    white-space: nowrap;
+  }
+
+  .board-note {
+    margin-top: 28px;
+    font-size: 13px;
+    color: rgba(237,232,220,0.45);
+  }
+
+  .board-note + .board-note { margin-top: 8px; }
+
+  .group-calc {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line-light);
+    max-width: 420px;
+  }
+
+  .group-calc-label {
+    font-size: 14px;
+    color: rgba(237,232,220,0.7);
+    margin-bottom: 12px;
+  }
+
+  .group-calc-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .group-calc-input {
+    width: 70px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px;
+    background: transparent;
+    border: 1px solid rgba(237,232,220,0.35);
+    border-radius: 3px;
+    color: var(--paper);
+    padding: 8px 10px;
+  }
+
+  .group-calc-suffix {
+    font-size: 14px;
+    color: rgba(237,232,220,0.55);
+  }
+
+  .group-calc-result {
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--electrico);
+    min-height: 20px;
+  }
+
+  .group-calc-cta {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--electrico);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ---- Contact ---- */
+  .contact {
+    background: var(--tejo);
+    color: var(--paper);
+    padding: 96px 32px;
+    text-align: center;
+  }
+
+  .contact h2 {
+    font-size: clamp(30px, 5vw, 44px);
+    max-width: 16ch;
+    margin: 0 auto;
+  }
+
+  .contact p {
+    margin-top: 16px;
+    color: rgba(237,232,220,0.7);
+    font-size: 16px;
+  }
+
+  .contact-cta {
+    display: inline-block;
+    margin-top: 32px;
+    background: var(--electrico);
+    color: var(--tejo-deep);
+    font-weight: 600;
+    font-size: 16px;
+    padding: 16px 34px;
+    border-radius: 3px;
+    transition: transform 0.15s ease;
+  }
+
+  .contact-cta:hover { transform: translateY(-1px); }
+
+  /* ---- Footer ---- */
+  footer {
+    padding: 28px 32px;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(32,36,43,0.5);
+  }
+
+  /* ---- Sticky WhatsApp (mobile only) ---- */
+  .sticky-wa {
+    display: none;
+  }
+
+  @media (max-width: 720px) {
+    .sticky-wa {
+      display: flex;
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      z-index: 50;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--electrico);
+      color: var(--tejo-deep);
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(15,42,56,0.35);
+    }
+
+    .nav { padding: 18px 20px; gap: 10px; flex-wrap: wrap; }
+    .hero { padding: 40px 20px 0; }
+    .why { padding: 56px 20px; }
+    .planner { padding: 56px 20px; }
+    .planner-card { padding: 22px; }
+    .routes { padding: 56px 20px 64px; }
+    .contact { padding: 64px 20px; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; gap: 32px; }
+    .board-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    .board-price-wrap { flex-direction: row; align-items: baseline; gap: 8px; }
+    .board-duration, .board-price-wrap { display: inline-flex; margin-right: 14px; }
+    .board-detail { margin-top: 4px; }
+    .board-link { margin-top: 10px; }
+  }
+
+  @media (max-width: 400px) {
+    .brand { font-size: 17px; }
+    .nav-cta { font-size: 13px; padding: 8px 14px; }
+    .lang-select { font-size: 12px; padding: 6px 8px; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Zero Tuktours",
+  "url": "https://zerotuktours.com/",
+  "description": "Private, 100% electric tuk-tuk tours in Lisbon, including Alfama, Belém, a stadiums route and a local Arroios neighbourhood route.",
+  "areaServed": { "@type": "City", "name": "Lisbon" },
+  "telephone": "+351900000000",
+  "priceRange": "€45-€150",
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "price": "45",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "TouristTrip",
+        "name": "Classic Lisbon",
+        "description": "Sé Cathedral, Santa Luzia viewpoint, São Jorge Castle, and the lanes of Alfama and Mouraria."
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "55",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "TouristTrip",
+        "name": "Arroios & Anjos",
+        "description": "Arroios market, everyday shops, and the neighbourhood's food scene. No monuments, no crowds."
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "80",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "TouristTrip",
+        "name": "Alfama & Belém",
+        "description": "Alfama's viewpoints, Belém Tower, Jerónimos Monastery, and the Monument to the Discoveries."
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "85",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "TouristTrip",
+        "name": "Stadiums Route",
+        "description": "Estádio da Luz and Estádio José Alvalade, home grounds of Benfica and Sporting."
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "150",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "TouristTrip",
+        "name": "Full Lisbon",
+        "description": "Alfama, Chiado's Camões Square, and Belém's monuments in one ride."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">Zero<span>Tuktours</span></div>
+    <div class="nav-right">
+      <select class="lang-select" onchange="setLang(this.value)" aria-label="Language">
+        <option value="en">EN</option>
+        <option value="pt">PT</option>
+        <option value="fr">FR</option>
+        <option value="es">ES</option>
+      </select>
+      <a class="nav-cta" data-i18n="cta_whatsapp" data-wa-msg="msg_general" href="https://wa.me/351900000000" target="_blank" rel="noopener">Book on WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1 data-i18n="hero_h1">Lisbon, at a different pace.</h1>
+      <p data-i18n="hero_p">Private tours in a 100% electric tuk-tuk, for up to 4 people. No fumes, no rush, no hills to climb.</p>
+      <a class="hero-cta" data-i18n="cta_whatsapp" data-wa-msg="msg_general" href="https://wa.me/351900000000" target="_blank" rel="noopener">Book on WhatsApp</a>
+      <div class="hero-fine" data-i18n="hero_fine">Reply usually within the hour</div>
+    </div>
+    <svg class="skyline" viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a tuk-tuk in front of the Lisbon skyline">
+      <line x1="0" y1="20" x2="420" y2="20" stroke="rgba(237,232,220,0.15)" stroke-width="1"/>
+      <path d="M20 20 L20 14 Q20 8 26 8 L40 8 Q46 8 46 14 L46 20" fill="none" stroke="rgba(237,232,220,0.25)" stroke-width="2"/>
+      <rect x="30" y="150" width="26" height="66" fill="rgba(237,232,220,0.08)"/>
+      <rect x="64" y="120" width="34" height="96" fill="rgba(237,232,220,0.1)"/>
+      <rect x="106" y="140" width="22" height="76" fill="rgba(237,232,220,0.07)"/>
+      <polygon points="150,216 150,110 200,80 250,110 250,216" fill="rgba(237,232,220,0.1)"/>
+      <rect x="188" y="150" width="24" height="66" fill="rgba(237,232,220,0.14)"/>
+      <rect x="268" y="130" width="28" height="86" fill="rgba(237,232,220,0.08)"/>
+      <rect x="304" y="160" width="30" height="56" fill="rgba(237,232,220,0.1)"/>
+      <rect x="342" y="100" width="18" height="116" fill="rgba(237,232,220,0.12)"/>
+      <rect x="366" y="140" width="26" height="76" fill="rgba(237,232,220,0.07)"/>
+
+      <g class="tuktuk-group">
+        <path d="M0 42 Q0 20 22 20 L70 20 Q90 20 90 42 L90 48 L0 48 Z" fill="var(--electrico)"/>
+        <rect x="8" y="4" width="52" height="20" rx="4" fill="var(--electrico)"/>
+        <rect x="14" y="8" width="20" height="12" rx="2" fill="var(--tejo)"/>
+        <circle cx="18" cy="48" r="9" fill="var(--tejo-deep)"/>
+        <circle cx="18" cy="48" r="3.5" fill="rgba(237,232,220,0.6)"/>
+        <circle cx="72" cy="48" r="9" fill="var(--tejo-deep)"/>
+        <circle cx="72" cy="48" r="3.5" fill="rgba(237,232,220,0.6)"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="why-head">
+      <h2 data-i18n="why_h2">Built for how the city actually works.</h2>
+      <p data-i18n="why_p">Lisbon runs on seven hills and narrow medieval streets. Most vehicles fight that. The tuk-tuk doesn't.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <h3 data-i18n="why1_h3">Electric and silent</h3>
+        <p data-i18n="why1_p">Zero emissions, zero engine noise. You move through historic neighborhoods without disturbing the people who live there.</p>
+      </div>
+      <div class="why-item">
+        <h3 data-i18n="why2_h3">The hills, handled</h3>
+        <p data-i18n="why2_p">Alfama, Graça and Mouraria are steep and cobbled. The tuk-tuk climbs, you sit back and take photos.</p>
+      </div>
+      <div class="why-item">
+        <h3 data-i18n="why3_h3">Built around your group</h3>
+        <p data-i18n="why3_p">Local driver, stops where you want them, pace set by you, not a fixed bus schedule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="planner">
+  <div class="wrap">
+    <h2 data-i18n="planner_h2">Not sure where to start?</h2>
+    <p class="planner-intro" data-i18n="planner_p">Answer a few quick questions.</p>
+
+    <div class="planner-card">
+      <div class="planner-q">
+        <div class="planner-label" data-i18n="q1_label">How much time do you have?</div>
+        <div class="planner-opts" data-group="time">
+          <button type="button" class="planner-opt" data-value="1h" data-i18n="q1_opt1">About 1 hour</button>
+          <button type="button" class="planner-opt" data-value="2h" data-i18n="q1_opt2">About 2 hours</button>
+          <button type="button" class="planner-opt" data-value="4h" data-i18n="q1_opt3">Half a day</button>
+        </div>
+      </div>
+      <div class="planner-q">
+        <div class="planner-label" data-i18n="q2_label">What are you most into?</div>
+        <div class="planner-opts" data-group="interest">
+          <button type="button" class="planner-opt" data-value="history" data-i18n="q2_opt1">History &amp; viewpoints</button>
+          <button type="button" class="planner-opt" data-value="football" data-i18n="q2_opt2">Football</button>
+          <button type="button" class="planner-opt" data-value="local" data-i18n="q2_opt4">Local, everyday life</button>
+          <button type="button" class="planner-opt" data-value="everything" data-i18n="q2_opt3">Everything</button>
+        </div>
+      </div>
+      <div class="planner-q">
+        <div class="planner-label" data-i18n="q3_label">Who's coming along?</div>
+        <div class="planner-opts" data-group="who">
+          <button type="button" class="planner-opt" data-value="couple" data-i18n="q3_opt1">Just us / a couple</button>
+          <button type="button" class="planner-opt" data-value="family" data-i18n="q3_opt2">Family with kids</button>
+          <button type="button" class="planner-opt" data-value="friends" data-i18n="q3_opt3">Group of friends</button>
+        </div>
+      </div>
+
+      <div class="planner-result" id="planner-result" hidden>
+        <div class="planner-result-label" data-i18n="planner_result_prefix">Your match:</div>
+        <div class="planner-result-name" id="planner-result-name"></div>
+        <div class="planner-result-desc" id="planner-result-desc"></div>
+        <div class="planner-result-note" id="planner-result-note"></div>
+        <a class="planner-result-cta" id="planner-result-cta" href="#" target="_blank" rel="noopener">Book this route</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="routes" id="routes">
+  <div class="wrap">
+    <div class="routes-head">
+      <h2 data-i18n="routes_h2">Routes</h2>
+      <p data-i18n="routes_p">Prices per tuk-tuk, up to 4 people. Tap a route to check availability on WhatsApp.</p>
+    </div>
+
+    <div class="board">
+
+      <a class="board-row" data-wa-msg="msg_classic" href="https://wa.me/351900000000" target="_blank" rel="noopener">
+        <div>
+          <div class="board-name" data-i18n="r1_name">Classic Lisbon</div>
+          <span class="board-tag" data-i18n="tag_launch">Launch price</span>
+        </div>
+        <div class="board-duration">1h</div>
+        <div class="board-price-wrap">
+          <div class="board-price">€45</div>
+          <div class="board-cap" data-i18n="cap_label">up to 4</div>
+        </div>
+        <div class="board-detail">
+          <div class="board-desc" data-i18n="r1_desc">Sé Cathedral, Santa Luzia viewpoint, São Jorge Castle, and the lanes of Alfama and Mouraria.</div>
+          <div class="board-co2" data-i18n="r1_co2">~1.3kg CO2 avoided vs a taxi, ~0.6kg vs a petrol tuk-tuk.</div>
+        </div>
+        <div class="board-link" data-i18n="link_book">Book →</div>
+      </a>
+
+      <a class="board-row" data-wa-msg="msg_arroios" href="https://wa.me/351900000000" target="_blank" rel="noopener">
+        <div>
+          <div class="board-name" data-i18n="r5_name">Arroios &amp; Anjos</div>
+          <span class="board-tag" data-i18n="tag_local">No monuments</span>
+        </div>
+        <div class="board-duration">1.5h</div>
+        <div class="board-price-wrap">
+          <div class="board-price">€55</div>
+          <div class="board-cap" data-i18n="cap_label">up to 4</div>
+        </div>
+        <div class="board-detail">
+          <div class="board-desc" data-i18n="r5_desc">Arroios market, everyday shops, and the neighbourhood's food scene. No monuments, no crowds.</div>
+          <div class="board-co2" data-i18n="r5_co2">~1.0kg CO2 avoided vs a taxi, ~0.5kg vs a petrol tuk-tuk.</div>
+        </div>
+        <div class="board-link" data-i18n="link_book">Book →</div>
+      </a>
+
+      <a class="board-row" data-wa-msg="msg_alfama_belem" href="https://wa.me/351900000000" target="_blank" rel="noopener">
+        <div>
+          <div class="board-name" data-i18n="r2_name">Alfama &amp; Belém</div>
+        </div>
+        <div class="board-duration">2h</div>
+        <div class="board-price-wrap">
+          <div class="board-price">€80</div>
+          <div class="board-cap" data-i18n="cap_label">up to 4</div>
+        </div>
+        <div class="board-detail">
+          <div class="board-desc" data-i18n="r2_desc">Alfama's viewpoints, then Belém Tower, Jerónimos Monastery, and the Monument to the Discoveries.</div>
+          <div class="board-co2" data-i18n="r2_co2">~2.6kg CO2 avoided vs a taxi, ~1.3kg vs a petrol tuk-tuk.</div>
+        </div>
+        <div class="board-link" data-i18n="link_book">Book →</div>
+      </a>
+
+      <a class="board-row" data-wa-msg="msg_stadiums" href="https://wa.me/351900000000" target="_blank" rel="noopener">
+        <div>
+          <div class="board-name" data-i18n="r3_name">Stadiums Route</div>
+          <span class="board-tag" data-i18n="tag_only">Only here</span>
+        </div>
+        <div class="board-duration">2h</div>
+        <div class="board-price-wrap">
+          <div class="board-price">€85</div>
+          <div class="board-cap" data-i18n="cap_label">up to 4</div>
+        </div>
+        <div class="board-detail">
+          <div class="board-desc" data-i18n="r3_desc">Estádio da Luz and Estádio José Alvalade, home grounds of Benfica and Sporting.</div>
+          <div class="board-co2" data-i18n="r3_co2">~3.3kg CO2 avoided vs a taxi, ~1.6kg vs a petrol tuk-tuk.</div>
+        </div>
+        <div class="board-link" data-i18n="link_book">Book →</div>
+      </a>
+
+      <a class="board-row" data-wa-msg="msg_full" href="https://wa.me/351900000000" target="_blank" rel="noopener">
+        <div>
+          <div class="board-name" data-i18n="r4_name">Full Lisbon</div>
+        </div>
+        <div class="board-duration">4h</div>
+        <div class="board-price-wrap">
+          <div class="board-price">€150</div>
+          <div class="board-cap" data-i18n="cap_label">up to 4</div>
+        </div>
+        <div class="board-detail">
+          <div class="board-desc" data-i18n="r4_desc">Alfama, Chiado's Camões Square, and Belém's monuments, all in one unhurried ride.</div>
+          <div class="board-co2" data-i18n="r4_co2">~5.0kg CO2 avoided vs a taxi, ~2.4kg vs a petrol tuk-tuk.</div>
+        </div>
+        <div class="board-link" data-i18n="link_book">Book →</div>
+      </a>
+
+    </div>
+    <div class="board-note" data-i18n="board_note">Custom routes and hotel pickup available on request.</div>
+    <div class="board-note" data-i18n="co2_note">Estimated using EU average real-world taxi emissions (~165g CO2/km) and published small-engine tuk-tuk studies (~80g CO2/km). Route distances are estimates.</div>
+
+    <div class="group-calc">
+      <div class="group-calc-label" data-i18n="groupcalc_label">Traveling with a bigger group?</div>
+      <div class="group-calc-row">
+        <input type="number" id="group-size" min="1" max="60" value="6" class="group-calc-input" oninput="updateGroupCalc()">
+        <span class="group-calc-suffix" data-i18n="groupcalc_suffix">people</span>
+      </div>
+      <div class="group-calc-result" id="group-calc-result"></div>
+      <a class="group-calc-cta" id="group-calc-cta" data-i18n="groupcalc_cta" href="#" target="_blank" rel="noopener">Ask on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <h2 data-i18n="contact_h2">Ready to see Lisbon this way?</h2>
+    <p data-i18n="contact_p">Send us your dates and group size. We'll confirm in minutes.</p>
+    <a class="contact-cta" data-i18n="contact_cta" data-wa-msg="msg_general" href="https://wa.me/351900000000" target="_blank" rel="noopener">Message us on WhatsApp</a>
+  </div>
+</section>
+
+<footer data-i18n="footer_text">
+  Zero Tuktours, Lisbon, Portugal
+</footer>
+
+<a class="sticky-wa" data-wa-msg="msg_general" href="https://wa.me/351900000000" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 20l1.4-4.2A8 8 0 1 1 8.4 19L4 20z" stroke="var(--tejo-deep)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9 10.5c0 3 2.5 5.5 5.5 5.5" stroke="var(--tejo-deep)" stroke-width="1.8" stroke-linecap="round"/>
+  </svg>
+</a>
+
+<script>
+  var WHATSAPP_NUMBER = "351900000000";
+  var currentLang = "en";
+
+  var translations = {
+    en: {
+      title: "Zero Tuktours — Electric Tuk-Tuk Tours in Lisbon",
+      meta_description: "Private, 100% electric tuk-tuk tours in Lisbon. Alfama, Belém and a stadiums route for football fans. Book on WhatsApp.",
+      cta_whatsapp: "Book on WhatsApp",
+      hero_h1: "Lisbon, at a different pace.",
+      hero_p: "Private tours in a 100% electric tuk-tuk, for up to 4 people. No fumes, no rush, no hills to climb.",
+      hero_fine: "Reply usually within the hour",
+      why_h2: "Built for how the city actually works.",
+      why_p: "Lisbon runs on seven hills and narrow medieval streets. Most vehicles fight that. The tuk-tuk doesn't.",
+      why1_h3: "Electric and silent",
+      why1_p: "Zero emissions, zero engine noise. You move through historic neighborhoods without disturbing the people who live there.",
+      why2_h3: "The hills, handled",
+      why2_p: "Alfama, Graça and Mouraria are steep and cobbled. The tuk-tuk climbs, you sit back and take photos.",
+      why3_h3: "Built around your group",
+      why3_p: "Local driver, stops where you want them, pace set by you, not a fixed bus schedule.",
+      planner_h2: "Not sure where to start?",
+      planner_p: "Answer a few quick questions.",
+      q1_label: "How much time do you have?",
+      q1_opt1: "About 1 hour",
+      q1_opt2: "About 2 hours",
+      q1_opt3: "Half a day",
+      q2_label: "What are you most into?",
+      q2_opt1: "History & viewpoints",
+      q2_opt2: "Football",
+      q2_opt3: "Everything",
+      q2_opt4: "Local, everyday life",
+      q3_label: "Who's coming along?",
+      q3_opt1: "Just us / a couple",
+      q3_opt2: "Family with kids",
+      q3_opt3: "Group of friends",
+      note_couple: "A quiet pace, just the two of you.",
+      note_family: "Kid-friendly pace, we can add extra stops if needed.",
+      note_friends: "Great with a group, ask about a second tuk-tuk for more than 4.",
+      planner_result_prefix: "Your match:",
+      planner_cta: "Book this route",
+      routes_h2: "Routes",
+      routes_p: "Prices per tuk-tuk, up to 4 people. Tap a route to check availability on WhatsApp.",
+      r1_name: "Classic Lisbon",
+      r1_desc: "Sé Cathedral, Santa Luzia viewpoint, São Jorge Castle, and the lanes of Alfama and Mouraria.",
+      r1_co2: "~1.3kg CO2 avoided vs a taxi, ~0.6kg vs a petrol tuk-tuk.",
+      r2_name: "Alfama & Belém",
+      r2_desc: "Alfama's viewpoints, then Belém Tower, Jerónimos Monastery, and the Monument to the Discoveries.",
+      r2_co2: "~2.6kg CO2 avoided vs a taxi, ~1.3kg vs a petrol tuk-tuk.",
+      r3_name: "Stadiums Route",
+      r3_desc: "Estádio da Luz and Estádio José Alvalade, home grounds of Benfica and Sporting.",
+      r3_co2: "~3.3kg CO2 avoided vs a taxi, ~1.6kg vs a petrol tuk-tuk.",
+      r4_name: "Full Lisbon",
+      r4_desc: "Alfama, Chiado's Camões Square, and Belém's monuments, all in one unhurried ride.",
+      r4_co2: "~5.0kg CO2 avoided vs a taxi, ~2.4kg vs a petrol tuk-tuk.",
+      r5_name: "Arroios & Anjos",
+      r5_desc: "Arroios market, everyday shops, and the neighbourhood's food scene. No monuments, no crowds.",
+      r5_co2: "~1.0kg CO2 avoided vs a taxi, ~0.5kg vs a petrol tuk-tuk.",
+      co2_note: "Estimated using EU average real-world taxi emissions (~165g CO2/km) and published small-engine tuk-tuk studies (~80g CO2/km). Route distances are estimates.",
+      cap_label: "up to 4",
+      tag_launch: "Launch price",
+      tag_only: "Only here",
+      tag_local: "No monuments",
+      link_book: "Book →",
+      board_note: "Custom routes and hotel pickup available on request.",
+      groupcalc_label: "Traveling with a bigger group?",
+      groupcalc_suffix: "people",
+      groupcalc_result: "You'll need {n} tuk-tuks.",
+      groupcalc_cta: "Ask on WhatsApp",
+      contact_h2: "Ready to see Lisbon this way?",
+      contact_p: "Send us your dates and group size. We'll confirm in minutes.",
+      contact_cta: "Message us on WhatsApp",
+      footer_text: "Zero Tuktours, Lisbon, Portugal",
+      msg_general: "Hi! I'd like to book a tuk-tuk tour.",
+      msg_classic: "Hi! I'd like to book the Classic Lisbon route (1h, €45).",
+      msg_alfama_belem: "Hi! I'd like to book the Alfama & Belém route (2h, €80).",
+      msg_stadiums: "Hi! I'd like to book the Stadiums Route (2h, €85).",
+      msg_full: "Hi! I'd like to book the Full Lisbon route (4h, €150).",
+      msg_arroios: "Hi! I'd like to book the Arroios & Anjos route (1.5h, €55).",
+      msg_group: "Hi! We're a group of {n} people, how would that work?"
+    },
+    pt: {
+      title: "Zero Tuktours — Tours de Tuk-Tuk Elétrico em Lisboa",
+      meta_description: "Tours privados em tuk-tuk 100% elétrico em Lisboa. Alfama, Belém e uma rota pelos estádios para os adeptos. Reserva pelo WhatsApp.",
+      cta_whatsapp: "Reservar no WhatsApp",
+      hero_h1: "Lisboa, a outro ritmo.",
+      hero_p: "Tours privados num tuk-tuk 100% elétrico, até 4 pessoas. Sem fumos, sem pressa, sem subidas a pé.",
+      hero_fine: "Normalmente respondemos em menos de uma hora",
+      why_h2: "Feito para a forma como a cidade funciona.",
+      why_p: "Lisboa assenta em sete colinas e ruas estreitas medievais. A maioria dos veículos luta contra isso. O tuk-tuk não.",
+      why1_h3: "Elétrico e silencioso",
+      why1_p: "Zero emissões, zero ruído de motor. Percorres bairros históricos sem incomodar quem lá vive.",
+      why2_h3: "As subidas, resolvidas",
+      why2_p: "Alfama, Graça e Mouraria têm ladeiras íngremes e calçada. O tuk-tuk sobe, tu relaxas e tiras fotos.",
+      why3_h3: "Feito à medida do teu grupo",
+      why3_p: "Condutor local, paragens onde quiseres, ritmo definido por ti, não por um horário fixo de autocarro.",
+      planner_h2: "Não sabes por onde começar?",
+      planner_p: "Responde a algumas perguntas rápidas.",
+      q1_label: "Quanto tempo tens?",
+      q1_opt1: "Cerca de 1 hora",
+      q1_opt2: "Cerca de 2 horas",
+      q1_opt3: "Meio-dia",
+      q2_label: "O que te interessa mais?",
+      q2_opt1: "História e miradouros",
+      q2_opt2: "Futebol",
+      q2_opt3: "Tudo",
+      q2_opt4: "Vida local, do dia a dia",
+      q3_label: "Quem vai contigo?",
+      q3_opt1: "Só nós / um casal",
+      q3_opt2: "Família com crianças",
+      q3_opt3: "Grupo de amigos",
+      note_couple: "Ritmo tranquilo, só para os dois.",
+      note_family: "Ritmo adequado a crianças, podemos ajustar paragens se precisares.",
+      note_friends: "Ótimo em grupo, pergunta sobre um segundo tuk-tuk para mais de 4 pessoas.",
+      planner_result_prefix: "A tua combinação:",
+      planner_cta: "Reservar esta rota",
+      routes_h2: "Rotas",
+      routes_p: "Preços por tuk-tuk, até 4 pessoas. Toca numa rota para verificar disponibilidade no WhatsApp.",
+      r1_name: "Lisboa Clássica",
+      r1_desc: "Sé de Lisboa, miradouro de Santa Luzia, Castelo de São Jorge e as ruelas de Alfama e Mouraria.",
+      r1_co2: "~1,3kg de CO2 evitados face a um táxi, ~0,6kg face a um tuk-tuk a gasolina.",
+      r2_name: "Alfama e Belém",
+      r2_desc: "Os miradouros de Alfama, seguidos pela Torre de Belém, Mosteiro dos Jerónimos e Padrão dos Descobrimentos.",
+      r2_co2: "~2,6kg de CO2 evitados face a um táxi, ~1,3kg face a um tuk-tuk a gasolina.",
+      r3_name: "Rota dos Estádios",
+      r3_desc: "Estádio da Luz e Estádio José Alvalade, os terrenos do Benfica e do Sporting.",
+      r3_co2: "~3,3kg de CO2 evitados face a um táxi, ~1,6kg face a um tuk-tuk a gasolina.",
+      r4_name: "Lisboa Completa",
+      r4_desc: "Alfama, o Largo de Camões no Chiado e os monumentos de Belém, tudo num só passeio sem pressa.",
+      r4_co2: "~5,0kg de CO2 evitados face a um táxi, ~2,4kg face a um tuk-tuk a gasolina.",
+      r5_name: "Arroios e Anjos",
+      r5_desc: "Mercado de Arroios, comércio de bairro e a gastronomia do dia a dia. Sem monumentos, sem multidões.",
+      r5_co2: "~1,0kg de CO2 evitados face a um táxi, ~0,5kg face a um tuk-tuk a gasolina.",
+      co2_note: "Estimativa com base na média real de emissões de táxis na UE (~165g CO2/km) e em estudos publicados sobre tuk-tuks a gasolina (~80g CO2/km). As distâncias das rotas são aproximadas.",
+      cap_label: "até 4",
+      tag_launch: "Preço de lançamento",
+      tag_only: "Exclusivo",
+      tag_local: "Sem monumentos",
+      link_book: "Reservar →",
+      board_note: "Rotas personalizadas e recolha no hotel disponíveis mediante pedido.",
+      groupcalc_label: "Vais num grupo maior?",
+      groupcalc_suffix: "pessoas",
+      groupcalc_result: "Vais precisar de {n} tuk-tuks.",
+      groupcalc_cta: "Perguntar no WhatsApp",
+      contact_h2: "Pronto para ver Lisboa assim?",
+      contact_p: "Envia-nos as datas e o tamanho do grupo. Confirmamos em minutos.",
+      contact_cta: "Fala connosco no WhatsApp",
+      footer_text: "Zero Tuktours, Lisboa, Portugal",
+      msg_general: "Olá! Gostava de reservar um tour de tuk-tuk.",
+      msg_classic: "Olá! Gostava de reservar a rota Lisboa Clássica (1h, 45€).",
+      msg_alfama_belem: "Olá! Gostava de reservar a rota Alfama e Belém (2h, 80€).",
+      msg_stadiums: "Olá! Gostava de reservar a Rota dos Estádios (2h, 85€).",
+      msg_full: "Olá! Gostava de reservar a rota Lisboa Completa (4h, 150€).",
+      msg_arroios: "Olá! Gostava de reservar a rota Arroios e Anjos (1h30, 55€).",
+      msg_group: "Olá! Somos um grupo de {n} pessoas, como funcionaria?"
+    },
+    fr: {
+      title: "Zero Tuktours — Visites en Tuk-Tuk Électrique à Lisbonne",
+      meta_description: "Visites privées en tuk-tuk 100% électrique à Lisbonne. Alfama, Belém et une route des stades pour les supporters. Réservez sur WhatsApp.",
+      cta_whatsapp: "Réserver sur WhatsApp",
+      hero_h1: "Lisbonne, à un autre rythme.",
+      hero_p: "Visites privées en tuk-tuk 100% électrique, jusqu'à 4 personnes. Sans fumée, sans hâte, sans côtes à grimper.",
+      hero_fine: "Réponse généralement en moins d'une heure",
+      why_h2: "Pensé pour le fonctionnement réel de la ville.",
+      why_p: "Lisbonne repose sur sept collines et des rues médiévales étroites. La plupart des véhicules luttent contre cela. Pas le tuk-tuk.",
+      why1_h3: "Électrique et silencieux",
+      why1_p: "Zéro émission, zéro bruit de moteur. Vous traversez des quartiers historiques sans déranger les habitants.",
+      why2_h3: "Les collines, sans effort",
+      why2_p: "Alfama, Graça et Mouraria sont escarpées et pavées. Le tuk-tuk grimpe, vous vous détendez et prenez des photos.",
+      why3_h3: "Adapté à votre groupe",
+      why3_p: "Chauffeur local, arrêts où vous voulez, rythme fixé par vous, pas par un horaire de bus fixe.",
+      planner_h2: "Vous ne savez pas par où commencer ?",
+      planner_p: "Répondez à quelques questions rapides.",
+      q1_label: "Combien de temps avez-vous ?",
+      q1_opt1: "Environ 1 heure",
+      q1_opt2: "Environ 2 heures",
+      q1_opt3: "Une demi-journée",
+      q2_label: "Qu'est-ce qui vous intéresse le plus ?",
+      q2_opt1: "Histoire et points de vue",
+      q2_opt2: "Football",
+      q2_opt3: "Tout",
+      q2_opt4: "La vie locale, au quotidien",
+      q3_label: "Qui vous accompagne ?",
+      q3_opt1: "Juste nous / un couple",
+      q3_opt2: "Famille avec enfants",
+      q3_opt3: "Groupe d'amis",
+      note_couple: "Un rythme tranquille, juste pour vous deux.",
+      note_family: "Rythme adapté aux enfants, on peut ajuster les arrêts si besoin.",
+      note_friends: "Parfait en groupe, demandez-nous un second tuk-tuk au-delà de 4 personnes.",
+      planner_result_prefix: "Votre choix idéal :",
+      planner_cta: "Réserver cet itinéraire",
+      routes_h2: "Itinéraires",
+      routes_p: "Prix par tuk-tuk, jusqu'à 4 personnes. Touchez un itinéraire pour vérifier la disponibilité sur WhatsApp.",
+      r1_name: "Lisbonne Classique",
+      r1_desc: "Cathédrale de Lisbonne (Sé), belvédère de Santa Luzia, château de São Jorge et les ruelles d'Alfama et Mouraria.",
+      r1_co2: "~1,3kg de CO2 évités par rapport à un taxi, ~0,6kg par rapport à un tuk-tuk à essence.",
+      r2_name: "Alfama et Belém",
+      r2_desc: "Les belvédères d'Alfama, puis la Tour de Belém, le Monastère des Hiéronymites et le Monument des Découvertes.",
+      r2_co2: "~2,6kg de CO2 évités par rapport à un taxi, ~1,3kg par rapport à un tuk-tuk à essence.",
+      r3_name: "Route des Stades",
+      r3_desc: "Estádio da Luz et Estádio José Alvalade, les stades du Benfica et du Sporting.",
+      r3_co2: "~3,3kg de CO2 évités par rapport à un taxi, ~1,6kg par rapport à un tuk-tuk à essence.",
+      r4_name: "Lisbonne Complète",
+      r4_desc: "Alfama, la place Camões à Chiado, et les monuments de Belém, en une seule balade sans hâte.",
+      r4_co2: "~5,0kg de CO2 évités par rapport à un taxi, ~2,4kg par rapport à un tuk-tuk à essence.",
+      r5_name: "Arroios et Anjos",
+      r5_desc: "Le marché d'Arroios, les commerces de quartier et la cuisine locale du quotidien. Sans monuments, sans foule.",
+      r5_co2: "~1,0kg de CO2 évités par rapport à un taxi, ~0,5kg par rapport à un tuk-tuk à essence.",
+      co2_note: "Estimation basée sur la moyenne réelle des émissions des taxis dans l'UE (~165g CO2/km) et des études publiées sur les tuk-tuks à essence (~80g CO2/km). Les distances des itinéraires sont approximatives.",
+      cap_label: "jusqu'à 4",
+      tag_launch: "Prix de lancement",
+      tag_only: "Exclusif",
+      tag_local: "Sans monuments",
+      link_book: "Réserver →",
+      board_note: "Itinéraires personnalisés et prise en charge à l'hôtel disponibles sur demande.",
+      groupcalc_label: "Vous voyagez en grand groupe ?",
+      groupcalc_suffix: "personnes",
+      groupcalc_result: "Il vous faudra {n} tuk-tuks.",
+      groupcalc_cta: "Demander sur WhatsApp",
+      contact_h2: "Prêt à découvrir Lisbonne ainsi ?",
+      contact_p: "Envoyez-nous vos dates et la taille du groupe. Nous confirmons en quelques minutes.",
+      contact_cta: "Écrivez-nous sur WhatsApp",
+      footer_text: "Zero Tuktours, Lisbonne, Portugal",
+      msg_general: "Bonjour ! Je voudrais réserver une visite en tuk-tuk.",
+      msg_classic: "Bonjour ! Je voudrais réserver l'itinéraire Lisbonne Classique (1h, 45€).",
+      msg_alfama_belem: "Bonjour ! Je voudrais réserver l'itinéraire Alfama et Belém (2h, 80€).",
+      msg_stadiums: "Bonjour ! Je voudrais réserver la Route des Stades (2h, 85€).",
+      msg_full: "Bonjour ! Je voudrais réserver l'itinéraire Lisbonne Complète (4h, 150€).",
+      msg_arroios: "Bonjour ! Je voudrais réserver l'itinéraire Arroios et Anjos (1h30, 55€).",
+      msg_group: "Bonjour ! Nous sommes un groupe de {n} personnes, comment cela fonctionnerait-il ?"
+    },
+    es: {
+      title: "Zero Tuktours — Tours en Tuk-Tuk Eléctrico en Lisboa",
+      meta_description: "Tours privados en tuk-tuk 100% eléctrico en Lisboa. Alfama, Belém y una ruta de los estadios para los aficionados. Reserva por WhatsApp.",
+      cta_whatsapp: "Reservar por WhatsApp",
+      hero_h1: "Lisboa, a otro ritmo.",
+      hero_p: "Tours privados en un tuk-tuk 100% eléctrico, hasta 4 personas. Sin humos, sin prisa, sin cuestas que subir.",
+      hero_fine: "Normalmente respondemos en menos de una hora",
+      why_h2: "Pensado para cómo funciona realmente la ciudad.",
+      why_p: "Lisboa se apoya en siete colinas y calles medievales estrechas. La mayoría de los vehículos luchan contra eso. El tuk-tuk no.",
+      why1_h3: "Eléctrico y silencioso",
+      why1_p: "Cero emisiones, cero ruido de motor. Recorres barrios históricos sin molestar a quienes viven allí.",
+      why2_h3: "Las cuestas, resueltas",
+      why2_p: "Alfama, Graça y Mouraria tienen cuestas empinadas y empedradas. El tuk-tuk sube, tú te relajas y haces fotos.",
+      why3_h3: "Adaptado a tu grupo",
+      why3_p: "Conductor local, paradas donde quieras, ritmo marcado por ti, no por un horario fijo de autobús.",
+      planner_h2: "¿No sabes por dónde empezar?",
+      planner_p: "Responde a algunas preguntas rápidas.",
+      q1_label: "¿Cuánto tiempo tienes?",
+      q1_opt1: "Alrededor de 1 hora",
+      q1_opt2: "Alrededor de 2 horas",
+      q1_opt3: "Medio día",
+      q2_label: "¿Qué te interesa más?",
+      q2_opt1: "Historia y miradores",
+      q2_opt2: "Fútbol",
+      q2_opt3: "Todo",
+      q2_opt4: "Vida local, del día a día",
+      q3_label: "¿Quién te acompaña?",
+      q3_opt1: "Solo nosotros / una pareja",
+      q3_opt2: "Familia con niños",
+      q3_opt3: "Grupo de amigos",
+      note_couple: "Un ritmo tranquilo, solo para los dos.",
+      note_family: "Ritmo apto para niños, podemos ajustar las paradas si hace falta.",
+      note_friends: "Genial en grupo, pregunta por un segundo tuk-tuk si sois más de 4.",
+      planner_result_prefix: "Tu combinación:",
+      planner_cta: "Reservar esta ruta",
+      routes_h2: "Rutas",
+      routes_p: "Precios por tuk-tuk, hasta 4 personas. Toca una ruta para consultar disponibilidad por WhatsApp.",
+      r1_name: "Lisboa Clásica",
+      r1_desc: "Catedral de Lisboa (Sé), mirador de Santa Luzia, Castillo de San Jorge y las callejuelas de Alfama y Mouraria.",
+      r1_co2: "~1,3kg de CO2 evitados frente a un taxi, ~0,6kg frente a un tuk-tuk de gasolina.",
+      r2_name: "Alfama y Belém",
+      r2_desc: "Los miradores de Alfama, después la Torre de Belém, el Monasterio de los Jerónimos y el Monumento a los Descubrimientos.",
+      r2_co2: "~2,6kg de CO2 evitados frente a un taxi, ~1,3kg frente a un tuk-tuk de gasolina.",
+      r3_name: "Ruta de los Estadios",
+      r3_desc: "Estádio da Luz y Estádio José Alvalade, los campos del Benfica y del Sporting.",
+      r3_co2: "~3,3kg de CO2 evitados frente a un taxi, ~1,6kg frente a un tuk-tuk de gasolina.",
+      r4_name: "Lisboa Completa",
+      r4_desc: "Alfama, la Plaza de Camões en Chiado, y los monumentos de Belém, todo en un solo paseo sin prisa.",
+      r4_co2: "~5,0kg de CO2 evitados frente a un taxi, ~2,4kg frente a un tuk-tuk de gasolina.",
+      r5_name: "Arroios y Anjos",
+      r5_desc: "El mercado de Arroios, comercios de barrio y la gastronomía del día a día. Sin monumentos, sin multitudes.",
+      r5_co2: "~1,0kg de CO2 evitados frente a un taxi, ~0,5kg frente a un tuk-tuk de gasolina.",
+      co2_note: "Estimación basada en la media real de emisiones de taxis en la UE (~165g CO2/km) y en estudios publicados sobre tuk-tuks de gasolina (~80g CO2/km). Las distancias de las rutas son aproximadas.",
+      cap_label: "hasta 4",
+      tag_launch: "Precio de lanzamiento",
+      tag_only: "Exclusivo",
+      tag_local: "Sin monumentos",
+      link_book: "Reservar →",
+      board_note: "Rutas personalizadas y recogida en el hotel disponibles bajo petición.",
+      groupcalc_label: "¿Viajas en un grupo más grande?",
+      groupcalc_suffix: "personas",
+      groupcalc_result: "Necesitarás {n} tuk-tuks.",
+      groupcalc_cta: "Preguntar por WhatsApp",
+      contact_h2: "¿Listo para ver Lisboa así?",
+      contact_p: "Envíanos las fechas y el tamaño del grupo. Confirmamos en minutos.",
+      contact_cta: "Escríbenos por WhatsApp",
+      footer_text: "Zero Tuktours, Lisboa, Portugal",
+      msg_general: "¡Hola! Me gustaría reservar un tour en tuk-tuk.",
+      msg_classic: "¡Hola! Me gustaría reservar la ruta Lisboa Clásica (1h, 45€).",
+      msg_alfama_belem: "¡Hola! Me gustaría reservar la ruta Alfama y Belém (2h, 80€).",
+      msg_stadiums: "¡Hola! Me gustaría reservar la Ruta de los Estadios (2h, 85€).",
+      msg_full: "¡Hola! Me gustaría reservar la ruta Lisboa Completa (4h, 150€).",
+      msg_arroios: "¡Hola! Me gustaría reservar la ruta Arroios y Anjos (1h30, 55€).",
+      msg_group: "¡Hola! Somos un grupo de {n} personas, ¿cómo funcionaría eso?"
+    }
+  };
+
+  var planQuiz = { time: null, interest: null, who: null };
+
+  var routeMeta = {
+    r1: { msgKey: "msg_classic" },
+    r2: { msgKey: "msg_alfama_belem" },
+    r3: { msgKey: "msg_stadiums" },
+    r4: { msgKey: "msg_full" },
+    r5: { msgKey: "msg_arroios" }
+  };
+
+  function recommendRoute() {
+    if (planQuiz.interest === "football") return "r3";
+    if (planQuiz.interest === "local") return "r5";
+    if (planQuiz.time === "1h") return "r1";
+    if (planQuiz.time === "2h") return "r2";
+    if (planQuiz.time === "4h") return "r4";
+    return "r2";
+  }
+
+  function showPlannerResult() {
+    var dict = translations[currentLang] || translations.en;
+    var routeId = recommendRoute();
+    var meta = routeMeta[routeId];
+
+    document.getElementById("planner-result-name").textContent = dict[routeId + "_name"];
+    document.getElementById("planner-result-desc").textContent = dict[routeId + "_desc"];
+
+    var noteEl = document.getElementById("planner-result-note");
+    if (noteEl) noteEl.textContent = dict["note_" + (planQuiz.who || "couple")] || "";
+
+    var cta = document.getElementById("planner-result-cta");
+    cta.textContent = dict.planner_cta;
+    cta.setAttribute("href", "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(dict[meta.msgKey]));
+
+    document.getElementById("planner-result").hidden = false;
+  }
+
+  document.querySelectorAll(".planner-opt").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var group = btn.parentElement.getAttribute("data-group");
+      var value = btn.getAttribute("data-value");
+      planQuiz[group] = value;
+
+      btn.parentElement.querySelectorAll(".planner-opt").forEach(function (b) {
+        b.classList.remove("active");
+      });
+      btn.classList.add("active");
+
+      if (planQuiz.time && planQuiz.interest && planQuiz.who) {
+        showPlannerResult();
+      }
+    });
+  });
+
+  function updateGroupCalc() {
+    var dict = translations[currentLang] || translations.en;
+    var input = document.getElementById("group-size");
+    var resultEl = document.getElementById("group-calc-result");
+    var ctaEl = document.getElementById("group-calc-cta");
+    if (!input || !resultEl || !ctaEl) return;
+
+    var n = parseInt(input.value, 10);
+    if (!n || n < 1) n = 1;
+    var vehicles = n <= 5 ? 1 : 1 + Math.ceil((n - 5) / 4);
+
+    resultEl.textContent = (dict.groupcalc_result || "").replace("{n}", vehicles);
+    var msg = (dict.msg_group || "").replace("{n}", n);
+    ctaEl.setAttribute("href", "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg));
+  }
+
+  function setLang(lang) {
+    var dict = translations[lang] || translations.en;
+    currentLang = lang;
+
+    document.title = dict.title;
+    document.documentElement.lang = lang;
+
+    var metaDesc = document.getElementById("meta-description");
+    if (metaDesc) metaDesc.setAttribute("content", dict.meta_description);
+    var ogTitle = document.getElementById("og-title");
+    if (ogTitle) ogTitle.setAttribute("content", dict.title);
+    var ogDesc = document.getElementById("og-description");
+    if (ogDesc) ogDesc.setAttribute("content", dict.meta_description);
+
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n");
+      if (dict[key]) el.textContent = dict[key];
+    });
+
+    document.querySelectorAll("[data-wa-msg]").forEach(function (el) {
+      var key = el.getAttribute("data-wa-msg");
+      var msg = dict[key] || "";
+      el.setAttribute("href", "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg));
+    });
+
+    var select = document.querySelector(".lang-select");
+    if (select) select.value = lang;
+
+    var resultBox = document.getElementById("planner-result");
+    if (resultBox && !resultBox.hidden) showPlannerResult();
+
+    updateGroupCalc();
+  }
+
+  setLang("en");
+</script>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "f46542a1e2ab49d88283941f3dcda39f"}'></script>
+
+</body>
+</html>
