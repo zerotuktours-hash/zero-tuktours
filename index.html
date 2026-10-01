@@ -3,31 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zero Tuktours — Electric Tuk-Tuk Tours in Lisbon</title>
+<meta name="color-scheme" content="only light">
+<title>ZeroTukTours | Electric Tuk-Tuk Tours in Lisbon</title>
 <meta name="description" id="meta-description" content="Private, 100% electric tuk-tuk tours in Lisbon. Alfama, Belém and a stadiums route for football fans. Book on WhatsApp.">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="ZeroTukTours">
+<meta property="og:url" content="https://zerotuktours.com/">
+<meta property="og:image" content="https://zerotuktours.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ZeroTukTours Lisbon logo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zerotuktours.com/og-image.jpg">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" id="og-title" content="Zero Tuktours — Electric Tuk-Tuk Tours in Lisbon">
+<meta property="og:title" id="og-title" content="ZeroTukTours | Electric Tuk-Tuk Tours in Lisbon">
 <meta property="og:description" id="og-description" content="Private, 100% electric tuk-tuk tours in Lisbon. Alfama, Belém and a stadiums route for football fans.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23163A4D'/%3E%3Cpath d='M10 40 Q10 24 26 24 L46 24 Q58 24 58 40 L58 46 L10 46 Z' fill='%23F2A93C'/%3E%3Ccircle cx='20' cy='46' r='7' fill='%230F2A38'/%3E%3Ccircle cx='48' cy='46' r='7' fill='%230F2A38'/%3E%3C/svg%3E">
+<link rel="canonical" href="https://zerotuktours.com/">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1D4F9A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #20242B;
-    --paper: #EDE8DC;
-    --tejo: #163A4D;
-    --tejo-deep: #0F2A38;
-    --electrico: #F2A93C;
-    --telha: #A8543B;
-    --line: rgba(32,36,43,0.14);
-    --line-light: rgba(237,232,220,0.22);
+    --ink: #0C1E3C;
+    --paper: #F6F8FC;
+    --tejo: #1D4F9A;
+    --tejo-deep: #0C1E3C;
+    --electrico: #F6C400;
+    --telha: #1D4F9A;
+    --azulejo-claro: #DCE7F7;
+    --line: rgba(12,30,60,0.14);
+    --line-light: rgba(246,248,252,0.22);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   html { scroll-behavior: smooth; }
+
+  html { color-scheme: only light; background: var(--paper); }
 
   body {
     font-family: 'IBM Plex Sans', sans-serif;
@@ -67,14 +84,9 @@
     gap: 16px;
   }
 
-  .brand {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    font-size: 20px;
-    letter-spacing: -0.01em;
-  }
-
-  .brand span { color: var(--electrico); }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand-mark { height: 44px; width: auto; display: block; }
+  .brand-word { height: 22px; width: auto; display: block; }
 
   .nav-right {
     display: flex;
@@ -85,7 +97,7 @@
   .lang-select {
     background: transparent;
     color: var(--paper);
-    border: 1px solid rgba(237,232,220,0.35);
+    border: 1px solid rgba(246,248,252,0.35);
     border-radius: 3px;
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 13px;
@@ -137,7 +149,7 @@
     margin-top: 20px;
     font-size: 18px;
     max-width: 42ch;
-    color: rgba(237,232,220,0.82);
+    color: rgba(246,248,252,0.82);
   }
 
   .hero-cta {
@@ -157,7 +169,7 @@
   .hero-fine {
     margin-top: 14px;
     font-size: 13px;
-    color: rgba(237,232,220,0.55);
+    color: rgba(246,248,252,0.55);
   }
 
   .skyline {
@@ -181,8 +193,18 @@
     .tuktuk-group { animation: none; }
   }
 
+  .hero-inner > div:first-child { padding-bottom: 36px; }
+
+  .azulejo-band {
+    height: 32px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F6F8FC'/%3E%3Cpath d='M0 0h8a8 8 0 0 1-8 8zM32 0v8a8 8 0 0 1-8-8zM0 32v-8a8 8 0 0 1 8 8zM32 32h-8a8 8 0 0 1 8-8z' fill='%231D4F9A'/%3E%3Cpath d='M16 7l9 9-9 9-9-9z' fill='none' stroke='%231D4F9A' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23F6C400'/%3E%3C/svg%3E");
+    background-size: 32px 32px;
+    border-top: 3px solid var(--electrico);
+  }
+
   /* ---- Why ---- */
   .why {
+    background: var(--paper);
     padding: 88px 32px;
   }
 
@@ -197,7 +219,7 @@
 
   .why-head p {
     margin-top: 14px;
-    color: rgba(32,36,43,0.68);
+    color: rgba(12,30,60,0.68);
     font-size: 16px;
   }
 
@@ -220,7 +242,7 @@
 
   .why-item p {
     font-size: 15px;
-    color: rgba(32,36,43,0.7);
+    color: rgba(12,30,60,0.7);
   }
 
   /* ---- Planner (quiz) ---- */
@@ -236,14 +258,14 @@
 
   .planner-intro {
     margin-top: 10px;
-    color: rgba(32,36,43,0.6);
+    color: rgba(12,30,60,0.6);
     font-size: 15px;
   }
 
   .planner-card {
     margin-top: 32px;
     background: #FFFFFF;
-    border: 2px dashed rgba(32,36,43,0.3);
+    border: 2px dashed rgba(12,30,60,0.3);
     border-radius: 10px;
     padding: 32px;
   }
@@ -254,7 +276,7 @@
   .planner-label {
     font-size: 13px;
     font-weight: 600;
-    color: rgba(32,36,43,0.55);
+    color: rgba(12,30,60,0.55);
     margin-bottom: 10px;
   }
 
@@ -270,14 +292,14 @@
     font-weight: 500;
     color: var(--ink);
     background: transparent;
-    border: 1px solid rgba(32,36,43,0.25);
+    border: 1px solid rgba(12,30,60,0.25);
     border-radius: 999px;
     padding: 9px 16px;
     cursor: pointer;
     transition: all 0.15s ease;
   }
 
-  .planner-opt:hover { border-color: rgba(32,36,43,0.5); }
+  .planner-opt:hover { border-color: rgba(12,30,60,0.5); }
 
   .planner-opt.active {
     background: var(--electrico);
@@ -288,13 +310,13 @@
   .planner-result {
     margin-top: 28px;
     padding-top: 24px;
-    border-top: 1px solid rgba(32,36,43,0.15);
+    border-top: 1px solid rgba(12,30,60,0.15);
   }
 
   .planner-result-label {
     font-size: 12px;
     font-weight: 600;
-    color: rgba(32,36,43,0.5);
+    color: rgba(12,30,60,0.5);
   }
 
   .planner-result-name {
@@ -307,7 +329,7 @@
   .planner-result-desc {
     margin-top: 8px;
     font-size: 14px;
-    color: rgba(32,36,43,0.65);
+    color: rgba(12,30,60,0.65);
     max-width: 50ch;
   }
 
@@ -315,7 +337,7 @@
     margin-top: 8px;
     font-size: 13px;
     font-style: italic;
-    color: rgba(32,36,43,0.5);
+    color: rgba(12,30,60,0.5);
     max-width: 50ch;
   }
 
@@ -353,7 +375,7 @@
 
   .routes-head p {
     font-size: 14px;
-    color: rgba(237,232,220,0.55);
+    color: rgba(246,248,252,0.55);
     max-width: 32ch;
   }
 
@@ -372,7 +394,7 @@
   }
 
   .board-row:hover {
-    background: rgba(237,232,220,0.04);
+    background: rgba(246,248,252,0.04);
   }
 
   .board-name {
@@ -386,7 +408,7 @@
     font-size: 11px;
     font-weight: 600;
     color: var(--electrico);
-    border: 1px solid rgba(242,169,60,0.4);
+    border: 1px solid rgba(246,196,0,0.4);
     padding: 2px 8px;
     border-radius: 999px;
     margin-top: 6px;
@@ -395,7 +417,7 @@
   .board-duration {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 15px;
-    color: rgba(237,232,220,0.85);
+    color: rgba(246,248,252,0.85);
   }
 
   .board-price-wrap { display: flex; flex-direction: column; gap: 2px; }
@@ -403,25 +425,25 @@
   .board-price {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 15px;
-    color: rgba(237,232,220,0.85);
+    color: rgba(246,248,252,0.85);
   }
 
   .board-cap {
     font-size: 11px;
-    color: rgba(237,232,220,0.4);
+    color: rgba(246,248,252,0.4);
   }
 
   .board-detail { display: flex; flex-direction: column; gap: 4px; }
 
   .board-desc {
     font-size: 14px;
-    color: rgba(237,232,220,0.6);
+    color: rgba(246,248,252,0.6);
   }
 
   .board-co2 {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
-    color: rgba(242,169,60,0.8);
+    color: rgba(246,196,0,0.8);
   }
 
   .board-link {
@@ -434,7 +456,7 @@
   .board-note {
     margin-top: 28px;
     font-size: 13px;
-    color: rgba(237,232,220,0.45);
+    color: rgba(246,248,252,0.45);
   }
 
   .board-note + .board-note { margin-top: 8px; }
@@ -448,7 +470,7 @@
 
   .group-calc-label {
     font-size: 14px;
-    color: rgba(237,232,220,0.7);
+    color: rgba(246,248,252,0.7);
     margin-bottom: 12px;
   }
 
@@ -463,7 +485,7 @@
     font-family: 'IBM Plex Mono', monospace;
     font-size: 16px;
     background: transparent;
-    border: 1px solid rgba(237,232,220,0.35);
+    border: 1px solid rgba(246,248,252,0.35);
     border-radius: 3px;
     color: var(--paper);
     padding: 8px 10px;
@@ -471,7 +493,7 @@
 
   .group-calc-suffix {
     font-size: 14px;
-    color: rgba(237,232,220,0.55);
+    color: rgba(246,248,252,0.55);
   }
 
   .group-calc-result {
@@ -491,6 +513,25 @@
     text-underline-offset: 3px;
   }
 
+  .morning-strip {
+    display: inline-block; margin-bottom: 24px;
+    background: rgba(246,196,0,0.12); border: 1px solid rgba(246,196,0,0.45); color: var(--electrico);
+    font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 999px;
+  }
+  .tailor { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line-light); max-width: 520px; }
+  .tailor-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; color: var(--paper); }
+  .tailor-p { margin-top: 6px; font-size: 14px; color: rgba(246,248,252,0.6); }
+  .tailor-opts { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+  .tailor-opt {
+    font-family: 'IBM Plex Mono', monospace; font-size: 15px; background: transparent; color: var(--paper);
+    border: 1px solid rgba(246,248,252,0.35); border-radius: 3px; padding: 8px 16px; cursor: pointer;
+  }
+  .tailor-opt:focus-visible { outline: 2px solid var(--electrico); outline-offset: 2px; }
+  .tailor-opt.active { background: var(--electrico); border-color: var(--electrico); color: var(--tejo-deep); }
+  .tailor-result { margin-top: 14px; display: flex; flex-direction: column; gap: 4px; }
+  .tailor-price { font-family: 'IBM Plex Mono', monospace; font-size: 20px; color: var(--electrico); }
+  .tailor-scope { font-size: 14px; color: rgba(246,248,252,0.7); }
+
   /* ---- Contact ---- */
   .contact {
     background: var(--tejo);
@@ -507,7 +548,7 @@
 
   .contact p {
     margin-top: 16px;
-    color: rgba(237,232,220,0.7);
+    color: rgba(246,248,252,0.7);
     font-size: 16px;
   }
 
@@ -527,10 +568,102 @@
 
   /* ---- Footer ---- */
   footer {
+    background: var(--paper);
     padding: 28px 32px;
     text-align: center;
     font-size: 13px;
-    color: rgba(32,36,43,0.5);
+    color: rgba(12,30,60,0.5);
+  }
+
+  /* ---- Route maps ---- */
+  .maps { background: var(--paper); padding: 88px 32px; border-top: 1px solid var(--line); }
+  .maps h2 { font-size: clamp(26px, 4vw, 34px); }
+  .maps-intro { margin-top: 10px; color: rgba(12,30,60,0.6); font-size: 15px; }
+  .map-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .map-chip {
+    font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 500;
+    color: var(--ink); background: transparent;
+    border: 1px solid rgba(12,30,60,0.25); border-radius: 999px;
+    padding: 8px 15px; cursor: pointer; transition: all 0.15s ease;
+  }
+  .map-chip:hover { border-color: rgba(12,30,60,0.5); }
+  .map-chip:focus-visible, .planner-opt:focus-visible, .faq-item summary:focus-visible { outline: 2px solid var(--tejo); outline-offset: 2px; }
+  .map-chip.active { background: var(--tejo); border-color: var(--tejo); color: var(--paper); }
+  .map-card {
+    margin-top: 20px; display: grid; grid-template-columns: 1.55fr 1fr; gap: 28px;
+    background: #FFFFFF; border: 2px dashed rgba(12,30,60,0.3); border-radius: 10px; padding: 22px;
+  }
+  .map-svg { width: 100%; height: auto; display: block; border-radius: 6px; background: #EEF3FA; }
+  .map-svg .nss { vector-effect: non-scaling-stroke; }
+  .map-route-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 24px; line-height: 1.1; }
+  .map-route-meta { margin-top: 6px; font-size: 14px; color: rgba(12,30,60,0.55); }
+  .map-route-desc { margin-top: 12px; font-size: 14px; color: rgba(12,30,60,0.72); }
+  .map-stops-label { margin-top: 18px; font-size: 13px; font-weight: 600; color: rgba(12,30,60,0.55); }
+  .map-stops { list-style: none; margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+  .map-stops li { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+  .map-stop-num {
+    width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+    background: var(--electrico); border: 1.5px solid var(--ink);
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .map-cta {
+    display: inline-block; margin-top: 20px; background: var(--tejo); color: var(--paper);
+    font-weight: 600; font-size: 14px; padding: 12px 22px; border-radius: 3px;
+  }
+  .map-note { margin-top: 12px; font-size: 12px; color: rgba(12,30,60,0.45); }
+
+  /* ---- Included ---- */
+  .included { background: var(--tejo); color: var(--paper); padding: 88px 32px; }
+  .included h2 { font-size: clamp(28px, 4vw, 36px); }
+  .inc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 40px; }
+  .inc-col h3 { font-size: 18px; border-top: 2px solid var(--electrico); padding-top: 14px; margin-bottom: 14px; }
+  .inc-list { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: rgba(246,248,252,0.82); }
+  .inc-list li { position: relative; padding-left: 22px; }
+  .inc-list li::before { content: "✓"; position: absolute; left: 0; color: var(--electrico); font-weight: 600; }
+  .inc-list.no li::before { content: "✕"; color: rgba(246,248,252,0.45); }
+  .inc-meet { font-size: 15px; color: rgba(246,248,252,0.82); }
+
+  /* ---- Voucher ---- */
+  .voucher { background: var(--paper); padding: 72px 32px 40px; }
+  .voucher-card {
+    display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
+    background: #FFFFFF; border: 2px solid var(--ink); border-radius: 10px; padding: 28px 32px;
+  }
+  .voucher-card h2 { font-size: clamp(24px, 3.4vw, 30px); }
+  .voucher-card p { margin-top: 8px; font-size: 15px; color: rgba(12,30,60,0.68); max-width: 46ch; }
+  .voucher-cta {
+    background: var(--electrico); color: var(--tejo-deep); font-weight: 600; font-size: 15px;
+    padding: 14px 24px; border-radius: 3px; white-space: nowrap;
+  }
+
+  /* ---- FAQ ---- */
+  .faq { background: var(--paper); padding: 40px 32px 88px; }
+  .faq h2 { font-size: clamp(26px, 4vw, 34px); }
+  .faq-list { margin-top: 24px; border-top: 1px solid var(--line); }
+  .faq-item { border-bottom: 1px solid var(--line); }
+  .faq-item summary {
+    cursor: pointer; list-style: none; padding: 18px 0; font-weight: 600; font-size: 16px;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; font-size: 20px; font-weight: 400; color: var(--telha); flex-shrink: 0; }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-item p { padding: 0 0 18px; font-size: 15px; color: rgba(12,30,60,0.7); max-width: 62ch; }
+
+  /* ---- Footer legal ---- */
+  .footer-logo { display: block; margin: 8px auto 14px; width: 160px; height: auto; }
+  .footer-legal { margin-top: 8px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .footer-legal a { text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (max-width: 720px) {
+    .maps { padding: 56px 20px; }
+    .map-card { grid-template-columns: 1fr; padding: 14px; gap: 18px; }
+    .included { padding: 56px 20px; }
+    .inc-grid { grid-template-columns: 1fr; gap: 28px; }
+    .voucher { padding: 48px 20px 24px; }
+    .voucher-card { padding: 22px; }
+    .faq { padding: 32px 20px 64px; }
   }
 
   /* ---- Sticky WhatsApp (mobile only) ---- */
@@ -552,10 +685,13 @@
       color: var(--tejo-deep);
       align-items: center;
       justify-content: center;
-      box-shadow: 0 8px 20px rgba(15,42,56,0.35);
+      box-shadow: 0 8px 20px rgba(12,30,60,0.35);
     }
 
-    .nav { padding: 18px 20px; gap: 10px; flex-wrap: wrap; }
+    .nav { padding: 14px 20px; gap: 10px; }
+    .nav-cta { display: none; }
+    .brand-mark { height: 36px; }
+    .brand-word { height: 18px; }
     .hero { padding: 40px 20px 0; }
     .why { padding: 56px 20px; }
     .planner { padding: 56px 20px; }
@@ -575,7 +711,8 @@
   }
 
   @media (max-width: 400px) {
-    .brand { font-size: 17px; }
+    .brand-mark { height: 30px; }
+    .brand-word { height: 15px; }
     .nav-cta { font-size: 13px; padding: 8px 14px; }
     .lang-select { font-size: 12px; padding: 6px 8px; }
   }
@@ -585,16 +722,25 @@
 {
   "@context": "https://schema.org",
   "@type": "TravelAgency",
-  "name": "Zero Tuktours",
+  "name": "ZeroTukTours",
+  "alternateName": "Zero Tuk Tours",
   "url": "https://zerotuktours.com/",
-  "description": "Private, 100% electric tuk-tuk tours in Lisbon, including Alfama, Belém, a stadiums route and a local Arroios neighbourhood route.",
-  "areaServed": { "@type": "City", "name": "Lisbon" },
+  "logo": "https://zerotuktours.com/logo.png",
+  "image": [
+    "https://zerotuktours.com/og-image.jpg",
+    "https://zerotuktours.com/logo.png"
+  ],
+  "description": "Private, 100% electric tuk-tuk tours in Lisbon: historic neighbourhoods, Belém, a stadiums route, a local Arroios route and food tours with tastings.",
+  "areaServed": {
+    "@type": "City",
+    "name": "Lisbon"
+  },
   "telephone": "+351900000000",
-  "priceRange": "€45-€150",
+  "priceRange": "€79-€249",
   "makesOffer": [
     {
       "@type": "Offer",
-      "price": "45",
+      "price": "79",
       "priceCurrency": "EUR",
       "itemOffered": {
         "@type": "TouristTrip",
@@ -604,7 +750,7 @@
     },
     {
       "@type": "Offer",
-      "price": "55",
+      "price": "99",
       "priceCurrency": "EUR",
       "itemOffered": {
         "@type": "TouristTrip",
@@ -614,7 +760,7 @@
     },
     {
       "@type": "Offer",
-      "price": "80",
+      "price": "139",
       "priceCurrency": "EUR",
       "itemOffered": {
         "@type": "TouristTrip",
@@ -624,7 +770,7 @@
     },
     {
       "@type": "Offer",
-      "price": "85",
+      "price": "139",
       "priceCurrency": "EUR",
       "itemOffered": {
         "@type": "TouristTrip",
@@ -634,15 +780,44 @@
     },
     {
       "@type": "Offer",
-      "price": "150",
+      "price": "249",
       "priceCurrency": "EUR",
       "itemOffered": {
         "@type": "TouristTrip",
         "name": "Full Lisbon",
         "description": "Alfama, Chiado's Camões Square, and Belém's monuments in one ride."
       }
+    },
+    {
+      "@type": "Offer",
+      "price": "219",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "TouristTrip",
+        "name": "Petiscos & Ginjinha",
+        "description": "Food tour by electric tuk-tuk: ginjinha in Rossio, petiscos in Mouraria, a bifana in Alfama and a pastel de nata. Tastings included."
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "169",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "TouristTrip",
+        "name": "Sweet Lisbon",
+        "description": "A historic café in Chiado, then Belém for pastéis de nata by the river. Tastings included."
+      }
     }
   ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ZeroTukTours",
+  "alternateName": "Zero Tuk Tours",
+  "url": "https://zerotuktours.com/"
 }
 </script>
 </head>
@@ -650,7 +825,10 @@
 
 <header>
   <div class="nav">
-    <div class="brand">Zero<span>Tuktours</span></div>
+    <a class="brand" href="/" aria-label="ZeroTukTours, home">
+      <img class="brand-mark" src="logo-mark-white.png" alt="" width="85" height="44">
+      <img class="brand-word" src="logo-word-white.png" alt="ZeroTukTours" width="157" height="22">
+    </a>
     <div class="nav-right">
       <select class="lang-select" onchange="setLang(this.value)" aria-label="Language">
         <option value="en">EN</option>
@@ -672,30 +850,32 @@
       <div class="hero-fine" data-i18n="hero_fine">Reply usually within the hour</div>
     </div>
     <svg class="skyline" viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a tuk-tuk in front of the Lisbon skyline">
-      <line x1="0" y1="20" x2="420" y2="20" stroke="rgba(237,232,220,0.15)" stroke-width="1"/>
-      <path d="M20 20 L20 14 Q20 8 26 8 L40 8 Q46 8 46 14 L46 20" fill="none" stroke="rgba(237,232,220,0.25)" stroke-width="2"/>
-      <rect x="30" y="150" width="26" height="66" fill="rgba(237,232,220,0.08)"/>
-      <rect x="64" y="120" width="34" height="96" fill="rgba(237,232,220,0.1)"/>
-      <rect x="106" y="140" width="22" height="76" fill="rgba(237,232,220,0.07)"/>
-      <polygon points="150,216 150,110 200,80 250,110 250,216" fill="rgba(237,232,220,0.1)"/>
-      <rect x="188" y="150" width="24" height="66" fill="rgba(237,232,220,0.14)"/>
-      <rect x="268" y="130" width="28" height="86" fill="rgba(237,232,220,0.08)"/>
-      <rect x="304" y="160" width="30" height="56" fill="rgba(237,232,220,0.1)"/>
-      <rect x="342" y="100" width="18" height="116" fill="rgba(237,232,220,0.12)"/>
-      <rect x="366" y="140" width="26" height="76" fill="rgba(237,232,220,0.07)"/>
+      <line x1="0" y1="20" x2="420" y2="20" stroke="rgba(246,248,252,0.15)" stroke-width="1"/>
+      <path d="M20 20 L20 14 Q20 8 26 8 L40 8 Q46 8 46 14 L46 20" fill="none" stroke="rgba(246,248,252,0.25)" stroke-width="2"/>
+      <rect x="30" y="150" width="26" height="66" fill="rgba(246,248,252,0.08)"/>
+      <rect x="64" y="120" width="34" height="96" fill="rgba(246,248,252,0.1)"/>
+      <rect x="106" y="140" width="22" height="76" fill="rgba(246,248,252,0.07)"/>
+      <polygon points="150,216 150,110 200,80 250,110 250,216" fill="rgba(246,248,252,0.1)"/>
+      <rect x="188" y="150" width="24" height="66" fill="rgba(246,248,252,0.14)"/>
+      <rect x="268" y="130" width="28" height="86" fill="rgba(246,248,252,0.08)"/>
+      <rect x="304" y="160" width="30" height="56" fill="rgba(246,248,252,0.1)"/>
+      <rect x="342" y="100" width="18" height="116" fill="rgba(246,248,252,0.12)"/>
+      <rect x="366" y="140" width="26" height="76" fill="rgba(246,248,252,0.07)"/>
 
       <g class="tuktuk-group">
         <path d="M0 42 Q0 20 22 20 L70 20 Q90 20 90 42 L90 48 L0 48 Z" fill="var(--electrico)"/>
         <rect x="8" y="4" width="52" height="20" rx="4" fill="var(--electrico)"/>
         <rect x="14" y="8" width="20" height="12" rx="2" fill="var(--tejo)"/>
         <circle cx="18" cy="48" r="9" fill="var(--tejo-deep)"/>
-        <circle cx="18" cy="48" r="3.5" fill="rgba(237,232,220,0.6)"/>
+        <circle cx="18" cy="48" r="3.5" fill="rgba(246,248,252,0.6)"/>
         <circle cx="72" cy="48" r="9" fill="var(--tejo-deep)"/>
-        <circle cx="72" cy="48" r="3.5" fill="rgba(237,232,220,0.6)"/>
+        <circle cx="72" cy="48" r="3.5" fill="rgba(246,248,252,0.6)"/>
       </g>
     </svg>
   </div>
 </section>
+
+<div class="azulejo-band" aria-hidden="true"></div>
 
 <section class="why">
   <div class="wrap">
@@ -740,6 +920,7 @@
           <button type="button" class="planner-opt" data-value="history" data-i18n="q2_opt1">History &amp; viewpoints</button>
           <button type="button" class="planner-opt" data-value="football" data-i18n="q2_opt2">Football</button>
           <button type="button" class="planner-opt" data-value="local" data-i18n="q2_opt4">Local, everyday life</button>
+          <button type="button" class="planner-opt" data-value="food" data-i18n="q2_opt5">Food &amp; tastings</button>
           <button type="button" class="planner-opt" data-value="everything" data-i18n="q2_opt3">Everything</button>
         </div>
       </div>
@@ -770,6 +951,8 @@
       <p data-i18n="routes_p">Prices per tuk-tuk, up to 4 people. Tap a route to check availability on WhatsApp.</p>
     </div>
 
+    <div class="morning-strip" data-i18n="morning_note">Morning tours starting before 10:00 are 15% off.</div>
+
     <div class="board">
 
       <a class="board-row" data-wa-msg="msg_classic" href="https://wa.me/351900000000" target="_blank" rel="noopener">
@@ -779,7 +962,7 @@
         </div>
         <div class="board-duration">1h</div>
         <div class="board-price-wrap">
-          <div class="board-price">€45</div>
+          <div class="board-price">€79</div>
           <div class="board-cap" data-i18n="cap_label">up to 4</div>
         </div>
         <div class="board-detail">
@@ -796,7 +979,7 @@
         </div>
         <div class="board-duration">1.5h</div>
         <div class="board-price-wrap">
-          <div class="board-price">€55</div>
+          <div class="board-price">€99</div>
           <div class="board-cap" data-i18n="cap_label">up to 4</div>
         </div>
         <div class="board-detail">
@@ -812,7 +995,7 @@
         </div>
         <div class="board-duration">2h</div>
         <div class="board-price-wrap">
-          <div class="board-price">€80</div>
+          <div class="board-price">€139</div>
           <div class="board-cap" data-i18n="cap_label">up to 4</div>
         </div>
         <div class="board-detail">
@@ -829,7 +1012,7 @@
         </div>
         <div class="board-duration">2h</div>
         <div class="board-price-wrap">
-          <div class="board-price">€85</div>
+          <div class="board-price">€139</div>
           <div class="board-cap" data-i18n="cap_label">up to 4</div>
         </div>
         <div class="board-detail">
@@ -845,7 +1028,7 @@
         </div>
         <div class="board-duration">4h</div>
         <div class="board-price-wrap">
-          <div class="board-price">€150</div>
+          <div class="board-price">€249</div>
           <div class="board-cap" data-i18n="cap_label">up to 4</div>
         </div>
         <div class="board-detail">
@@ -855,9 +1038,60 @@
         <div class="board-link" data-i18n="link_book">Book →</div>
       </a>
 
+      <a class="board-row" data-wa-msg="msg_petiscos" href="https://wa.me/351900000000" target="_blank" rel="noopener">
+        <div>
+          <div class="board-name" data-i18n="r6_name">Petiscos &amp; Ginjinha</div>
+          <span class="board-tag" data-i18n="tag_food">Tastings included</span>
+        </div>
+        <div class="board-duration">3h</div>
+        <div class="board-price-wrap">
+          <div class="board-price">€219</div>
+          <div class="board-cap" data-i18n="cap_label">up to 4</div>
+        </div>
+        <div class="board-detail">
+          <div class="board-desc" data-i18n="r6_desc">Ginjinha in Rossio, petiscos in a Mouraria tasca, a bifana in Alfama and a pastel de nata to finish. Tastings included.</div>
+          <div class="board-co2" data-i18n="r6_co2">~1.0kg CO2 avoided vs a taxi, ~0.5kg vs a petrol tuk-tuk.</div>
+        </div>
+        <div class="board-link" data-i18n="link_book">Book →</div>
+      </a>
+
+      <a class="board-row" data-wa-msg="msg_doce" href="https://wa.me/351900000000" target="_blank" rel="noopener">
+        <div>
+          <div class="board-name" data-i18n="r7_name">Sweet Lisbon</div>
+          <span class="board-tag" data-i18n="tag_food">Tastings included</span>
+        </div>
+        <div class="board-duration">2.5h</div>
+        <div class="board-price-wrap">
+          <div class="board-price">€169</div>
+          <div class="board-cap" data-i18n="cap_label">up to 4</div>
+        </div>
+        <div class="board-detail">
+          <div class="board-desc" data-i18n="r7_desc">A historic café in Chiado, then Belém for warm pastéis de nata by the river. Tastings included.</div>
+          <div class="board-co2" data-i18n="r7_co2">~2.6kg CO2 avoided vs a taxi, ~1.3kg vs a petrol tuk-tuk.</div>
+        </div>
+        <div class="board-link" data-i18n="link_book">Book →</div>
+      </a>
+
     </div>
     <div class="board-note" data-i18n="board_note">Custom routes and hotel pickup available on request.</div>
+    <div class="board-note" data-i18n="cancel_note">Free cancellation up to 24 hours before your tour.</div>
     <div class="board-note" data-i18n="co2_note">Estimated using EU average real-world taxi emissions (~165g CO2/km) and published small-engine tuk-tuk studies (~80g CO2/km). Route distances are estimates.</div>
+
+    <div class="tailor" id="tailor">
+      <h3 class="tailor-title" data-i18n="tailor_h3">Tailor-made</h3>
+      <p class="tailor-p" data-i18n="tailor_p">Pick the hours and we plan the route with you.</p>
+      <div class="tailor-opts" id="tailor-opts">
+        <button type="button" class="tailor-opt" data-hours="1">1h</button>
+        <button type="button" class="tailor-opt" data-hours="2">2h</button>
+        <button type="button" class="tailor-opt" data-hours="3">3h</button>
+        <button type="button" class="tailor-opt" data-hours="4">4h</button>
+      </div>
+      <div class="tailor-result">
+        <span class="tailor-price" id="tailor-price"></span>
+        <span class="tailor-scope" id="tailor-scope"></span>
+      </div>
+      <a class="group-calc-cta" id="tailor-cta" href="#" target="_blank" rel="noopener">Plan it on WhatsApp</a>
+    </div>
 
     <div class="group-calc">
       <div class="group-calc-label" data-i18n="groupcalc_label">Traveling with a bigger group?</div>
@@ -871,6 +1105,130 @@
   </div>
 </section>
 
+<section class="maps" id="maps">
+  <div class="wrap">
+    <h2 data-i18n="map_h2">Every route, drawn out</h2>
+    <p class="maps-intro" data-i18n="map_p">Tap a route to see where it goes.</p>
+    <div class="map-chips" id="map-chips"></div>
+    <div class="map-card">
+      <svg class="map-svg" id="route-map" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated map of the selected route">
+        <defs>
+          <filter id="sketch" filterUnits="userSpaceOnUse" x="0" y="0" width="400" height="300">
+            <feTurbulence id="sketch-turb" type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="4" result="noise"/>
+            <feDisplacementMap id="sketch-disp" in="SourceGraphic" in2="noise" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+        <rect x="0" y="0" width="400" height="300" fill="#EEF3FA"/>
+        <g filter="url(#sketch)">
+          <path class="nss" d="M0,252 C80,248 160,242 230,236 S330,216 400,202 L400,300 L0,300 Z" fill="#BFD6F0" stroke="#7FA6D6" stroke-width="1.5"/>
+          <g fill="none" stroke="#7FA6D6" stroke-width="1.2" stroke-linecap="round">
+            <path class="nss" d="M36,276 q5,-4 10,0 t10,0"/>
+            <path class="nss" d="M150,270 q5,-4 10,0 t10,0"/>
+            <path class="nss" d="M246,262 q5,-4 10,0 t10,0"/>
+            <path class="nss" d="M336,246 q5,-4 10,0 t10,0"/>
+            <path class="nss" d="M186,290 q5,-4 10,0 t10,0"/>
+            <path class="nss" d="M318,282 q5,-4 10,0 t10,0"/>
+          </g>
+          <g fill="none" stroke="#C9D6EA" stroke-width="2" stroke-linecap="round">
+            <path class="nss" d="M20,244 C100,238 170,232 230,229 S320,212 395,196"/>
+            <path class="nss" d="M222,190 L190,130"/>
+            <path class="nss" d="M190,130 C200,95 208,60 214,30"/>
+            <path class="nss" d="M238,168 C246,140 256,118 268,88 L280,40"/>
+            <path class="nss" d="M40,64 C110,48 160,38 214,30 S300,22 392,28"/>
+            <path class="nss" d="M205,202 C180,190 150,182 122,178"/>
+            <path class="nss" d="M52,212 C90,206 140,202 205,202"/>
+          </g>
+          <g stroke="#C8452F" stroke-width="2.5" stroke-linecap="round" fill="none">
+            <path class="nss" d="M111,240 L95,300"/>
+            <path class="nss" d="M106,256 l-7,2 M101,276 l-7,2"/>
+          </g>
+          <g fill="#BCD2B4" stroke="#7E9B78" stroke-width="1">
+            <circle class="nss" cx="72" cy="150" r="6"/><circle class="nss" cx="85" cy="141" r="5"/>
+            <circle class="nss" cx="97" cy="152" r="6"/><circle class="nss" cx="80" cy="165" r="5"/>
+            <circle class="nss" cx="95" cy="169" r="5"/><circle class="nss" cx="108" cy="159" r="4.5"/>
+            <circle class="nss" cx="67" cy="177" r="4.5"/><circle class="nss" cx="110" cy="177" r="4"/>
+          </g>
+        </g>
+        <g font-family="Caveat, cursive" fill="rgba(12,30,60,0.38)">
+          <text class="map-area" data-size="20" x="318" y="250">Tejo</text>
+          <text class="map-area" data-size="13" x="284" y="158">Graça</text>
+          <text class="map-area" data-size="13" x="72" y="197">Monsanto</text>
+          <text class="map-area" data-size="13" x="14" y="182">Belém</text>
+          <text class="map-area" data-size="13" x="140" y="96">Avenidas Novas</text>
+        </g>
+        <g id="map-route"></g>
+      </svg>
+      <div class="map-side">
+        <div class="map-route-name" id="map-route-name"></div>
+        <div class="map-route-meta" id="map-route-meta"></div>
+        <p class="map-route-desc" id="map-route-desc"></p>
+        <div class="map-stops-label" data-i18n="map_stops">Stops</div>
+        <ol class="map-stops" id="map-stops"></ol>
+        <a class="map-cta" id="map-cta" href="#" target="_blank" rel="noopener">Book this route</a>
+        <div class="map-note" data-i18n="map_note">Illustrative map, not to scale. Stops can be adjusted on the day.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="included">
+  <div class="wrap">
+    <h2 data-i18n="inc_h2">Before you book</h2>
+    <div class="inc-grid">
+      <div class="inc-col">
+        <h3 data-i18n="inc_title">Included</h3>
+        <ul class="inc-list">
+          <li data-i18n="inc_1">Private 100% electric tuk-tuk, just for your group</li>
+          <li data-i18n="inc_2">Local driver-guide who stops where you want</li>
+          <li data-i18n="inc_3">Hotel pickup in central Lisbon on tours of 2 hours or more</li>
+          <li data-i18n="inc_4">Rain cover, and blankets on cooler days</li>
+          <li data-i18n="inc_5">Tastings on the food tours</li>
+          <li data-i18n="inc_6">Insurance and all taxes</li>
+        </ul>
+      </div>
+      <div class="inc-col">
+        <h3 data-i18n="exc_title">Not included</h3>
+        <ul class="inc-list no">
+          <li data-i18n="exc_1">Monument entry tickets</li>
+          <li data-i18n="exc_2">Food and drinks outside the food tours</li>
+          <li data-i18n="exc_3">Tips</li>
+        </ul>
+      </div>
+      <div class="inc-col">
+        <h3 data-i18n="meet_title">Where we meet</h3>
+        <p class="inc-meet" data-i18n="meet_p">At your hotel in central Lisbon, at the Lisbon Cruise Terminal, or any central spot you choose. We confirm the exact point on WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="voucher">
+  <div class="wrap">
+    <div class="voucher-card">
+      <div>
+        <h2 data-i18n="voucher_h2">Give Lisbon as a gift</h2>
+        <p data-i18n="voucher_p">Any route can become a gift voucher. Tell us the route and the name, we send it ready to give.</p>
+      </div>
+      <a class="voucher-cta" data-i18n="voucher_cta" data-wa-msg="msg_voucher" href="https://wa.me/351900000000" target="_blank" rel="noopener">Ask for a voucher</a>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <h2 data-i18n="faq_h2">Questions</h2>
+    <div class="faq-list">
+      <details class="faq-item"><summary data-i18n="faq1_q"></summary><p data-i18n="faq1_a"></p></details>
+      <details class="faq-item"><summary data-i18n="faq2_q"></summary><p data-i18n="faq2_a"></p></details>
+      <details class="faq-item"><summary data-i18n="faq3_q"></summary><p data-i18n="faq3_a"></p></details>
+      <details class="faq-item"><summary data-i18n="faq4_q"></summary><p data-i18n="faq4_a"></p></details>
+      <details class="faq-item"><summary data-i18n="faq5_q"></summary><p data-i18n="faq5_a"></p></details>
+      <details class="faq-item"><summary data-i18n="faq6_q"></summary><p data-i18n="faq6_a"></p></details>
+      <details class="faq-item"><summary data-i18n="faq7_q"></summary><p data-i18n="faq7_a"></p></details>
+    </div>
+  </div>
+</section>
+
 <section class="contact">
   <div class="wrap">
     <h2 data-i18n="contact_h2">Ready to see Lisbon this way?</h2>
@@ -879,8 +1237,13 @@
   </div>
 </section>
 
-<footer data-i18n="footer_text">
-  Zero Tuktours, Lisbon, Portugal
+<footer>
+  <img class="footer-logo" src="logo-color.png" alt="ZeroTukTours Lisbon" width="160" height="122" loading="lazy">
+  <div data-i18n="footer_text">ZeroTukTours, Lisbon, Portugal</div>
+  <div class="footer-legal">
+    <span id="rnaat-line" hidden>RNAAT n.º <span id="rnaat-num"></span></span>
+    <a href="https://www.livroreclamacoes.pt/inicio/" target="_blank" rel="noopener">Livro de Reclamações</a>
+  </div>
 </footer>
 
 <a class="sticky-wa" data-wa-msg="msg_general" href="https://wa.me/351900000000" target="_blank" rel="noopener" aria-label="WhatsApp">
@@ -896,7 +1259,7 @@
 
   var translations = {
     en: {
-      title: "Zero Tuktours — Electric Tuk-Tuk Tours in Lisbon",
+      title: "ZeroTukTours | Electric Tuk-Tuk Tours in Lisbon",
       meta_description: "Private, 100% electric tuk-tuk tours in Lisbon. Alfama, Belém and a stadiums route for football fans. Book on WhatsApp.",
       cta_whatsapp: "Book on WhatsApp",
       hero_h1: "Lisbon, at a different pace.",
@@ -961,17 +1324,73 @@
       contact_h2: "Ready to see Lisbon this way?",
       contact_p: "Send us your dates and group size. We'll confirm in minutes.",
       contact_cta: "Message us on WhatsApp",
-      footer_text: "Zero Tuktours, Lisbon, Portugal",
+      footer_text: "ZeroTukTours, Lisbon, Portugal",
       msg_general: "Hi! I'd like to book a tuk-tuk tour.",
-      msg_classic: "Hi! I'd like to book the Classic Lisbon route (1h, €45).",
-      msg_alfama_belem: "Hi! I'd like to book the Alfama & Belém route (2h, €80).",
-      msg_stadiums: "Hi! I'd like to book the Stadiums Route (2h, €85).",
-      msg_full: "Hi! I'd like to book the Full Lisbon route (4h, €150).",
-      msg_arroios: "Hi! I'd like to book the Arroios & Anjos route (1.5h, €55).",
-      msg_group: "Hi! We're a group of {n} people, how would that work?"
+      msg_classic: "Hi! I'd like to book the Classic Lisbon route (1h, €79).",
+      msg_alfama_belem: "Hi! I'd like to book the Alfama & Belém route (2h, €139).",
+      msg_stadiums: "Hi! I'd like to book the Stadiums Route (2h, €139).",
+      msg_full: "Hi! I'd like to book the Full Lisbon route (4h, €249).",
+      msg_arroios: "Hi! I'd like to book the Arroios & Anjos route (1.5h, €99).",
+      msg_group: "Hi! We're a group of {n} people, how would that work?",
+      morning_note: "Morning tours starting before 10:00 are 15% off.",
+      tailor_h3: "Tailor-made",
+      tailor_p: "Pick the hours and we plan the route with you.",
+      tailor_scope_short: "Enough for the historic centre: Baixa, Alfama, the Sé, Rossio and the viewpoints nearby.",
+      tailor_scope_long: "Time to go further and slower: Belém, Estrela, Príncipe Real or the stadiums.",
+      tailor_cta: "Plan it on WhatsApp",
+      msg_custom: "Hi! I'd like a tailor-made tuk-tuk tour of {h}h (€{p}).",
+      q2_opt5: "Food & tastings",
+      r6_name: "Petiscos & Ginjinha",
+      r6_desc: "Ginjinha in Rossio, petiscos in a Mouraria tasca, a bifana in Alfama and a pastel de nata to finish. Tastings included.",
+      r6_co2: "~1.0kg CO2 avoided vs a taxi, ~0.5kg vs a petrol tuk-tuk.",
+      r7_name: "Sweet Lisbon",
+      r7_desc: "A historic café in Chiado, then Belém for warm pastéis de nata by the river. Tastings included.",
+      r7_co2: "~2.6kg CO2 avoided vs a taxi, ~1.3kg vs a petrol tuk-tuk.",
+      tag_food: "Tastings included",
+      cancel_note: "Free cancellation up to 24 hours before your tour.",
+      map_h2: "Every route, drawn out",
+      map_p: "Tap a route to see where it goes.",
+      map_stops: "Stops",
+      map_cta: "Book this route",
+      map_note: "Illustrative map, not to scale. Stops can be adjusted on the day.",
+      inc_h2: "Before you book",
+      inc_title: "Included",
+      inc_1: "Private 100% electric tuk-tuk, just for your group",
+      inc_2: "Local driver-guide who stops where you want",
+      inc_3: "Hotel pickup in central Lisbon on tours of 2 hours or more",
+      inc_4: "Rain cover, and blankets on cooler days",
+      inc_5: "Tastings on the food tours",
+      inc_6: "Insurance and all taxes",
+      exc_title: "Not included",
+      exc_1: "Monument entry tickets",
+      exc_2: "Food and drinks outside the food tours",
+      exc_3: "Tips",
+      meet_title: "Where we meet",
+      meet_p: "At your hotel in central Lisbon, at the Lisbon Cruise Terminal, or any central spot you choose. We confirm the exact point on WhatsApp.",
+      voucher_h2: "Give Lisbon as a gift",
+      voucher_p: "Any route can become a gift voucher. Tell us the route and the name, we send it ready to give.",
+      voucher_cta: "Ask for a voucher",
+      faq_h2: "Questions",
+      faq1_q: "What if it rains?",
+      faq1_a: "The tuk-tuk closes against rain and wind, and we have ponchos on board. On cooler days there are blankets too.",
+      faq2_q: "What about bigger groups?",
+      faq2_a: "Prices are per tuk-tuk. For bigger groups we send more than one, and the calculator above tells you how many.",
+      faq3_q: "Can we choose the stops?",
+      faq3_a: "Yes. Each route is a starting point. Tell us what you want to see and we adjust it.",
+      faq4_q: "Is it good for children?",
+      faq4_a: "Families are welcome. Tell us the children's ages when you book so we can confirm the right seating.",
+      faq5_q: "Is it wheelchair accessible?",
+      faq5_a: "Unfortunately not, because of the vehicle's design and Lisbon's cobbled hills. Message us and we will suggest an alternative.",
+      faq6_q: "Can I cancel?",
+      faq6_a: "Yes, free of charge up to 24 hours before the tour.",
+      faq7_q: "What should I bring?",
+      faq7_a: "Comfortable clothes, a charged phone or camera, and an appetite if you picked a food tour.",
+      msg_petiscos: "Hi! I'd like to book the Petiscos & Ginjinha route (3h, €219).",
+      msg_doce: "Hi! I'd like to book the Sweet Lisbon route (2.5h, €169).",
+      msg_voucher: "Hi! I'd like to buy a gift voucher for a tuk-tuk tour."
     },
     pt: {
-      title: "Zero Tuktours — Tours de Tuk-Tuk Elétrico em Lisboa",
+      title: "ZeroTukTours | Tours de Tuk-Tuk Elétrico em Lisboa",
       meta_description: "Tours privados em tuk-tuk 100% elétrico em Lisboa. Alfama, Belém e uma rota pelos estádios para os adeptos. Reserva pelo WhatsApp.",
       cta_whatsapp: "Reservar no WhatsApp",
       hero_h1: "Lisboa, a outro ritmo.",
@@ -1036,17 +1455,73 @@
       contact_h2: "Pronto para ver Lisboa assim?",
       contact_p: "Envia-nos as datas e o tamanho do grupo. Confirmamos em minutos.",
       contact_cta: "Fala connosco no WhatsApp",
-      footer_text: "Zero Tuktours, Lisboa, Portugal",
+      footer_text: "ZeroTukTours, Lisboa, Portugal",
       msg_general: "Olá! Gostava de reservar um tour de tuk-tuk.",
-      msg_classic: "Olá! Gostava de reservar a rota Lisboa Clássica (1h, 45€).",
-      msg_alfama_belem: "Olá! Gostava de reservar a rota Alfama e Belém (2h, 80€).",
-      msg_stadiums: "Olá! Gostava de reservar a Rota dos Estádios (2h, 85€).",
-      msg_full: "Olá! Gostava de reservar a rota Lisboa Completa (4h, 150€).",
-      msg_arroios: "Olá! Gostava de reservar a rota Arroios e Anjos (1h30, 55€).",
-      msg_group: "Olá! Somos um grupo de {n} pessoas, como funcionaria?"
+      msg_classic: "Olá! Gostava de reservar a rota Lisboa Clássica (1h, 79€).",
+      msg_alfama_belem: "Olá! Gostava de reservar a rota Alfama e Belém (2h, 139€).",
+      msg_stadiums: "Olá! Gostava de reservar a Rota dos Estádios (2h, 139€).",
+      msg_full: "Olá! Gostava de reservar a rota Lisboa Completa (4h, 249€).",
+      msg_arroios: "Olá! Gostava de reservar a rota Arroios e Anjos (1h30, 99€).",
+      msg_group: "Olá! Somos um grupo de {n} pessoas, como funcionaria?",
+      morning_note: "Tours de manhã com início antes das 10:00 têm 15% de desconto.",
+      tailor_h3: "À tua medida",
+      tailor_p: "Escolhe as horas e planeamos a rota contigo.",
+      tailor_scope_short: "Dá para o centro histórico: Baixa, Alfama, Sé, Rossio e os miradouros perto.",
+      tailor_scope_long: "Tempo para ir mais longe e com calma: Belém, Estrela, Príncipe Real ou os estádios.",
+      tailor_cta: "Planear no WhatsApp",
+      msg_custom: "Olá! Gostava de um tour de tuk-tuk à medida de {h}h ({p}€).",
+      q2_opt5: "Comida e provas",
+      r6_name: "Petiscos e Ginjinha",
+      r6_desc: "Ginjinha no Rossio, petiscos numa tasca da Mouraria, uma bifana em Alfama e um pastel de nata para fechar. Provas incluídas.",
+      r6_co2: "~1,0kg de CO2 evitados face a um táxi, ~0,5kg face a um tuk-tuk a gasolina.",
+      r7_name: "Lisboa Doce",
+      r7_desc: "Um café histórico no Chiado e depois Belém, com pastéis de nata acabados de sair do forno junto ao rio. Provas incluídas.",
+      r7_co2: "~2,6kg de CO2 evitados face a um táxi, ~1,3kg face a um tuk-tuk a gasolina.",
+      tag_food: "Provas incluídas",
+      cancel_note: "Cancelamento gratuito até 24 horas antes do tour.",
+      map_h2: "Cada rota, desenhada",
+      map_p: "Toca numa rota para ver por onde passa.",
+      map_stops: "Paragens",
+      map_cta: "Reservar esta rota",
+      map_note: "Mapa ilustrativo, sem escala. As paragens podem ser ajustadas no dia.",
+      inc_h2: "Antes de reservares",
+      inc_title: "Incluído",
+      inc_1: "Tuk-tuk privado 100% elétrico, só para o teu grupo",
+      inc_2: "Condutor-guia local que para onde quiseres",
+      inc_3: "Recolha no hotel no centro de Lisboa em tours de 2 horas ou mais",
+      inc_4: "Proteção contra a chuva e mantas nos dias mais frescos",
+      inc_5: "Provas nos tours gastronómicos",
+      inc_6: "Seguro e todos os impostos",
+      exc_title: "Não incluído",
+      exc_1: "Entradas em monumentos",
+      exc_2: "Comida e bebida fora dos tours gastronómicos",
+      exc_3: "Gorjetas",
+      meet_title: "Onde nos encontramos",
+      meet_p: "No teu hotel no centro de Lisboa, no Terminal de Cruzeiros ou num ponto central à tua escolha. Confirmamos o local exato no WhatsApp.",
+      voucher_h2: "Oferece Lisboa",
+      voucher_p: "Qualquer rota pode ser um voucher de oferta. Diz-nos a rota e o nome, enviamos pronto a oferecer.",
+      voucher_cta: "Pedir um voucher",
+      faq_h2: "Perguntas frequentes",
+      faq1_q: "E se chover?",
+      faq1_a: "O tuk-tuk fecha contra a chuva e o vento, e temos capas impermeáveis a bordo. Nos dias mais frescos há também mantas.",
+      faq2_q: "E para grupos maiores?",
+      faq2_a: "Os preços são por tuk-tuk. Para grupos maiores enviamos mais do que um, e a calculadora acima diz-te quantos.",
+      faq3_q: "Podemos escolher as paragens?",
+      faq3_a: "Sim. Cada rota é um ponto de partida. Diz-nos o que queres ver e ajustamos.",
+      faq4_q: "É adequado para crianças?",
+      faq4_a: "As famílias são bem-vindas. Indica-nos as idades das crianças na reserva para confirmarmos o lugar adequado.",
+      faq5_q: "É acessível a cadeiras de rodas?",
+      faq5_a: "Infelizmente não, pelo desenho do veículo e pelas ladeiras de calçada de Lisboa. Fala connosco e sugerimos uma alternativa.",
+      faq6_q: "Posso cancelar?",
+      faq6_a: "Sim, sem custos até 24 horas antes do tour.",
+      faq7_q: "O que devo levar?",
+      faq7_a: "Roupa confortável, telemóvel ou máquina com bateria, e apetite se escolheste um tour gastronómico.",
+      msg_petiscos: "Olá! Gostava de reservar a rota Petiscos e Ginjinha (3h, 219€).",
+      msg_doce: "Olá! Gostava de reservar a rota Lisboa Doce (2h30, 169€).",
+      msg_voucher: "Olá! Gostava de comprar um voucher de oferta para um tour de tuk-tuk."
     },
     fr: {
-      title: "Zero Tuktours — Visites en Tuk-Tuk Électrique à Lisbonne",
+      title: "ZeroTukTours | Visites en Tuk-Tuk Électrique à Lisbonne",
       meta_description: "Visites privées en tuk-tuk 100% électrique à Lisbonne. Alfama, Belém et une route des stades pour les supporters. Réservez sur WhatsApp.",
       cta_whatsapp: "Réserver sur WhatsApp",
       hero_h1: "Lisbonne, à un autre rythme.",
@@ -1111,17 +1586,73 @@
       contact_h2: "Prêt à découvrir Lisbonne ainsi ?",
       contact_p: "Envoyez-nous vos dates et la taille du groupe. Nous confirmons en quelques minutes.",
       contact_cta: "Écrivez-nous sur WhatsApp",
-      footer_text: "Zero Tuktours, Lisbonne, Portugal",
+      footer_text: "ZeroTukTours, Lisbonne, Portugal",
       msg_general: "Bonjour ! Je voudrais réserver une visite en tuk-tuk.",
-      msg_classic: "Bonjour ! Je voudrais réserver l'itinéraire Lisbonne Classique (1h, 45€).",
-      msg_alfama_belem: "Bonjour ! Je voudrais réserver l'itinéraire Alfama et Belém (2h, 80€).",
-      msg_stadiums: "Bonjour ! Je voudrais réserver la Route des Stades (2h, 85€).",
-      msg_full: "Bonjour ! Je voudrais réserver l'itinéraire Lisbonne Complète (4h, 150€).",
-      msg_arroios: "Bonjour ! Je voudrais réserver l'itinéraire Arroios et Anjos (1h30, 55€).",
-      msg_group: "Bonjour ! Nous sommes un groupe de {n} personnes, comment cela fonctionnerait-il ?"
+      msg_classic: "Bonjour ! Je voudrais réserver l'itinéraire Lisbonne Classique (1h, 79€).",
+      msg_alfama_belem: "Bonjour ! Je voudrais réserver l'itinéraire Alfama et Belém (2h, 139€).",
+      msg_stadiums: "Bonjour ! Je voudrais réserver la Route des Stades (2h, 139€).",
+      msg_full: "Bonjour ! Je voudrais réserver l'itinéraire Lisbonne Complète (4h, 249€).",
+      msg_arroios: "Bonjour ! Je voudrais réserver l'itinéraire Arroios et Anjos (1h30, 99€).",
+      msg_group: "Bonjour ! Nous sommes un groupe de {n} personnes, comment cela fonctionnerait-il ?",
+      morning_note: "Les visites du matin qui commencent avant 10h00 sont à -15%.",
+      tailor_h3: "Sur mesure",
+      tailor_p: "Choisissez la durée et nous préparons l'itinéraire avec vous.",
+      tailor_scope_short: "Assez pour le centre historique : Baixa, Alfama, la Sé, le Rossio et les belvédères voisins.",
+      tailor_scope_long: "Le temps d'aller plus loin, sans se presser : Belém, Estrela, Príncipe Real ou les stades.",
+      tailor_cta: "Organiser sur WhatsApp",
+      msg_custom: "Bonjour ! Je voudrais une visite en tuk-tuk sur mesure de {h}h ({p}€).",
+      q2_opt5: "Gastronomie et dégustations",
+      r6_name: "Petiscos et Ginjinha",
+      r6_desc: "Ginjinha au Rossio, petiscos dans une tasca de la Mouraria, une bifana à Alfama et un pastel de nata pour finir. Dégustations incluses.",
+      r6_co2: "~1,0kg de CO2 évités par rapport à un taxi, ~0,5kg par rapport à un tuk-tuk à essence.",
+      r7_name: "Lisbonne Gourmande",
+      r7_desc: "Un café historique au Chiado, puis Belém pour des pastéis de nata tout juste sortis du four, au bord du fleuve. Dégustations incluses.",
+      r7_co2: "~2,6kg de CO2 évités par rapport à un taxi, ~1,3kg par rapport à un tuk-tuk à essence.",
+      tag_food: "Dégustations incluses",
+      cancel_note: "Annulation gratuite jusqu'à 24 heures avant la visite.",
+      map_h2: "Chaque itinéraire, dessiné",
+      map_p: "Touchez un itinéraire pour voir où il passe.",
+      map_stops: "Arrêts",
+      map_cta: "Réserver cet itinéraire",
+      map_note: "Carte illustrative, sans échelle. Les arrêts peuvent être ajustés le jour même.",
+      inc_h2: "Avant de réserver",
+      inc_title: "Inclus",
+      inc_1: "Tuk-tuk privé 100% électrique, rien que pour votre groupe",
+      inc_2: "Chauffeur-guide local qui s'arrête où vous voulez",
+      inc_3: "Prise en charge à l'hôtel dans le centre de Lisbonne pour les visites de 2 heures ou plus",
+      inc_4: "Protection contre la pluie et plaids les jours plus frais",
+      inc_5: "Dégustations lors des visites gastronomiques",
+      inc_6: "Assurance et toutes taxes",
+      exc_title: "Non inclus",
+      exc_1: "Entrées des monuments",
+      exc_2: "Nourriture et boissons en dehors des visites gastronomiques",
+      exc_3: "Pourboires",
+      meet_title: "Où se retrouver",
+      meet_p: "À votre hôtel dans le centre de Lisbonne, au Terminal de Croisières ou à un point central de votre choix. Nous confirmons le lieu exact sur WhatsApp.",
+      voucher_h2: "Offrez Lisbonne",
+      voucher_p: "Chaque itinéraire peut devenir un bon cadeau. Indiquez-nous l'itinéraire et le nom, nous l'envoyons prêt à offrir.",
+      voucher_cta: "Demander un bon cadeau",
+      faq_h2: "Questions fréquentes",
+      faq1_q: "Et s'il pleut ?",
+      faq1_a: "Le tuk-tuk se ferme contre la pluie et le vent, et nous avons des ponchos à bord. Les jours plus frais, il y a aussi des plaids.",
+      faq2_q: "Et pour les groupes plus nombreux ?",
+      faq2_a: "Les prix sont par tuk-tuk. Pour les groupes plus nombreux, nous envoyons plusieurs véhicules, et le calculateur ci-dessus vous indique combien.",
+      faq3_q: "Pouvons-nous choisir les arrêts ?",
+      faq3_a: "Oui. Chaque itinéraire est un point de départ. Dites-nous ce que vous voulez voir et nous l'adaptons.",
+      faq4_q: "Est-ce adapté aux enfants ?",
+      faq4_a: "Les familles sont les bienvenues. Indiquez-nous l'âge des enfants lors de la réservation pour que nous confirmions la place adaptée.",
+      faq5_q: "Est-ce accessible en fauteuil roulant ?",
+      faq5_a: "Malheureusement non, en raison de la conception du véhicule et des collines pavées de Lisbonne. Écrivez-nous et nous proposerons une alternative.",
+      faq6_q: "Puis-je annuler ?",
+      faq6_a: "Oui, gratuitement jusqu'à 24 heures avant la visite.",
+      faq7_q: "Que dois-je apporter ?",
+      faq7_a: "Des vêtements confortables, un téléphone ou un appareil photo chargé, et de l'appétit si vous avez choisi une visite gastronomique.",
+      msg_petiscos: "Bonjour ! Je voudrais réserver l'itinéraire Petiscos et Ginjinha (3h, 219€).",
+      msg_doce: "Bonjour ! Je voudrais réserver l'itinéraire Lisbonne Gourmande (2h30, 169€).",
+      msg_voucher: "Bonjour ! Je voudrais acheter un bon cadeau pour une visite en tuk-tuk."
     },
     es: {
-      title: "Zero Tuktours — Tours en Tuk-Tuk Eléctrico en Lisboa",
+      title: "ZeroTukTours | Tours en Tuk-Tuk Eléctrico en Lisboa",
       meta_description: "Tours privados en tuk-tuk 100% eléctrico en Lisboa. Alfama, Belém y una ruta de los estadios para los aficionados. Reserva por WhatsApp.",
       cta_whatsapp: "Reservar por WhatsApp",
       hero_h1: "Lisboa, a otro ritmo.",
@@ -1186,30 +1717,89 @@
       contact_h2: "¿Listo para ver Lisboa así?",
       contact_p: "Envíanos las fechas y el tamaño del grupo. Confirmamos en minutos.",
       contact_cta: "Escríbenos por WhatsApp",
-      footer_text: "Zero Tuktours, Lisboa, Portugal",
+      footer_text: "ZeroTukTours, Lisboa, Portugal",
       msg_general: "¡Hola! Me gustaría reservar un tour en tuk-tuk.",
-      msg_classic: "¡Hola! Me gustaría reservar la ruta Lisboa Clásica (1h, 45€).",
-      msg_alfama_belem: "¡Hola! Me gustaría reservar la ruta Alfama y Belém (2h, 80€).",
-      msg_stadiums: "¡Hola! Me gustaría reservar la Ruta de los Estadios (2h, 85€).",
-      msg_full: "¡Hola! Me gustaría reservar la ruta Lisboa Completa (4h, 150€).",
-      msg_arroios: "¡Hola! Me gustaría reservar la ruta Arroios y Anjos (1h30, 55€).",
-      msg_group: "¡Hola! Somos un grupo de {n} personas, ¿cómo funcionaría eso?"
+      msg_classic: "¡Hola! Me gustaría reservar la ruta Lisboa Clásica (1h, 79€).",
+      msg_alfama_belem: "¡Hola! Me gustaría reservar la ruta Alfama y Belém (2h, 139€).",
+      msg_stadiums: "¡Hola! Me gustaría reservar la Ruta de los Estadios (2h, 139€).",
+      msg_full: "¡Hola! Me gustaría reservar la ruta Lisboa Completa (4h, 249€).",
+      msg_arroios: "¡Hola! Me gustaría reservar la ruta Arroios y Anjos (1h30, 99€).",
+      msg_group: "¡Hola! Somos un grupo de {n} personas, ¿cómo funcionaría eso?",
+      morning_note: "Los tours de mañana que empiezan antes de las 10:00 tienen un 15% de descuento.",
+      tailor_h3: "A tu medida",
+      tailor_p: "Elige las horas y planificamos la ruta contigo.",
+      tailor_scope_short: "Suficiente para el centro histórico: Baixa, Alfama, la Sé, el Rossio y los miradores cercanos.",
+      tailor_scope_long: "Tiempo para ir más lejos y con calma: Belém, Estrela, Príncipe Real o los estadios.",
+      tailor_cta: "Planificar por WhatsApp",
+      msg_custom: "¡Hola! Me gustaría un tour en tuk-tuk a medida de {h}h ({p}€).",
+      q2_opt5: "Comida y degustaciones",
+      r6_name: "Petiscos y Ginjinha",
+      r6_desc: "Ginjinha en el Rossio, petiscos en una tasca de la Mouraria, una bifana en Alfama y un pastel de nata para terminar. Degustaciones incluidas.",
+      r6_co2: "~1,0kg de CO2 evitados frente a un taxi, ~0,5kg frente a un tuk-tuk de gasolina.",
+      r7_name: "Lisboa Dulce",
+      r7_desc: "Un café histórico en el Chiado y después Belém, con pastéis de nata recién salidos del horno junto al río. Degustaciones incluidas.",
+      r7_co2: "~2,6kg de CO2 evitados frente a un taxi, ~1,3kg frente a un tuk-tuk de gasolina.",
+      tag_food: "Degustaciones incluidas",
+      cancel_note: "Cancelación gratuita hasta 24 horas antes del tour.",
+      map_h2: "Cada ruta, dibujada",
+      map_p: "Toca una ruta para ver por dónde pasa.",
+      map_stops: "Paradas",
+      map_cta: "Reservar esta ruta",
+      map_note: "Mapa ilustrativo, sin escala. Las paradas se pueden ajustar el mismo día.",
+      inc_h2: "Antes de reservar",
+      inc_title: "Incluido",
+      inc_1: "Tuk-tuk privado 100% eléctrico, solo para tu grupo",
+      inc_2: "Conductor-guía local que para donde quieras",
+      inc_3: "Recogida en el hotel en el centro de Lisboa en tours de 2 horas o más",
+      inc_4: "Protección contra la lluvia y mantas en los días más frescos",
+      inc_5: "Degustaciones en los tours gastronómicos",
+      inc_6: "Seguro y todos los impuestos",
+      exc_title: "No incluido",
+      exc_1: "Entradas a monumentos",
+      exc_2: "Comida y bebida fuera de los tours gastronómicos",
+      exc_3: "Propinas",
+      meet_title: "Dónde nos encontramos",
+      meet_p: "En tu hotel en el centro de Lisboa, en la Terminal de Cruceros o en un punto céntrico que elijas. Confirmamos el lugar exacto por WhatsApp.",
+      voucher_h2: "Regala Lisboa",
+      voucher_p: "Cualquier ruta puede ser un vale regalo. Dinos la ruta y el nombre, te lo enviamos listo para regalar.",
+      voucher_cta: "Pedir un vale regalo",
+      faq_h2: "Preguntas frecuentes",
+      faq1_q: "¿Y si llueve?",
+      faq1_a: "El tuk-tuk se cierra contra la lluvia y el viento, y llevamos chubasqueros a bordo. En los días más frescos también hay mantas.",
+      faq2_q: "¿Y para grupos más grandes?",
+      faq2_a: "Los precios son por tuk-tuk. Para grupos más grandes enviamos más de uno, y la calculadora de arriba te dice cuántos.",
+      faq3_q: "¿Podemos elegir las paradas?",
+      faq3_a: "Sí. Cada ruta es un punto de partida. Dinos qué quieres ver y la ajustamos.",
+      faq4_q: "¿Es adecuado para niños?",
+      faq4_a: "Las familias son bienvenidas. Indícanos las edades de los niños al reservar para confirmar el asiento adecuado.",
+      faq5_q: "¿Es accesible en silla de ruedas?",
+      faq5_a: "Lamentablemente no, por el diseño del vehículo y las cuestas empedradas de Lisboa. Escríbenos y te sugerimos una alternativa.",
+      faq6_q: "¿Puedo cancelar?",
+      faq6_a: "Sí, sin coste hasta 24 horas antes del tour.",
+      faq7_q: "¿Qué debo llevar?",
+      faq7_a: "Ropa cómoda, un móvil o cámara con batería, y apetito si elegiste un tour gastronómico.",
+      msg_petiscos: "¡Hola! Me gustaría reservar la ruta Petiscos y Ginjinha (3h, 219€).",
+      msg_doce: "¡Hola! Me gustaría reservar la ruta Lisboa Dulce (2h30, 169€).",
+      msg_voucher: "¡Hola! Me gustaría comprar un vale regalo para un tour en tuk-tuk."
     }
   };
 
   var planQuiz = { time: null, interest: null, who: null };
 
   var routeMeta = {
-    r1: { msgKey: "msg_classic" },
-    r2: { msgKey: "msg_alfama_belem" },
-    r3: { msgKey: "msg_stadiums" },
-    r4: { msgKey: "msg_full" },
-    r5: { msgKey: "msg_arroios" }
+    r1: { msgKey: "msg_classic", dur: "1h", price: "€79" },
+    r2: { msgKey: "msg_alfama_belem", dur: "2h", price: "€139" },
+    r3: { msgKey: "msg_stadiums", dur: "2h", price: "€139" },
+    r4: { msgKey: "msg_full", dur: "4h", price: "€249" },
+    r5: { msgKey: "msg_arroios", dur: "1.5h", price: "€99" },
+    r6: { msgKey: "msg_petiscos", dur: "3h", price: "€219" },
+    r7: { msgKey: "msg_doce", dur: "2.5h", price: "€169" }
   };
 
   function recommendRoute() {
     if (planQuiz.interest === "football") return "r3";
     if (planQuiz.interest === "local") return "r5";
+    if (planQuiz.interest === "food") return planQuiz.time === "2h" ? "r7" : "r6";
     if (planQuiz.time === "1h") return "r1";
     if (planQuiz.time === "2h") return "r2";
     if (planQuiz.time === "4h") return "r4";
@@ -1299,7 +1889,218 @@
     if (resultBox && !resultBox.hidden) showPlannerResult();
 
     updateGroupCalc();
+    renderRouteMap();
+    renderTailor();
   }
+
+  /* ---- Mapas ilustrados das rotas ---- */
+  var MAP_PLACES = {
+    torre:      { x: 30,  y: 238, name: "Torre de Belém", label: "Torre de Belém", lp: [-8, 27, "start"] },
+    padrao:     { x: 60,  y: 232, name: "Padrão dos Descobrimentos", label: "Padrão", lp: [15, 5, "start"] },
+    jeronimos:  { x: 52,  y: 212, name: "Mosteiro dos Jerónimos", label: "Jerónimos", lp: [0, -16, "middle"] },
+    belem:      { x: 80,  y: 220, name: "Belém, pastéis de nata", label: "Belém", lp: [0, -16, "middle"] },
+    camoes:     { x: 203, y: 202, name: "Largo de Camões, Chiado", label: "Chiado", lp: [-15, 5, "end"] },
+    rossio:     { x: 222, y: 188, name: "Rossio", label: "Rossio", lp: [-15, -2, "end"] },
+    comercio:   { x: 228, y: 224, name: "Praça do Comércio", label: "Comércio", lp: [-15, 9, "end"] },
+    se:         { x: 250, y: 207, name: "Sé de Lisboa", label: "Sé", lp: [0, 26, "middle"] },
+    castelo:    { x: 257, y: 186, name: "Castelo de São Jorge", label: "Castelo", lp: [13, -10, "start"] },
+    santaluzia: { x: 272, y: 199, name: "Miradouro de Santa Luzia", label: "Sta. Luzia", lp: [13, -9, "start"] },
+    alfama:     { x: 292, y: 208, name: "Alfama", label: "Alfama", lp: [15, 5, "start"] },
+    mouraria:   { x: 238, y: 168, name: "Mouraria", label: "Mouraria", lp: [-15, 0, "end"] },
+    intendente: { x: 247, y: 146, name: "Largo do Intendente", label: "Intendente", lp: [15, 5, "start"] },
+    anjos:      { x: 254, y: 127, name: "Anjos", label: "Anjos", lp: [-15, 5, "end"] },
+    arroios:    { x: 264, y: 104, name: "Mercado de Arroios", label: "Mercado de Arroios", lp: [15, 5, "start"] },
+    marques:    { x: 190, y: 130, name: "Marquês de Pombal", label: "Marquês", lp: [15, 5, "start"] },
+    luz:        { x: 118, y: 46,  name: "Estádio da Luz", label: "Estádio da Luz", lp: [15, 5, "start"] },
+    alvalade:   { x: 214, y: 30,  name: "Estádio José Alvalade", label: "Alvalade", lp: [15, 5, "start"] }
+  };
+
+  var MAP_ROUTES = {
+    r1: ["comercio", "se", "alfama", "santaluzia", "castelo", "mouraria"],
+    r5: ["mouraria", "intendente", "anjos", "arroios"],
+    r2: ["alfama", "santaluzia", "comercio", "jeronimos", "padrao", "torre"],
+    r3: ["comercio", "marques", "luz", "alvalade"],
+    r4: ["alfama", "santaluzia", "camoes", "comercio", "jeronimos", "padrao", "torre"],
+    r6: ["rossio", "mouraria", "alfama", "comercio"],
+    r7: ["rossio", "camoes", "belem"]
+  };
+  var MAP_ORDER = ["r1", "r5", "r2", "r3", "r4", "r6", "r7"];
+  var currentMapRoute = "r1";
+  var SVG_NS = "http://www.w3.org/2000/svg";
+  var reduceMotion = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+  function svgEl(tag, attrs) {
+    var el = document.createElementNS(SVG_NS, tag);
+    for (var a in attrs) el.setAttribute(a, attrs[a]);
+    return el;
+  }
+
+  function smoothPath(pts) {
+    var d = "M" + pts[0].x + "," + pts[0].y;
+    for (var i = 0; i < pts.length - 1; i++) {
+      var p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+      var c1x = p1.x + (p2.x - p0.x) / 6, c1y = p1.y + (p2.y - p0.y) / 6;
+      var c2x = p2.x - (p3.x - p1.x) / 6, c2y = p2.y - (p3.y - p1.y) / 6;
+      d += " C" + c1x.toFixed(1) + "," + c1y.toFixed(1) + " " + c2x.toFixed(1) + "," + c2y.toFixed(1) + " " + p2.x + "," + p2.y;
+    }
+    return d;
+  }
+
+  function fitViewBox(pts) {
+    var xs = pts.map(function (p) { return p.x; }), ys = pts.map(function (p) { return p.y; });
+    var minX = Math.min.apply(null, xs), maxX = Math.max.apply(null, xs);
+    var minY = Math.min.apply(null, ys), maxY = Math.max.apply(null, ys);
+    var pad = 38;
+    var bw = maxX - minX + pad * 2, bh = maxY - minY + pad * 2;
+    if (bw / bh < 4 / 3) bw = bh * 4 / 3; else bh = bw * 3 / 4;
+    if (bw < 160) { bw = 160; bh = 120; }
+    if (bw > 400) { bw = 400; bh = 300; }
+    var x0 = Math.min(Math.max((minX + maxX) / 2 - bw / 2, 0), 400 - bw);
+    var y0 = Math.min(Math.max((minY + maxY) / 2 - bh / 2, 0), 300 - bh);
+    return { x: x0, y: y0, w: bw, h: bh };
+  }
+
+  function renderMapChips(dict) {
+    var wrap = document.getElementById("map-chips");
+    if (!wrap) return;
+    wrap.innerHTML = "";
+    MAP_ORDER.forEach(function (id) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "map-chip" + (id === currentMapRoute ? " active" : "");
+      b.setAttribute("aria-pressed", id === currentMapRoute ? "true" : "false");
+      b.textContent = dict[id + "_name"];
+      b.addEventListener("click", function () { currentMapRoute = id; renderRouteMap(); });
+      wrap.appendChild(b);
+    });
+  }
+
+  function renderRouteMap() {
+    var svg = document.getElementById("route-map");
+    if (!svg) return;
+    var dict = translations[currentLang] || translations.en;
+    renderMapChips(dict);
+
+    var stops = MAP_ROUTES[currentMapRoute];
+    var pts = stops.map(function (key) { return MAP_PLACES[key]; });
+    var vb = fitViewBox(pts);
+    svg.setAttribute("viewBox", vb.x.toFixed(1) + " " + vb.y.toFixed(1) + " " + vb.w.toFixed(1) + " " + vb.h.toFixed(1));
+
+    // u = unidades do mapa por pixel no ecrã, para marcadores e traços terem o mesmo tamanho em qualquer zoom
+    var width = svg.getBoundingClientRect().width || 600;
+    var u = vb.w / width;
+    function px(n) { return (n * u).toFixed(2); }
+    var showLabels = width >= 480;
+
+    document.getElementById("sketch-disp").setAttribute("scale", px(2.2));
+    document.getElementById("sketch-turb").setAttribute("baseFrequency", (0.035 * u).toFixed(4));
+    svg.querySelectorAll(".map-area").forEach(function (t) {
+      t.setAttribute("font-size", px(parseFloat(t.getAttribute("data-size")) * 1.15));
+    });
+
+    var g = document.getElementById("map-route");
+    while (g.firstChild) g.removeChild(g.firstChild);
+    var d = smoothPath(pts);
+    g.appendChild(svgEl("path", { d: d, fill: "none", stroke: "#EEF3FA", "stroke-width": px(9), "stroke-linecap": "round", "stroke-linejoin": "round" }));
+    var route = svgEl("path", {
+      d: d, fill: "none", stroke: "#1D4F9A", "stroke-width": px(3.5),
+      "stroke-linecap": "round", "stroke-linejoin": "round",
+      "stroke-dasharray": px(8) + " " + px(6), filter: "url(#sketch)"
+    });
+    if (!reduceMotion) {
+      route.appendChild(svgEl("animate", { attributeName: "stroke-dashoffset", from: "0", to: "-" + px(14), dur: "1.1s", repeatCount: "indefinite" }));
+    }
+    g.appendChild(route);
+
+    pts.forEach(function (p, i) {
+      g.appendChild(svgEl("circle", { cx: p.x, cy: p.y, r: px(11), fill: "#F6C400", stroke: "#0C1E3C", "stroke-width": px(1.8) }));
+      var t = svgEl("text", { x: p.x, y: p.y, dy: "0.35em", "text-anchor": "middle", "font-size": px(12), "font-family": "IBM Plex Mono, monospace", "font-weight": "500", fill: "#0C1E3C" });
+      t.textContent = String(i + 1);
+      g.appendChild(t);
+      if (showLabels) {
+        var lab = svgEl("text", {
+          x: (p.x + p.lp[0] * u).toFixed(2), y: (p.y + p.lp[1] * u).toFixed(2), "text-anchor": p.lp[2],
+          "font-size": px(17), "font-family": "Caveat, cursive", "font-weight": "700", fill: "rgba(12,30,60,0.82)",
+          stroke: "#EEF3FA", "stroke-width": px(4), "paint-order": "stroke", "stroke-linejoin": "round"
+        });
+        lab.textContent = p.label;
+        g.appendChild(lab);
+      }
+    });
+
+    var cx = vb.x + vb.w - 26 * u, cy = vb.y + 38 * u;
+    g.appendChild(svgEl("circle", { cx: cx, cy: cy, r: px(13), fill: "none", stroke: "rgba(12,30,60,0.45)", "stroke-width": px(1.2) }));
+    g.appendChild(svgEl("path", { d: "M" + cx + "," + (cy - 9 * u) + " L" + (cx + 4 * u) + "," + (cy + 5 * u) + " L" + cx + "," + (cy + 2 * u) + " L" + (cx - 4 * u) + "," + (cy + 5 * u) + " Z", fill: "rgba(12,30,60,0.55)" }));
+    var north = svgEl("text", { x: cx, y: cy - 17 * u, "text-anchor": "middle", "font-size": px(15), "font-family": "Caveat, cursive", "font-weight": "700", fill: "rgba(12,30,60,0.6)" });
+    north.textContent = "N";
+    g.appendChild(north);
+
+    var meta = routeMeta[currentMapRoute];
+    document.getElementById("map-route-name").textContent = dict[currentMapRoute + "_name"];
+    document.getElementById("map-route-meta").textContent = meta.dur + ", " + meta.price + ", " + dict.cap_label;
+    document.getElementById("map-route-desc").textContent = dict[currentMapRoute + "_desc"];
+
+    var list = document.getElementById("map-stops");
+    list.innerHTML = "";
+    stops.forEach(function (key, i) {
+      var li = document.createElement("li");
+      var num = document.createElement("span");
+      num.className = "map-stop-num";
+      num.textContent = String(i + 1);
+      var name = document.createElement("span");
+      name.textContent = MAP_PLACES[key].name;
+      li.appendChild(num);
+      li.appendChild(name);
+      list.appendChild(li);
+    });
+
+    var cta = document.getElementById("map-cta");
+    cta.textContent = dict.map_cta;
+    cta.setAttribute("href", "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(dict[meta.msgKey]));
+  }
+
+  var mapResizeTimer = null;
+  window.addEventListener("resize", function () {
+    clearTimeout(mapResizeTimer);
+    mapResizeTimer = setTimeout(renderRouteMap, 150);
+  });
+
+/* ---- Tour à medida: preço por número de horas ---- */
+  var TAILOR_PRICES = { 1: 79, 2: 139, 3: 189, 4: 249 };
+  var tailorHours = 2;
+
+  function renderTailor() {
+    var dict = translations[currentLang] || translations.en;
+    var price = TAILOR_PRICES[tailorHours];
+    document.querySelectorAll(".tailor-opt").forEach(function (b) {
+      var on = parseInt(b.getAttribute("data-hours"), 10) === tailorHours;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    var priceEl = document.getElementById("tailor-price");
+    if (!priceEl) return;
+    priceEl.textContent = "€" + price + ", " + dict.cap_label;
+    document.getElementById("tailor-scope").textContent = tailorHours <= 2 ? dict.tailor_scope_short : dict.tailor_scope_long;
+    var cta = document.getElementById("tailor-cta");
+    cta.textContent = dict.tailor_cta;
+    var msg = dict.msg_custom.replace("{h}", tailorHours).replace("{p}", price);
+    cta.setAttribute("href", "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg));
+  }
+
+  document.querySelectorAll(".tailor-opt").forEach(function (b) {
+    b.addEventListener("click", function () {
+      tailorHours = parseInt(b.getAttribute("data-hours"), 10);
+      renderTailor();
+    });
+  });
+
+  /* ---- RNAAT: preencher quando o registo estiver aprovado, ex: "1234/2026" ---- */
+  var RNAAT_NUMBER = "";
+  (function () {
+    var line = document.getElementById("rnaat-line");
+    var num = document.getElementById("rnaat-num");
+    if (line && num && RNAAT_NUMBER) { num.textContent = RNAAT_NUMBER; line.hidden = false; }
+  })();
 
   setLang("en");
 </script>
