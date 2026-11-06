@@ -308,11 +308,6 @@
     max-width: 40ch;
   }
 
-  .morning-strip {
-    display: inline-block; margin-bottom: 24px;
-    background: rgba(246,196,0,0.12); border: 1px solid rgba(246,196,0,0.45); color: var(--electrico);
-    font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 999px;
-  }
 
   .tour-grid {
     display: grid;
@@ -330,6 +325,8 @@
     min-width: 0;
     background: rgba(246,248,252,0.03);
   }
+
+  .tour-card.wide { grid-column: 1 / -1; }
 
   .tour-card.season {
     grid-column: 1 / -1;
@@ -847,6 +844,14 @@
       "@type": "Offer",
       "itemOffered": {
         "@type": "TouristTrip",
+        "name": "Chiado & Alfama",
+        "description": "Our best seller, 2 hours: Chiado and Carmo, then the old town, Alfama, Santa Luzia and São Jorge Castle."
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "TouristTrip",
         "name": "Historic Lisbon",
         "description": "1h30: Alfama, Mouraria and Graça, with stops at Santa Luzia and Senhora do Monte."
       }
@@ -985,8 +990,6 @@
       <p data-i18n="tours_p">Private tuk-tuk, up to 4 people. Choose a tour and a date, and we confirm price and availability on WhatsApp.</p>
     </div>
 
-    <div class="morning-strip" data-i18n="morning_note">Morning tours starting before 10:00 are 15% off.</div>
-
     <div class="tour-grid" id="tour-grid">
 
       <article class="tour-card season" data-tour="t5" data-seasonal hidden>
@@ -998,6 +1001,18 @@
         <div class="tour-actions">
           <button type="button" class="btn-book" data-book="t5" data-i18n="btn_book">Book now</button>
           <button type="button" class="btn-ghost" data-explore="t5" data-i18n="btn_explore">See the route</button>
+        </div>
+      </article>
+
+      <article class="tour-card" data-tour="t6">
+        <div class="tour-top"><span class="tour-dur">2h</span><span class="tour-tag" data-i18n="tag_best">Best seller</span><span class="tour-cap" data-i18n="cap_label">up to 4 people</span></div>
+        <h3 class="tour-name" data-i18n="t6_name">Chiado &amp; Alfama</h3>
+        <p class="tour-desc" data-i18n="t6_desc"></p>
+        <div class="tour-co2" data-i18n="t6_co2"></div>
+        <div class="tour-partner" data-i18n="partner_card" hidden>10% off with your partner code</div>
+        <div class="tour-actions">
+          <button type="button" class="btn-book" data-book="t6" data-i18n="btn_book">Book now</button>
+          <button type="button" class="btn-ghost" data-explore="t6" data-i18n="btn_explore">See the route</button>
         </div>
       </article>
 
@@ -1037,7 +1052,7 @@
         </div>
       </article>
 
-      <article class="tour-card" data-tour="t1">
+      <article class="tour-card wide" data-tour="t1">
         <div class="tour-top"><span class="tour-dur" data-i18n="dur_range">1h to 3h</span><span class="tour-tag" data-i18n="tag_custom">Custom route</span><span class="tour-cap" data-i18n="cap_label">up to 4 people</span></div>
         <h3 class="tour-name" data-i18n="t1_name">Lisbon Your Way</h3>
         <p class="tour-desc" data-i18n="t1_desc"></p>
@@ -1393,9 +1408,12 @@
       t5_name: "Christmas Lights",
       t5_desc: "Lisbon lit up for Christmas: Avenida da Liberdade, Rossio, Chiado and the big tree in Praça do Comércio. In the evening, while the lights are on.",
       t5_co2: "~1.0kg CO2 avoided vs a taxi, ~0.5kg vs a petrol tuk-tuk.",
+      tag_best: "Best seller",
+      t6_name: "Chiado & Alfama",
+      t6_desc: "Our most popular tour: Chiado and the Carmo ruins, then down to the old town, Alfama, Santa Luzia viewpoint and São Jorge Castle.",
+      t6_co2: "~2.0kg CO2 avoided vs a taxi, ~1.0kg vs a petrol tuk-tuk.",
       co2_note: "Estimated using EU average real-world taxi emissions (~165g CO2/km) and published small-engine tuk-tuk studies (~80g CO2/km). Route distances are estimates.",
       board_note: "Custom routes and hotel pickup available on request.",
-      morning_note: "Morning tours starting before 10:00 are 15% off.",
       cancel_note: "Free cancellation up to 24 hours before your tour.",
       planner_h2: "Not sure where to start?",
       planner_p: "Answer a few quick questions.",
@@ -1542,9 +1560,12 @@
       t5_name: "Luzes de Natal",
       t5_desc: "Lisboa iluminada para o Natal: Avenida da Liberdade, Rossio, Chiado e a grande árvore da Praça do Comércio. Ao fim do dia, enquanto as luzes estiverem acesas.",
       t5_co2: "~1,0kg de CO2 evitados face a um táxi, ~0,5kg face a um tuk-tuk a gasolina.",
+      tag_best: "Mais vendido",
+      t6_name: "Chiado e Alfama",
+      t6_desc: "O nosso tour mais procurado: Chiado e as ruínas do Carmo, depois a Baixa, Alfama, o miradouro de Santa Luzia e o Castelo de São Jorge.",
+      t6_co2: "~2,0kg de CO2 evitados face a um táxi, ~1,0kg face a um tuk-tuk a gasolina.",
       co2_note: "Estimativa com base na média real de emissões de táxis na UE (~165g CO2/km) e em estudos publicados sobre tuk-tuks a gasolina (~80g CO2/km). As distâncias das rotas são aproximadas.",
       board_note: "Rotas personalizadas e recolha no hotel disponíveis mediante pedido.",
-      morning_note: "Tours de manhã com início antes das 10:00 têm 15% de desconto.",
       cancel_note: "Cancelamento gratuito até 24 horas antes do tour.",
       planner_h2: "Não sabes por onde começar?",
       planner_p: "Responde a algumas perguntas rápidas.",
@@ -1691,9 +1712,12 @@
       t5_name: "Lumières de Noël",
       t5_desc: "Lisbonne illuminée pour Noël : l'Avenida da Liberdade, le Rossio, le Chiado et le grand sapin de la Praça do Comércio. En soirée, tant que les illuminations sont allumées.",
       t5_co2: "~1,0kg de CO2 évités par rapport à un taxi, ~0,5kg par rapport à un tuk-tuk à essence.",
+      tag_best: "Le plus demandé",
+      t6_name: "Chiado et Alfama",
+      t6_desc: "Notre visite la plus demandée : le Chiado et les ruines du Carmo, puis la Baixa, Alfama, le belvédère de Santa Luzia et le château de São Jorge.",
+      t6_co2: "~2,0kg de CO2 évités par rapport à un taxi, ~1,0kg par rapport à un tuk-tuk à essence.",
       co2_note: "Estimation basée sur la moyenne réelle des émissions des taxis dans l'UE (~165g CO2/km) et des études publiées sur les tuk-tuks à essence (~80g CO2/km). Les distances des itinéraires sont approximatives.",
       board_note: "Itinéraires personnalisés et prise en charge à l'hôtel disponibles sur demande.",
-      morning_note: "Les visites du matin qui commencent avant 10h00 sont à -15%.",
       cancel_note: "Annulation gratuite jusqu'à 24 heures avant la visite.",
       planner_h2: "Vous ne savez pas par où commencer ?",
       planner_p: "Répondez à quelques questions rapides.",
@@ -1840,9 +1864,12 @@
       t5_name: "Luces de Navidad",
       t5_desc: "Lisboa iluminada por Navidad: la Avenida da Liberdade, el Rossio, el Chiado y el gran árbol de la Praça do Comércio. Al atardecer, mientras las luces estén encendidas.",
       t5_co2: "~1,0kg de CO2 evitados frente a un taxi, ~0,5kg frente a un tuk-tuk de gasolina.",
+      tag_best: "El más vendido",
+      t6_name: "Chiado y Alfama",
+      t6_desc: "Nuestro tour más solicitado: el Chiado y las ruinas del Carmo, después la Baixa, Alfama, el mirador de Santa Luzia y el Castillo de San Jorge.",
+      t6_co2: "~2,0kg de CO2 evitados frente a un taxi, ~1,0kg frente a un tuk-tuk de gasolina.",
       co2_note: "Estimación basada en la media real de emisiones de taxis en la UE (~165g CO2/km) y en estudios publicados sobre tuk-tuks de gasolina (~80g CO2/km). Las distancias de las rutas son aproximadas.",
       board_note: "Rutas personalizadas y recogida en el hotel disponibles bajo petición.",
-      morning_note: "Los tours de mañana que empiezan antes de las 10:00 tienen un 15% de descuento.",
       cancel_note: "Cancelación gratuita hasta 24 horas antes del tour.",
       planner_h2: "¿No sabes por dónde empezar?",
       planner_p: "Responde a algunas preguntas rápidas.",
@@ -1952,9 +1979,10 @@
     t2: { durs: ["2h"] },
     t3: { durs: ["1h30"] },
     t4: { durs: ["2h"] },
-    t5: { durs: ["1h30"], seasonal: true }
+    t5: { durs: ["1h30"], seasonal: true },
+    t6: { durs: ["2h"] }
   };
-  var TOUR_ORDER = ["t5", "t3", "t2", "t4", "t1"];
+  var TOUR_ORDER = ["t5", "t6", "t3", "t2", "t4", "t1"];
 
   function inSeason() {
     var d = new Date(), m = d.getMonth();
@@ -2124,7 +2152,11 @@
     if (planQuiz.interest === "lights" && SEASON) return { id: "t5" };
     if (planQuiz.interest === "belem") return { id: "t4" };
     if (planQuiz.interest === "tram") return { id: "t2" };
-    if (planQuiz.interest === "oldtown") return planQuiz.time === "short" ? { id: "t3" } : { id: "t1", dur: dur };
+    if (planQuiz.interest === "oldtown") {
+      if (planQuiz.time === "short") return { id: "t3" };
+      if (planQuiz.time === "2h") return { id: "t6" };
+      return { id: "t1", dur: dur };
+    }
     return { id: "t1", dur: dur };
   }
 
@@ -2299,7 +2331,8 @@
     t2: ["martimmoniz", "graca", "santaluzia", "se", "camoes", "estrela"],
     t3: ["comercio", "se", "alfama", "santaluzia", "castelo", "mouraria", "graca", "senhoramonte"],
     t4: ["comercio", "maat", "padrao", "torre", "jeronimos", "belem"],
-    t5: ["marques", "avenida", "rossio", "camoes", "comercio"]
+    t5: ["marques", "avenida", "rossio", "camoes", "comercio"],
+    t6: ["camoes", "carmo", "comercio", "se", "alfama", "santaluzia", "castelo"]
   };
   var currentMapRoute = SEASON ? "t5" : "t3";
   var SVG_NS = "http://www.w3.org/2000/svg";
