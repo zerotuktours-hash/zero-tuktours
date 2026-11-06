@@ -2184,8 +2184,6 @@
       d.msg_people + ": " + n
     ];
     if (n > 4) lines.push(d.msg_tuks + ": " + Math.ceil(n / 4));
-    var unit = finalPrice(PRICES[currentDur()]), vtk = Math.ceil(n / 4);
-    lines.push(d.msg_price + ": " + money(unit * vtk));
     if (PARTNER) lines.push(d.msg_code + ": " + PARTNER + " " + d.msg_code_suffix);
     var url = waUrl(lines.join("\n"));
     var w = window.open(url, "_blank");
