@@ -391,8 +391,24 @@
     padding: 3px 10px;
   }
 
-  .tour-actions {
+  .tour-price {
     margin-top: auto;
+    padding-top: 8px;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    color: var(--tejo-deep);
+  }
+  .tour-price .pf { font-size: 13px; color: rgba(12,30,60,0.6); }
+  .tour-price .pv { font-family: 'Fraunces', serif; font-weight: 600; font-size: 30px; line-height: 1; font-variant-numeric: tabular-nums; }
+  .tour-price .po { font-size: 16px; color: rgba(12,30,60,0.5); text-decoration: line-through; font-variant-numeric: tabular-nums; }
+  .tour-price .pu { font-size: 13px; color: rgba(12,30,60,0.6); }
+  .tour-card.season .tour-price { color: var(--paper); }
+  .tour-card.season .tour-price .pf, .tour-card.season .tour-price .pu, .tour-card.season .tour-price .po { color: rgba(246,248,252,0.75); }
+
+  .tour-actions {
+    margin-top: 0;
     padding-top: 12px;
     display: flex;
     flex-wrap: wrap;
@@ -628,6 +644,20 @@
   }
   .field-hint { font-size: 13px; color: rgba(12,30,60,0.55); }
   .field-error { font-size: 13px; color: var(--error); }
+  .book-price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 10px;
+    padding: 14px 16px;
+    background: var(--paper);
+    border-radius: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+  .book-price .bl { font-size: 13px; font-weight: 600; color: rgba(12,30,60,0.6); width: 100%; }
+  .book-price .bv { font-family: 'Fraunces', serif; font-weight: 600; font-size: 28px; line-height: 1.1; color: var(--tejo-deep); }
+  .book-price .bo { font-size: 16px; color: rgba(12,30,60,0.5); text-decoration: line-through; }
+  .book-price .bd { font-size: 13px; color: rgba(12,30,60,0.65); }
   .book-discount {
     align-self: flex-start;
     font-size: 14px;
@@ -970,7 +1000,7 @@
   <div class="wrap">
     <div class="tours-head">
       <h2 data-i18n="tours_h2">Our tuk-tuk tours</h2>
-      <p data-i18n="tours_p">Private tuk-tuk, up to 4 people. Choose a tour and a date, and we confirm price and availability on WhatsApp.</p>
+      <p data-i18n="tours_p">Private tuk-tuk, up to 4 people. Choose a tour and a date, and we confirm availability on WhatsApp.</p>
     </div>
 
     <div class="tour-grid" id="tour-grid">
@@ -981,6 +1011,7 @@
         <p class="tour-desc" data-i18n="t5_desc"></p>
         <div class="tour-co2" data-i18n="t5_co2"></div>
         <div class="tour-partner" data-i18n="partner_card" hidden>10% off with your partner code</div>
+        <div class="tour-price" aria-live="polite"></div>
         <div class="tour-actions">
           <button type="button" class="btn-book" data-book="t5" data-i18n="btn_book">Book now</button>
           <button type="button" class="btn-ghost" data-explore="t5" data-i18n="btn_explore">See the route</button>
@@ -993,6 +1024,7 @@
         <p class="tour-desc" data-i18n="t6_desc"></p>
         <div class="tour-co2" data-i18n="t6_co2"></div>
         <div class="tour-partner" data-i18n="partner_card" hidden>10% off with your partner code</div>
+        <div class="tour-price" aria-live="polite"></div>
         <div class="tour-actions">
           <button type="button" class="btn-book" data-book="t6" data-i18n="btn_book">Book now</button>
           <button type="button" class="btn-ghost" data-explore="t6" data-i18n="btn_explore">See the route</button>
@@ -1005,6 +1037,7 @@
         <p class="tour-desc" data-i18n="t3_desc"></p>
         <div class="tour-co2" data-i18n="t3_co2"></div>
         <div class="tour-partner" data-i18n="partner_card" hidden>10% off with your partner code</div>
+        <div class="tour-price" aria-live="polite"></div>
         <div class="tour-actions">
           <button type="button" class="btn-book" data-book="t3" data-i18n="btn_book">Book now</button>
           <button type="button" class="btn-ghost" data-explore="t3" data-i18n="btn_explore">See the route</button>
@@ -1017,6 +1050,7 @@
         <p class="tour-desc" data-i18n="t2_desc"></p>
         <div class="tour-co2" data-i18n="t2_co2"></div>
         <div class="tour-partner" data-i18n="partner_card" hidden>10% off with your partner code</div>
+        <div class="tour-price" aria-live="polite"></div>
         <div class="tour-actions">
           <button type="button" class="btn-book" data-book="t2" data-i18n="btn_book">Book now</button>
           <button type="button" class="btn-ghost" data-explore="t2" data-i18n="btn_explore">See the route</button>
@@ -1029,6 +1063,7 @@
         <p class="tour-desc" data-i18n="t4_desc"></p>
         <div class="tour-co2" data-i18n="t4_co2"></div>
         <div class="tour-partner" data-i18n="partner_card" hidden>10% off with your partner code</div>
+        <div class="tour-price" aria-live="polite"></div>
         <div class="tour-actions">
           <button type="button" class="btn-book" data-book="t4" data-i18n="btn_book">Book now</button>
           <button type="button" class="btn-ghost" data-explore="t4" data-i18n="btn_explore">See the route</button>
@@ -1041,6 +1076,7 @@
         <p class="tour-desc" data-i18n="t1_desc"></p>
         <div class="tour-co2" data-i18n="t1_co2"></div>
         <div class="tour-partner" data-i18n="partner_card" hidden>10% off with your partner code</div>
+        <div class="tour-price" aria-live="polite"></div>
         <div class="tour-actions">
           <button type="button" class="btn-book" data-book="t1" data-i18n="btn_book">Book now</button>
           <button type="button" class="btn-ghost" data-explore="t1" data-i18n="btn_explore">See the route</button>
@@ -1222,6 +1258,9 @@
               <option value="evening" data-i18n="time_evening">Sunset / evening</option>
             </select>
           </div>
+          <div class="field field-full">
+            <div class="book-price" id="book-price" aria-live="polite"></div>
+          </div>
           <div class="field field-full" id="book-discount-wrap" hidden>
             <div class="book-discount" id="book-discount"></div>
           </div>
@@ -1229,7 +1268,7 @@
       </div>
       <div class="book-foot">
         <button type="submit" class="book-submit" data-i18n="f_submit">Book on WhatsApp</button>
-        <p class="book-fine" data-i18n="f_fine">Nothing is charged now. We confirm price and availability on WhatsApp.</p>
+        <p class="book-fine" data-i18n="f_fine">Nothing is charged now. We confirm availability on WhatsApp.</p>
       </div>
     </form>
   </div>
@@ -1370,12 +1409,17 @@
       why3_h3: "Built around your group",
       why3_p: "Local driver, stops where you want them, pace set by you, not a fixed bus schedule.",
       tours_h2: "Our tuk-tuk tours",
-      tours_p: "Private tuk-tuk, up to 4 people. Choose a tour and a date, and we confirm price and availability on WhatsApp.",
+      tours_p: "Private tuk-tuk, up to 4 people. Choose a tour and a date, and we confirm availability on WhatsApp.",
       tag_custom: "Custom route",
       tag_must: "Must-do",
       tag_season: "Seasonal",
       dur_range: "1h to 3h",
       cap_label: "up to 4 people",
+      price_from: "from",
+      price_unit: "per tuk-tuk",
+      f_price: "Price",
+      msg_price: "Price",
+      price_total: "{v} tuk-tuks: {t} in total",
       btn_book: "Book now",
       btn_explore: "See the route",
       partner_card: "10% off with your partner code",
@@ -1439,7 +1483,7 @@
       people_note: "{n} people: we'll send {v} tuk-tuks.",
       f_discount: "Partner code {c}: 10% off will be applied.",
       f_submit: "Book on WhatsApp",
-      f_fine: "Nothing is charged now. We confirm price and availability on WhatsApp.",
+      f_fine: "Nothing is charged now. We confirm availability on WhatsApp.",
       err_date: "Choose a date first.",
       msg_intro: "Hi! I'd like to book a tuk-tuk tour.",
       msg_tour: "Tour",
@@ -1514,12 +1558,17 @@
       why3_h3: "Feito à medida do teu grupo",
       why3_p: "Condutor local, paragens onde quiseres, ritmo definido por ti, não por um horário fixo de autocarro.",
       tours_h2: "Os nossos tours de tuk-tuk",
-      tours_p: "Tuk-tuk privado, até 4 pessoas. Escolhe o tour e a data, e confirmamos preço e disponibilidade no WhatsApp.",
+      tours_p: "Tuk-tuk privado, até 4 pessoas. Escolhe o tour e a data, e confirmamos a disponibilidade no WhatsApp.",
       tag_custom: "Rota à medida",
       tag_must: "Imperdível",
       tag_season: "Sazonal",
       dur_range: "1h a 3h",
       cap_label: "até 4 pessoas",
+      price_from: "desde",
+      price_unit: "por tuk-tuk",
+      f_price: "Preço",
+      msg_price: "Preço",
+      price_total: "{v} tuk-tuks: {t} no total",
       btn_book: "Reservar",
       btn_explore: "Ver a rota",
       partner_card: "10% de desconto com o teu código",
@@ -1583,7 +1632,7 @@
       people_note: "{n} pessoas: enviamos {v} tuk-tuks.",
       f_discount: "Código de parceiro {c}: tens 10% de desconto.",
       f_submit: "Reservar no WhatsApp",
-      f_fine: "Não pagas nada agora. Confirmamos preço e disponibilidade no WhatsApp.",
+      f_fine: "Não pagas nada agora. Confirmamos a disponibilidade no WhatsApp.",
       err_date: "Escolhe primeiro uma data.",
       msg_intro: "Olá! Gostava de reservar um tour de tuk-tuk.",
       msg_tour: "Tour",
@@ -1658,12 +1707,17 @@
       why3_h3: "Adapté à votre groupe",
       why3_p: "Chauffeur local, arrêts où vous voulez, rythme fixé par vous, pas par un horaire de bus fixe.",
       tours_h2: "Nos visites en tuk-tuk",
-      tours_p: "Tuk-tuk privé, jusqu'à 4 personnes. Choisissez la visite et la date, nous confirmons le prix et la disponibilité sur WhatsApp.",
+      tours_p: "Tuk-tuk privé, jusqu'à 4 personnes. Choisissez la visite et la date, nous confirmons la disponibilité sur WhatsApp.",
       tag_custom: "Sur mesure",
       tag_must: "Incontournable",
       tag_season: "Saisonnier",
       dur_range: "1h à 3h",
       cap_label: "jusqu'à 4 personnes",
+      price_from: "à partir de",
+      price_unit: "par tuk-tuk",
+      f_price: "Prix",
+      msg_price: "Prix",
+      price_total: "{v} tuk-tuks : {t} au total",
       btn_book: "Réserver",
       btn_explore: "Voir l'itinéraire",
       partner_card: "-10 % avec votre code partenaire",
@@ -1727,7 +1781,7 @@
       people_note: "{n} personnes : nous envoyons {v} tuk-tuks.",
       f_discount: "Code partenaire {c} : -10 % appliqués.",
       f_submit: "Réserver sur WhatsApp",
-      f_fine: "Rien n'est payé maintenant. Nous confirmons le prix et la disponibilité sur WhatsApp.",
+      f_fine: "Rien n'est payé maintenant. Nous confirmons la disponibilité sur WhatsApp.",
       err_date: "Choisissez d'abord une date.",
       msg_intro: "Bonjour ! Je voudrais réserver une visite en tuk-tuk.",
       msg_tour: "Visite",
@@ -1802,12 +1856,17 @@
       why3_h3: "Adaptado a tu grupo",
       why3_p: "Conductor local, paradas donde quieras, ritmo marcado por ti, no por un horario fijo de autobús.",
       tours_h2: "Nuestros tours en tuk-tuk",
-      tours_p: "Tuk-tuk privado, hasta 4 personas. Elige el tour y la fecha, y confirmamos precio y disponibilidad por WhatsApp.",
+      tours_p: "Tuk-tuk privado, hasta 4 personas. Elige el tour y la fecha, y confirmamos la disponibilidad por WhatsApp.",
       tag_custom: "Ruta a medida",
       tag_must: "Imprescindible",
       tag_season: "De temporada",
       dur_range: "1h a 3h",
       cap_label: "hasta 4 personas",
+      price_from: "desde",
+      price_unit: "por tuk-tuk",
+      f_price: "Precio",
+      msg_price: "Precio",
+      price_total: "{v} tuk-tuks: {t} en total",
       btn_book: "Reservar",
       btn_explore: "Ver la ruta",
       partner_card: "10% de descuento con tu código",
@@ -1871,7 +1930,7 @@
       people_note: "{n} personas: enviamos {v} tuk-tuks.",
       f_discount: "Código de socio {c}: se aplica un 10% de descuento.",
       f_submit: "Reservar por WhatsApp",
-      f_fine: "No pagas nada ahora. Confirmamos precio y disponibilidad por WhatsApp.",
+      f_fine: "No pagas nada ahora. Confirmamos la disponibilidad por WhatsApp.",
       err_date: "Elige primero una fecha.",
       msg_intro: "¡Hola! Me gustaría reservar un tour en tuk-tuk.",
       msg_tour: "Tour",
@@ -1938,6 +1997,47 @@
     t6: { durs: ["2h"] }
   };
   var TOUR_ORDER = ["t5", "t6", "t3", "t2", "t4", "t1"];
+
+  /* Preço por tuk-tuk, por duração (até 4 pessoas). Alterar aqui se o preçário mudar. */
+  var PRICES = { "1h": 100, "1h30": 140, "2h": 200, "3h": 250 };
+  var PARTNER_DISCOUNT = 0.10;
+
+  function money(v) {
+    try { return new Intl.NumberFormat(LOCALES[currentLang] || "en-GB", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(v); }
+    catch (e) { return v + " €"; }
+  }
+  function finalPrice(base) { return PARTNER ? Math.round(base * (1 - PARTNER_DISCOUNT)) : base; }
+
+  function priceHTML(base, cls) {
+    var html = "";
+    if (PARTNER) html += '<span class="' + cls + 'o">' + money(base) + "</span>";
+    return html + '<span class="' + cls + 'v">' + money(finalPrice(base)) + "</span>";
+  }
+
+  function renderCardPrices() {
+    var d = dict();
+    document.querySelectorAll(".tour-card").forEach(function (card) {
+      var id = card.getAttribute("data-tour");
+      var t = TOURS[id];
+      var box = card.querySelector(".tour-price");
+      if (!t || !box) return;
+      var base = PRICES[t.durs[0]];
+      box.innerHTML = (t.durs.length > 1 ? '<span class="pf">' + d.price_from + "</span>" : "") +
+        priceHTML(base, "p") + '<span class="pu">' + d.price_unit + "</span>";
+    });
+  }
+
+  function renderFormPrice() {
+    var box = document.getElementById("book-price");
+    if (!box || !fTour.value) return;
+    var d = dict();
+    var base = PRICES[currentDur()];
+    var n = parseInt(fPeople.value, 10) || 1;
+    var v = Math.ceil(n / 4);
+    var html = '<span class="bl">' + d.f_price + "</span>" + priceHTML(base, "b") + '<span class="bd">' + d.price_unit + "</span>";
+    if (v > 1) html += '<span class="bd">· ' + d.price_total.replace("{v}", v).replace("{t}", money(finalPrice(base) * v)) + "</span>";
+    box.innerHTML = html;
+  }
 
   function inSeason() {
     var d = new Date(), m = d.getMonth();
@@ -2052,13 +2152,15 @@
     if (!TOURS[id]) return;
     fTour.value = id;
     renderDurField(dur);
+    renderFormPrice();
     currentMapRoute = id;
     renderRouteMap();
     document.getElementById("book").scrollIntoView({ block: "start" });
   }
 
-  fTour.addEventListener("change", function () { renderDurField(); currentMapRoute = fTour.value; renderRouteMap(); });
-  fPeople.addEventListener("change", updatePeopleNote);
+  fTour.addEventListener("change", function () { renderDurField(); currentMapRoute = fTour.value; renderRouteMap(); renderFormPrice(); });
+  fPeople.addEventListener("change", function () { updatePeopleNote(); renderFormPrice(); });
+  fDur.addEventListener("change", renderFormPrice);
   fDate.addEventListener("input", clearDateError);
 
   form.addEventListener("submit", function (e) {
@@ -2083,6 +2185,8 @@
       d.msg_people + ": " + n
     ];
     if (n > 4) lines.push(d.msg_tuks + ": " + Math.ceil(n / 4));
+    var unit = finalPrice(PRICES[currentDur()]), vtk = Math.ceil(n / 4);
+    lines.push(d.msg_price + ": " + money(unit * vtk));
     if (PARTNER) lines.push(d.msg_code + ": " + PARTNER + " " + d.msg_code_suffix);
     var url = waUrl(lines.join("\n"));
     var w = window.open(url, "_blank");
@@ -2243,6 +2347,8 @@
     updatePeopleNote();
     if (!fDateErr.hidden) fDateErr.textContent = d.err_date;
     applyPartnerUI();
+    renderCardPrices();
+    renderFormPrice();
     renderFootTours();
 
     var resultBox = document.getElementById("planner-result");
