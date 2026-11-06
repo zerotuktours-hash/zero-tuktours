@@ -533,24 +533,30 @@
     cursor: pointer;
   }
 
-  /* ---- Route maps ---- */
-  .maps { background: var(--paper); padding: 88px 32px; border-top: 1px solid var(--line); }
-  .maps h2 { font-size: clamp(26px, 4vw, 34px); }
-  .maps-intro { margin-top: 10px; color: rgba(12,30,60,0.6); font-size: 15px; }
-  .map-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
-  .map-chip {
-    font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 500;
-    color: var(--ink); background: transparent;
-    border: 1px solid rgba(12,30,60,0.25); border-radius: 999px;
-    padding: 8px 15px; cursor: pointer; transition: all 0.15s ease;
+  /* ---- Route map (inside booking) ---- */
+  .planner-opt:focus-visible, .faq-item summary:focus-visible, .field input:focus-visible, .field select:focus-visible { outline: 2px solid var(--tejo); outline-offset: 2px; }
+  .book-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    grid-template-areas: "tour route" "fields route";
+    grid-template-rows: auto 1fr;
+    gap: 18px 32px;
   }
-  .map-chip:hover { border-color: rgba(12,30,60,0.5); }
-  .map-chip:focus-visible, .planner-opt:focus-visible, .faq-item summary:focus-visible, .field input:focus-visible, .field select:focus-visible { outline: 2px solid var(--tejo); outline-offset: 2px; }
-  .map-chip.active { background: var(--tejo); border-color: var(--tejo); color: var(--paper); }
-  .map-card {
-    margin-top: 20px; display: grid; grid-template-columns: 1.55fr 1fr; gap: 28px;
-    background: #FFFFFF; border: 2px dashed rgba(12,30,60,0.3); border-radius: 10px; padding: 22px;
+  .bk-tour { grid-area: tour; }
+  .bk-fields { grid-area: fields; align-content: start; }
+  .bk-route {
+    grid-area: route;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    align-content: start;
+    background: #F6F8FC;
+    border: 2px dashed rgba(12,30,60,0.25);
+    border-radius: 10px;
+    padding: 14px;
+    min-width: 0;
   }
+  .map-side { padding: 0 4px 4px; }
   .map-svg { width: 100%; height: auto; display: block; border-radius: 6px; background: #EEF3FA; }
   .map-svg .nss { vector-effect: non-scaling-stroke; }
   .map-route-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 24px; line-height: 1.1; }
@@ -656,19 +662,6 @@
   .inc-list li::before { content: "✓"; position: absolute; left: 0; color: var(--tejo); font-weight: 600; }
   .inc-list.no li::before { content: "✕"; color: rgba(12,30,60,0.4); }
   .inc-meet { font-size: 15px; color: rgba(12,30,60,0.78); }
-
-  /* ---- Voucher ---- */
-  .voucher { background: var(--paper); padding: 0 32px 40px; }
-  .voucher-card {
-    display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
-    background: #FFFFFF; border: 2px solid var(--ink); border-radius: 10px; padding: 28px 32px;
-  }
-  .voucher-card h2 { font-size: clamp(24px, 3.4vw, 30px); }
-  .voucher-card p { margin-top: 8px; font-size: 15px; color: rgba(12,30,60,0.68); max-width: 46ch; }
-  .voucher-cta {
-    background: var(--electrico); color: var(--tejo-deep); font-weight: 600; font-size: 15px;
-    padding: 14px 24px; border-radius: 3px; white-space: nowrap;
-  }
 
   /* ---- FAQ ---- */
   .faq { background: var(--paper); padding: 40px 32px 88px; }
@@ -792,8 +785,8 @@
     .tour-card { padding: 20px; }
     .planner { padding: 56px 20px; }
     .planner-card { padding: 22px; }
-    .maps { padding: 56px 20px; }
-    .map-card { grid-template-columns: 1fr; padding: 14px; gap: 18px; }
+    .book-layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: "tour" "route" "fields"; grid-template-rows: auto; }
+    .bk-route { padding: 10px; }
     .book { padding: 56px 20px; }
     .book-card { padding: 22px; }
     .book-grid { grid-template-columns: 1fr; }
@@ -802,8 +795,6 @@
     .nums-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
     .included { padding: 56px 20px; }
     .inc-grid { grid-template-columns: 1fr; gap: 28px; }
-    .voucher { padding: 0 20px 24px; }
-    .voucher-card { padding: 22px; }
     .faq { padding: 32px 20px 64px; }
     .contact { padding: 64px 20px; }
     footer { padding: 48px 20px 96px; }
@@ -905,7 +896,6 @@
     </a>
     <nav class="nav-links" aria-label="Main">
       <a href="#tours" data-i18n="nav_tours">Tours</a>
-      <a href="#maps" data-i18n="nav_routes">Routes</a>
       <a href="#book" data-i18n="nav_book">Book</a>
       <a href="#faq" data-i18n="nav_faq">FAQ</a>
     </nav>
@@ -1115,117 +1105,110 @@
   </div>
 </section>
 
-<section class="maps" id="maps">
-  <div class="wrap">
-    <h2 data-i18n="map_h2">Every route, drawn out</h2>
-    <p class="maps-intro" data-i18n="map_p">Tap a tour to see where it goes.</p>
-    <div class="map-chips" id="map-chips"></div>
-    <div class="map-card">
-      <svg class="map-svg" id="route-map" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated map of the selected route">
-        <defs>
-          <filter id="sketch" filterUnits="userSpaceOnUse" x="0" y="0" width="400" height="300">
-            <feTurbulence id="sketch-turb" type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="4" result="noise"/>
-            <feDisplacementMap id="sketch-disp" in="SourceGraphic" in2="noise" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
-          </filter>
-        </defs>
-        <rect x="0" y="0" width="400" height="300" fill="#EEF3FA"/>
-        <g filter="url(#sketch)">
-          <path class="nss" d="M0,252 C80,248 160,242 230,236 S330,216 400,202 L400,300 L0,300 Z" fill="#BFD6F0" stroke="#7FA6D6" stroke-width="1.5"/>
-          <g fill="none" stroke="#7FA6D6" stroke-width="1.2" stroke-linecap="round">
-            <path class="nss" d="M36,276 q5,-4 10,0 t10,0"/>
-            <path class="nss" d="M150,270 q5,-4 10,0 t10,0"/>
-            <path class="nss" d="M246,262 q5,-4 10,0 t10,0"/>
-            <path class="nss" d="M336,246 q5,-4 10,0 t10,0"/>
-            <path class="nss" d="M186,290 q5,-4 10,0 t10,0"/>
-            <path class="nss" d="M318,282 q5,-4 10,0 t10,0"/>
-          </g>
-          <g fill="none" stroke="#C9D6EA" stroke-width="2" stroke-linecap="round">
-            <path class="nss" d="M20,244 C100,238 170,232 230,229 S320,212 395,196"/>
-            <path class="nss" d="M222,190 L190,130"/>
-            <path class="nss" d="M190,130 C200,95 208,60 214,30"/>
-            <path class="nss" d="M238,168 C246,140 256,118 268,88 L280,40"/>
-            <path class="nss" d="M40,64 C110,48 160,38 214,30 S300,22 392,28"/>
-            <path class="nss" d="M205,202 C180,190 150,182 122,178"/>
-            <path class="nss" d="M52,212 C90,206 140,202 205,202"/>
-          </g>
-          <g stroke="#C8452F" stroke-width="2.5" stroke-linecap="round" fill="none">
-            <path class="nss" d="M111,240 L95,300"/>
-            <path class="nss" d="M106,256 l-7,2 M101,276 l-7,2"/>
-          </g>
-          <g fill="#BCD2B4" stroke="#7E9B78" stroke-width="1">
-            <circle class="nss" cx="72" cy="150" r="6"/><circle class="nss" cx="85" cy="141" r="5"/>
-            <circle class="nss" cx="97" cy="152" r="6"/><circle class="nss" cx="80" cy="165" r="5"/>
-            <circle class="nss" cx="95" cy="169" r="5"/><circle class="nss" cx="108" cy="159" r="4.5"/>
-            <circle class="nss" cx="67" cy="177" r="4.5"/><circle class="nss" cx="110" cy="177" r="4"/>
-          </g>
-        </g>
-        <g font-family="Caveat, cursive" fill="rgba(12,30,60,0.38)">
-          <text class="map-area" data-size="20" x="318" y="250">Tejo</text>
-          <text class="map-area" data-size="13" x="72" y="197">Monsanto</text>
-          <text class="map-area" data-size="13" x="14" y="182">Belém</text>
-          <text class="map-area" data-size="13" x="140" y="96">Avenidas Novas</text>
-        </g>
-        <g id="map-route"></g>
-      </svg>
-      <div class="map-side">
-        <div class="map-route-name" id="map-route-name"></div>
-        <div class="map-route-meta" id="map-route-meta"></div>
-        <p class="map-route-desc" id="map-route-desc"></p>
-        <div class="map-stops-label" data-i18n="map_stops">Stops</div>
-        <ol class="map-stops" id="map-stops"></ol>
-        <button type="button" class="btn-blue" id="map-cta" data-i18n="map_cta">Book this tour</button>
-        <div class="map-note" data-i18n="map_note">Illustrative map, not to scale. Stops can be adjusted on the day.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="book" id="book">
   <div class="wrap">
     <h2 data-i18n="book_h2">Book your tour</h2>
     <p class="book-intro" data-i18n="book_p">Choose the tour, the date and how many you are. The message goes to our WhatsApp with everything filled in.</p>
 
     <form class="book-card" id="book-form" novalidate>
-      <div class="book-grid">
-        <div class="field field-full">
+      <div class="book-layout">
+        <div class="field bk-tour">
           <label for="f-tour" data-i18n="f_tour">Tour</label>
           <select id="f-tour" name="tour"></select>
         </div>
-        <div class="field">
-          <label for="f-dur" data-i18n="f_dur">Duration</label>
-          <select id="f-dur" name="duration"></select>
-          <div class="field-static" id="f-dur-static" aria-live="polite"></div>
+        <div class="bk-route" aria-live="polite">
+          <svg class="map-svg" id="route-map" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated map of the selected route">
+            <defs>
+              <filter id="sketch" filterUnits="userSpaceOnUse" x="0" y="0" width="400" height="300">
+                <feTurbulence id="sketch-turb" type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="4" result="noise"/>
+                <feDisplacementMap id="sketch-disp" in="SourceGraphic" in2="noise" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+              </filter>
+            </defs>
+            <rect x="0" y="0" width="400" height="300" fill="#EEF3FA"/>
+            <g filter="url(#sketch)">
+              <path class="nss" d="M0,252 C80,248 160,242 230,236 S330,216 400,202 L400,300 L0,300 Z" fill="#BFD6F0" stroke="#7FA6D6" stroke-width="1.5"/>
+              <g fill="none" stroke="#7FA6D6" stroke-width="1.2" stroke-linecap="round">
+                <path class="nss" d="M36,276 q5,-4 10,0 t10,0"/>
+                <path class="nss" d="M150,270 q5,-4 10,0 t10,0"/>
+                <path class="nss" d="M246,262 q5,-4 10,0 t10,0"/>
+                <path class="nss" d="M336,246 q5,-4 10,0 t10,0"/>
+                <path class="nss" d="M186,290 q5,-4 10,0 t10,0"/>
+                <path class="nss" d="M318,282 q5,-4 10,0 t10,0"/>
+              </g>
+              <g fill="none" stroke="#C9D6EA" stroke-width="2" stroke-linecap="round">
+                <path class="nss" d="M20,244 C100,238 170,232 230,229 S320,212 395,196"/>
+                <path class="nss" d="M222,190 L190,130"/>
+                <path class="nss" d="M190,130 C200,95 208,60 214,30"/>
+                <path class="nss" d="M238,168 C246,140 256,118 268,88 L280,40"/>
+                <path class="nss" d="M40,64 C110,48 160,38 214,30 S300,22 392,28"/>
+                <path class="nss" d="M205,202 C180,190 150,182 122,178"/>
+                <path class="nss" d="M52,212 C90,206 140,202 205,202"/>
+              </g>
+              <g stroke="#C8452F" stroke-width="2.5" stroke-linecap="round" fill="none">
+                <path class="nss" d="M111,240 L95,300"/>
+                <path class="nss" d="M106,256 l-7,2 M101,276 l-7,2"/>
+              </g>
+              <g fill="#BCD2B4" stroke="#7E9B78" stroke-width="1">
+                <circle class="nss" cx="72" cy="150" r="6"/><circle class="nss" cx="85" cy="141" r="5"/>
+                <circle class="nss" cx="97" cy="152" r="6"/><circle class="nss" cx="80" cy="165" r="5"/>
+                <circle class="nss" cx="95" cy="169" r="5"/><circle class="nss" cx="108" cy="159" r="4.5"/>
+                <circle class="nss" cx="67" cy="177" r="4.5"/><circle class="nss" cx="110" cy="177" r="4"/>
+              </g>
+            </g>
+            <g font-family="Caveat, cursive" fill="rgba(12,30,60,0.38)">
+              <text class="map-area" data-size="20" x="318" y="250">Tejo</text>
+              <text class="map-area" data-size="13" x="72" y="197">Monsanto</text>
+              <text class="map-area" data-size="13" x="14" y="182">Belém</text>
+              <text class="map-area" data-size="13" x="140" y="96">Avenidas Novas</text>
+            </g>
+            <g id="map-route"></g>
+          </svg>
+          <div class="map-side">
+            <div class="map-route-name" id="map-route-name"></div>
+            <div class="map-route-meta" id="map-route-meta"></div>
+            <p class="map-route-desc" id="map-route-desc"></p>
+            <div class="map-stops-label" data-i18n="map_stops">Stops</div>
+            <ol class="map-stops" id="map-stops"></ol>
+            <div class="map-note" data-i18n="map_note">Illustrative map, not to scale. Stops can be adjusted on the day.</div>
+          </div>
         </div>
-        <div class="field">
-          <label for="f-people" data-i18n="f_people">People</label>
-          <select id="f-people" name="people">
-            <option value="1">1</option>
-            <option value="2" selected>2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-          </select>
-          <div class="field-hint" id="f-people-note" hidden></div>
-        </div>
-        <div class="field">
-          <label for="f-date" data-i18n="f_date">Date</label>
-          <input type="date" id="f-date" name="date" required aria-describedby="f-date-error">
-          <div class="field-error" id="f-date-error" hidden></div>
-        </div>
-        <div class="field">
-          <label for="f-time" data-i18n="f_time">Preferred time</label>
-          <select id="f-time" name="time">
-            <option value="flex" data-i18n="time_flex">Flexible</option>
-            <option value="morning" data-i18n="time_morning">Morning</option>
-            <option value="afternoon" data-i18n="time_afternoon">Afternoon</option>
-            <option value="evening" data-i18n="time_evening">Sunset / evening</option>
-          </select>
-        </div>
-        <div class="field field-full" id="book-discount-wrap" hidden>
-          <div class="book-discount" id="book-discount"></div>
+        <div class="book-grid bk-fields">
+          <div class="field">
+            <label for="f-dur" data-i18n="f_dur">Duration</label>
+            <select id="f-dur" name="duration"></select>
+            <div class="field-static" id="f-dur-static" aria-live="polite"></div>
+          </div>
+          <div class="field">
+            <label for="f-people" data-i18n="f_people">People</label>
+            <select id="f-people" name="people">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+            <div class="field-hint" id="f-people-note" hidden></div>
+          </div>
+          <div class="field">
+            <label for="f-date" data-i18n="f_date">Date</label>
+            <input type="date" id="f-date" name="date" required aria-describedby="f-date-error">
+            <div class="field-error" id="f-date-error" hidden></div>
+          </div>
+          <div class="field">
+            <label for="f-time" data-i18n="f_time">Preferred time</label>
+            <select id="f-time" name="time">
+              <option value="flex" data-i18n="time_flex">Flexible</option>
+              <option value="morning" data-i18n="time_morning">Morning</option>
+              <option value="afternoon" data-i18n="time_afternoon">Afternoon</option>
+              <option value="evening" data-i18n="time_evening">Sunset / evening</option>
+            </select>
+          </div>
+          <div class="field field-full" id="book-discount-wrap" hidden>
+            <div class="book-discount" id="book-discount"></div>
+          </div>
         </div>
       </div>
       <div class="book-foot">
@@ -1271,18 +1254,6 @@
         <h3 data-i18n="meet_title">Where we meet</h3>
         <p class="inc-meet" data-i18n="meet_p">At your hotel in central Lisbon, at the Lisbon Cruise Terminal, or any central spot you choose. We confirm the exact point on WhatsApp.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="voucher">
-  <div class="wrap">
-    <div class="voucher-card">
-      <div>
-        <h2 data-i18n="voucher_h2">Give Lisbon as a gift</h2>
-        <p data-i18n="voucher_p">Any route can become a gift voucher. Tell us the route and the name, we send it ready to give.</p>
-      </div>
-      <a class="voucher-cta" data-i18n="voucher_cta" data-wa-msg="msg_voucher" href="https://wa.me/351912024075" target="_blank" rel="noopener">Ask for a voucher</a>
     </div>
   </div>
 </section>
@@ -1366,7 +1337,6 @@
       meta_description: "Private, 100% electric tuk-tuk tours in Lisbon: historic Lisbon, the Tram 28 route, Belém and Christmas lights. Book on WhatsApp.",
       cta_whatsapp: "Book on WhatsApp",
       nav_tours: "Tours",
-      nav_routes: "Routes",
       nav_book: "Book",
       nav_faq: "FAQ",
       nav_cta: "Book a tour",
@@ -1436,10 +1406,7 @@
       note_friends: "Great with a group, ask about a second tuk-tuk for more than 4.",
       planner_result_prefix: "Your match:",
       planner_cta: "Book this tour",
-      map_h2: "Every route, drawn out",
-      map_p: "Tap a tour to see where it goes.",
       map_stops: "Stops",
-      map_cta: "Book this tour",
       map_note: "Illustrative map, not to scale. Stops can be adjusted on the day.",
       map_sample: "sample route, adjusted to you",
       book_h2: "Book your tour",
@@ -1483,9 +1450,6 @@
       exc_3: "Tips",
       meet_title: "Where we meet",
       meet_p: "At your hotel in central Lisbon, at the Lisbon Cruise Terminal, or any central spot you choose. We confirm the exact point on WhatsApp.",
-      voucher_h2: "Give Lisbon as a gift",
-      voucher_p: "Any route can become a gift voucher. Tell us the route and the name, we send it ready to give.",
-      voucher_cta: "Ask for a voucher",
       faq_h2: "Questions",
       faq1_q: "What if it rains?",
       faq1_a: "The tuk-tuk closes against rain and wind, and we have ponchos on board. On cooler days there are blankets too.",
@@ -1511,14 +1475,12 @@
       foot_city: "Lisbon, Portugal",
       footer_text: "ZeroTukTours, Lisbon, Portugal",
       msg_general: "Hi! I'd like to book a tuk-tuk tour.",
-      msg_voucher: "Hi! I'd like to buy a gift voucher for a tuk-tuk tour."
     },
     pt: {
       title: "ZeroTukTours | Tours de Tuk-Tuk Elétrico em Lisboa",
       meta_description: "Tours privados em tuk-tuk 100% elétrico em Lisboa: Lisboa histórica, a rota do elétrico 28, Belém e as luzes de Natal. Reserva pelo WhatsApp.",
       cta_whatsapp: "Reservar no WhatsApp",
       nav_tours: "Tours",
-      nav_routes: "Rotas",
       nav_book: "Reservar",
       nav_faq: "Perguntas",
       nav_cta: "Reservar tour",
@@ -1588,10 +1550,7 @@
       note_friends: "Ótimo em grupo, pergunta sobre um segundo tuk-tuk para mais de 4 pessoas.",
       planner_result_prefix: "A tua combinação:",
       planner_cta: "Reservar este tour",
-      map_h2: "Cada rota, desenhada",
-      map_p: "Toca num tour para ver por onde passa.",
       map_stops: "Paragens",
-      map_cta: "Reservar este tour",
       map_note: "Mapa ilustrativo, sem escala. As paragens podem ser ajustadas no dia.",
       map_sample: "rota de exemplo, ajustada a ti",
       book_h2: "Reserva o teu tour",
@@ -1635,9 +1594,6 @@
       exc_3: "Gorjetas",
       meet_title: "Onde nos encontramos",
       meet_p: "No teu hotel no centro de Lisboa, no Terminal de Cruzeiros ou num ponto central à tua escolha. Confirmamos o local exato no WhatsApp.",
-      voucher_h2: "Oferece Lisboa",
-      voucher_p: "Qualquer rota pode ser um voucher de oferta. Diz-nos a rota e o nome, enviamos pronto a oferecer.",
-      voucher_cta: "Pedir um voucher",
       faq_h2: "Perguntas frequentes",
       faq1_q: "E se chover?",
       faq1_a: "O tuk-tuk fecha contra a chuva e o vento, e temos capas impermeáveis a bordo. Nos dias mais frescos há também mantas.",
@@ -1663,14 +1619,12 @@
       foot_city: "Lisboa, Portugal",
       footer_text: "ZeroTukTours, Lisboa, Portugal",
       msg_general: "Olá! Gostava de reservar um tour de tuk-tuk.",
-      msg_voucher: "Olá! Gostava de comprar um voucher de oferta para um tour de tuk-tuk."
     },
     fr: {
       title: "ZeroTukTours | Visites en Tuk-Tuk Électrique à Lisbonne",
       meta_description: "Visites privées en tuk-tuk 100% électrique à Lisbonne : Lisbonne historique, l'itinéraire du tram 28, Belém et les lumières de Noël. Réservez sur WhatsApp.",
       cta_whatsapp: "Réserver sur WhatsApp",
       nav_tours: "Visites",
-      nav_routes: "Itinéraires",
       nav_book: "Réserver",
       nav_faq: "Questions",
       nav_cta: "Réserver",
@@ -1740,10 +1694,7 @@
       note_friends: "Parfait en groupe, demandez-nous un second tuk-tuk au-delà de 4 personnes.",
       planner_result_prefix: "Votre choix idéal :",
       planner_cta: "Réserver cette visite",
-      map_h2: "Chaque itinéraire, dessiné",
-      map_p: "Touchez une visite pour voir où elle passe.",
       map_stops: "Arrêts",
-      map_cta: "Réserver cette visite",
       map_note: "Carte illustrative, sans échelle. Les arrêts peuvent être ajustés le jour même.",
       map_sample: "itinéraire d'exemple, adapté à vous",
       book_h2: "Réservez votre visite",
@@ -1787,9 +1738,6 @@
       exc_3: "Pourboires",
       meet_title: "Où se retrouver",
       meet_p: "À votre hôtel dans le centre de Lisbonne, au Terminal de Croisières ou à un point central de votre choix. Nous confirmons le lieu exact sur WhatsApp.",
-      voucher_h2: "Offrez Lisbonne",
-      voucher_p: "Chaque itinéraire peut devenir un bon cadeau. Indiquez-nous l'itinéraire et le nom, nous l'envoyons prêt à offrir.",
-      voucher_cta: "Demander un bon cadeau",
       faq_h2: "Questions fréquentes",
       faq1_q: "Et s'il pleut ?",
       faq1_a: "Le tuk-tuk se ferme contre la pluie et le vent, et nous avons des ponchos à bord. Les jours plus frais, il y a aussi des plaids.",
@@ -1815,14 +1763,12 @@
       foot_city: "Lisbonne, Portugal",
       footer_text: "ZeroTukTours, Lisbonne, Portugal",
       msg_general: "Bonjour ! Je voudrais réserver une visite en tuk-tuk.",
-      msg_voucher: "Bonjour ! Je voudrais acheter un bon cadeau pour une visite en tuk-tuk."
     },
     es: {
       title: "ZeroTukTours | Tours en Tuk-Tuk Eléctrico en Lisboa",
       meta_description: "Tours privados en tuk-tuk 100% eléctrico en Lisboa: Lisboa histórica, la ruta del tranvía 28, Belém y las luces de Navidad. Reserva por WhatsApp.",
       cta_whatsapp: "Reservar por WhatsApp",
       nav_tours: "Tours",
-      nav_routes: "Rutas",
       nav_book: "Reservar",
       nav_faq: "Preguntas",
       nav_cta: "Reservar tour",
@@ -1892,10 +1838,7 @@
       note_friends: "Genial en grupo, pregunta por un segundo tuk-tuk si sois más de 4.",
       planner_result_prefix: "Tu combinación:",
       planner_cta: "Reservar este tour",
-      map_h2: "Cada ruta, dibujada",
-      map_p: "Toca un tour para ver por dónde pasa.",
       map_stops: "Paradas",
-      map_cta: "Reservar este tour",
       map_note: "Mapa ilustrativo, sin escala. Las paradas se pueden ajustar el mismo día.",
       map_sample: "ruta de ejemplo, ajustada a ti",
       book_h2: "Reserva tu tour",
@@ -1939,9 +1882,6 @@
       exc_3: "Propinas",
       meet_title: "Dónde nos encontramos",
       meet_p: "En tu hotel en el centro de Lisboa, en la Terminal de Cruceros o en un punto céntrico que elijas. Confirmamos el lugar exacto por WhatsApp.",
-      voucher_h2: "Regala Lisboa",
-      voucher_p: "Cualquier ruta puede ser un vale regalo. Dinos la ruta y el nombre, te lo enviamos listo para regalar.",
-      voucher_cta: "Pedir un vale regalo",
       faq_h2: "Preguntas frecuentes",
       faq1_q: "¿Y si llueve?",
       faq1_a: "El tuk-tuk se cierra contra la lluvia y el viento, y llevamos chubasqueros a bordo. En los días más frescos también hay mantas.",
@@ -1967,7 +1907,6 @@
       foot_city: "Lisboa, Portugal",
       footer_text: "ZeroTukTours, Lisboa, Portugal",
       msg_general: "¡Hola! Me gustaría reservar un tour en tuk-tuk.",
-      msg_voucher: "¡Hola! Me gustaría comprar un vale regalo para un tour en tuk-tuk."
     }
   };
 
@@ -2097,11 +2036,12 @@
     if (!TOURS[id]) return;
     fTour.value = id;
     renderDurField(dur);
+    currentMapRoute = id;
+    renderRouteMap();
     document.getElementById("book").scrollIntoView({ block: "start" });
-    setTimeout(function () { fDate.focus({ preventScroll: true }); }, 350);
   }
 
-  fTour.addEventListener("change", function () { renderDurField(); });
+  fTour.addEventListener("change", function () { renderDurField(); currentMapRoute = fTour.value; renderRouteMap(); });
   fPeople.addEventListener("change", updatePeopleNote);
   fDate.addEventListener("input", clearDateError);
 
@@ -2138,9 +2078,7 @@
   });
   document.querySelectorAll("[data-explore]").forEach(function (btn) {
     btn.addEventListener("click", function () {
-      currentMapRoute = btn.getAttribute("data-explore");
-      renderRouteMap();
-      document.getElementById("maps").scrollIntoView({ block: "start" });
+      selectTour(btn.getAttribute("data-explore"));
     });
   });
 
@@ -2369,27 +2307,12 @@
     return { x: x0, y: y0, w: bw, h: bh };
   }
 
-  function renderMapChips(d) {
-    var wrap = document.getElementById("map-chips");
-    if (!wrap) return;
-    wrap.innerHTML = "";
-    visibleTours().forEach(function (id) {
-      var b = document.createElement("button");
-      b.type = "button";
-      b.className = "map-chip" + (id === currentMapRoute ? " active" : "");
-      b.setAttribute("aria-pressed", id === currentMapRoute ? "true" : "false");
-      b.textContent = d[id + "_name"];
-      b.addEventListener("click", function () { currentMapRoute = id; renderRouteMap(); });
-      wrap.appendChild(b);
-    });
-  }
-
   function renderRouteMap() {
     var svg = document.getElementById("route-map");
     if (!svg) return;
     var d = dict();
+    if (fTour.value) currentMapRoute = fTour.value;
     if (visibleTours().indexOf(currentMapRoute) === -1) currentMapRoute = visibleTours()[0];
-    renderMapChips(d);
 
     var stops = MAP_ROUTES[currentMapRoute];
     var pts = stops.map(function (key) { return MAP_PLACES[key]; });
@@ -2400,7 +2323,7 @@
     var width = svg.getBoundingClientRect().width || 600;
     var u = vb.w / width;
     function px(n) { return (n * u).toFixed(2); }
-    var showLabels = width >= 480;
+    var showLabels = width >= 340;
 
     document.getElementById("sketch-disp").setAttribute("scale", px(2.2));
     document.getElementById("sketch-turb").setAttribute("baseFrequency", (0.035 * u).toFixed(4));
@@ -2465,7 +2388,6 @@
       list.appendChild(li);
     });
 
-    document.getElementById("map-cta").onclick = function () { selectTour(currentMapRoute); };
   }
 
   var mapResizeTimer = null;
