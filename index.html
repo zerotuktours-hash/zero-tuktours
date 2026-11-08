@@ -237,6 +237,27 @@
     border-top: 3px solid var(--electrico);
   }
 
+
+  /* ---- Reviews ---- */
+  .reviews { background: var(--paper); padding: 72px 32px 24px; }
+  .rv-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+  .rv-head h2 { font-size: clamp(28px, 4vw, 40px); color: var(--tejo-deep); max-width: 16ch; text-wrap: balance; }
+  .rv-score { display: inline-flex; align-items: center; gap: 10px; color: var(--tejo-deep); font-size: 14px; font-weight: 500; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(12,30,60,0.3); }
+  .rv-big { font-family: 'Fraunces', serif; font-weight: 600; font-size: 30px; text-decoration: none; }
+  .rv-stars { color: #E7A800; letter-spacing: 1px; text-decoration: none; }
+  .rv-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .rv-card { margin: 0; background: #FFFFFF; border: 1px solid rgba(12,30,60,0.1); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 1px 2px rgba(12,30,60,0.05); }
+  .rv-card blockquote { margin: 0; font-size: 15px; line-height: 1.5; color: rgba(12,30,60,0.85); flex: 1; }
+  .rv-card figcaption { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 13px; }
+  .rv-card figcaption span { color: rgba(12,30,60,0.5); }
+  @media (max-width: 1000px) { .rv-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 720px) {
+    .reviews { padding: 52px 20px 8px; }
+    .rv-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 20px; gap: 12px; margin: 0 -20px; padding: 0 20px 8px; scrollbar-width: none; }
+    .rv-grid::-webkit-scrollbar { display: none; }
+    .rv-card { flex: 0 0 82%; scroll-snap-align: start; }
+  }
+
   /* ---- Why ---- */
   .why {
     background: var(--paper);
@@ -1069,7 +1090,7 @@
 <section class="hero">
   <img class="hero-bg" src="/img/hero-tuk-1200.jpg" srcset="/img/hero-tuk-700.jpg 700w, /img/hero-tuk-1200.jpg 1200w" sizes="(max-width: 720px) 100vw, 50vw" alt="A white tuk-tuk with passengers on a city street" width="1200" height="1707" fetchpriority="high">
   <div class="hero-inner">
-    <a class="hero-rating" href="https://share.google/blm7hhTl7XKbdPOWV" target="_blank" rel="noopener"><span class="stars" aria-hidden="true">★★★★★</span><b>5,0</b><span data-i18n="hero_rating">Google reviews</span></a>
+    <a class="hero-rating" href="https://search.google.com/local/reviews?placeid=ChIJH8rLvnoO_4cRIKuVReELICs" target="_blank" rel="noopener"><span class="stars" aria-hidden="true">★★★★★</span><b>5,0</b><span data-i18n="hero_rating">Google reviews</span></a>
     <h1 data-i18n="hero_h1">Lisbon, at a different pace.</h1>
     <div class="hero-ctas">
       <a class="hero-cta" href="#tours" data-i18n="hero_cta">Choose your tour</a>
@@ -1181,6 +1202,37 @@
     </div>
     <div class="board-note" data-i18n="board_note">Custom routes and hotel pickup available on request.</div>
     <div class="board-note" data-i18n="cancel_note">Free cancellation up to 24 hours before your tour.</div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="rv-head">
+      <h2 data-i18n="rv_h2">What our guests say</h2>
+      <a class="rv-score" href="https://search.google.com/local/reviews?placeid=ChIJH8rLvnoO_4cRIKuVReELICs" target="_blank" rel="noopener"><span class="rv-big">5,0</span><span class="rv-stars" aria-hidden="true">★★★★★</span><span data-i18n="rv_all">See all reviews on Google</span></a>
+    </div>
+    <div class="rv-grid">
+      <figure class="rv-card">
+        <div class="rv-stars" aria-label="5/5">★★★★★</div>
+        <blockquote lang="en">“We had the best day on our Tuk Tuk with Enzo! Such a fun way to see the city and take a break from the hills!”</blockquote>
+        <figcaption><b>Natalie Mendel</b><span>Google</span></figcaption>
+      </figure>
+      <figure class="rv-card">
+        <div class="rv-stars" aria-label="5/5">★★★★★</div>
+        <blockquote lang="pt">“Excelente Tour pela parte antiga da cidade!! O condutor era formado em história portuguesa o que tornou o tour muito melhor !!”</blockquote>
+        <figcaption><b>Luis Ferreira</b><span>Google</span></figcaption>
+      </figure>
+      <figure class="rv-card">
+        <div class="rv-stars" aria-label="5/5">★★★★★</div>
+        <blockquote lang="en">“Matteo was super friendly and saved me a lot of time - not to mention sweat- trying to figure out how to make the most of a visit to Belem. He also had a great recommendation for lunch.”</blockquote>
+        <figcaption><b>Francis Caron</b><span>Google</span></figcaption>
+      </figure>
+      <figure class="rv-card">
+        <div class="rv-stars" aria-label="5/5">★★★★★</div>
+        <blockquote lang="en">“Very good tour - so informative and the driver was so so friendly! Clean environment and good energy!”</blockquote>
+        <figcaption><b>Sonali Wadhwa</b><span>Google</span></figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -1483,6 +1535,19 @@
 <script src="/codes.js"></script>
 <script>
   var WHATSAPP_NUMBER = "351912024075";
+  /* Conta os cliques no WhatsApp na folha de gestão (separador 📊 Cliques WhatsApp). Não guarda dados pessoais. */
+  var TRACK_URL = "https://script.google.com/macros/s/AKfycbzEQePDTVwPDSSeLjwL6zAJ49jwgvzTZbNaNOY4PmPzukMam7RK7WyDjRsd9viMZgws/exec";
+  function trackClick(data) {
+    try {
+      var body = new URLSearchParams();
+      body.set("c", "1");
+      for (var k in data) body.set(k, String(data[k] == null ? "" : data[k]).slice(0, 40));
+      body.set("ref", PARTNER || "");
+      body.set("lang", currentLang);
+      if (navigator.sendBeacon) navigator.sendBeacon(TRACK_URL, body);
+      else fetch(TRACK_URL, { method: "POST", body: body, mode: "no-cors", keepalive: true });
+    } catch (e) {}
+  }
   var currentLang = "en";
   var PARTNER = null;
 
@@ -1500,6 +1565,8 @@
       hero_p: "Private tours in a 100% electric tuk-tuk, for up to 4 people. No fumes, no rush, no hills to climb.",
       hero_cta: "Choose your tour",
       hero_rating: "Google reviews",
+      rv_h2: "What our guests say",
+      rv_all: "See all reviews on Google",
       elec_label: "100% electric",
       hero_fine: "Reply usually within the hour",
       why_h2: "Built for how the city actually works.",
@@ -1644,6 +1711,8 @@
       hero_p: "Tours privados num tuk-tuk 100% elétrico, até 4 pessoas. Sem fumos, sem pressa, sem subidas a pé.",
       hero_cta: "Escolhe o teu tour",
       hero_rating: "nas opiniões do Google",
+      rv_h2: "O que dizem os nossos clientes",
+      rv_all: "Ver todas as opiniões no Google",
       elec_label: "100% elétrico",
       hero_fine: "Normalmente respondemos em menos de uma hora",
       why_h2: "Feito para a forma como a cidade funciona.",
@@ -1788,6 +1857,8 @@
       hero_p: "Visites privées en tuk-tuk 100% électrique, jusqu'à 4 personnes. Sans fumée, sans hâte, sans côtes à grimper.",
       hero_cta: "Choisir votre visite",
       hero_rating: "sur les avis Google",
+      rv_h2: "Ce que disent nos clients",
+      rv_all: "Voir tous les avis sur Google",
       elec_label: "100% électrique",
       hero_fine: "Réponse généralement en moins d'une heure",
       why_h2: "Pensé pour le fonctionnement réel de la ville.",
@@ -1932,6 +2003,8 @@
       hero_p: "Tours privados en un tuk-tuk 100% eléctrico, hasta 4 personas. Sin humos, sin prisa, sin cuestas que subir.",
       hero_cta: "Elige tu tour",
       hero_rating: "en las reseñas de Google",
+      rv_h2: "Lo que dicen nuestros clientes",
+      rv_all: "Ver todas las reseñas en Google",
       elec_label: "100% eléctrico",
       hero_fine: "Normalmente respondemos en menos de una hora",
       why_h2: "Pensado para cómo funciona realmente la ciudad.",
@@ -2267,6 +2340,7 @@
     if (n > 4) lines.push(d.msg_tuks + ": " + Math.ceil(n / 4));
     if (PARTNER) lines.push(d.msg_code + ": " + PARTNER + " " + d.msg_code_suffix);
     var url = waUrl(lines.join("\n"));
+    trackClick({ tour: id, dur: currentDur(), pax: n, data: fDate.value });
     var w = window.open(url, "_blank");
     if (w) { try { w.opener = null; } catch (err) {} } else { window.location.href = url; }
   });
@@ -2416,6 +2490,10 @@
     document.querySelectorAll("[data-wa-msg]").forEach(function (el) {
       var key = el.getAttribute("data-wa-msg");
       el.setAttribute("href", waUrl(withCode(d[key] || "")));
+      if (!el.getAttribute("data-tracked")) {
+        el.setAttribute("data-tracked", "1");
+        el.addEventListener("click", function () { trackClick({ tour: "geral" }); });
+      }
     });
 
     document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {

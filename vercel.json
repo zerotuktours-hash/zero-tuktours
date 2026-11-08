@@ -1,5 +1,9 @@
 {
   "rewrites": [
     { "source": "/r/:code", "destination": "/index.html" }
+  ],
+  "redirects": [
+    { "source": "/review", "destination": "https://search.google.com/local/writereview?placeid=ChIJH8rLvnoO_4cRIKuVReELICs", "permanent": false },
+    { "source": "/reviews", "destination": "https://search.google.com/local/reviews?placeid=ChIJH8rLvnoO_4cRIKuVReELICs", "permanent": false }
   ]
 }
