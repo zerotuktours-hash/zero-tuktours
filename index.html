@@ -817,6 +817,31 @@
   .book-submit:hover { transform: translateY(-1px); }
   .book-fine { font-size: 13px; color: rgba(12,30,60,0.55); max-width: 46ch; }
 
+
+  /* ---- Groups / companies ---- */
+  .groups { background: var(--tejo-deep); color: var(--paper); padding: 88px 32px; }
+  .grp-wrap { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
+  .grp-kicker { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--electrico); }
+  .grp-text h2 { margin-top: 10px; font-size: clamp(28px, 4vw, 40px); text-wrap: balance; }
+  .grp-text p { margin-top: 14px; color: rgba(246,248,252,0.78); font-size: 16px; max-width: 46ch; }
+  .grp-list { list-style: none; margin-top: 24px; display: grid; gap: 12px; }
+  .grp-list li { position: relative; padding-left: 30px; font-size: 15.5px; }
+  .grp-list li::before { content: ""; position: absolute; left: 0; top: 3px; width: 18px; height: 18px; border-radius: 50%; background: var(--electrico) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%230C1E3C' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 12px no-repeat; }
+  .grp-card { background: #FFFFFF; color: var(--ink); border-radius: 12px; padding: 28px; }
+  .grp-card textarea { font-family: 'IBM Plex Sans', sans-serif; font-size: 16px; color: var(--ink); border: 1px solid rgba(12,30,60,0.28); border-radius: 3px; padding: 12px; width: 100%; resize: vertical; }
+  .grp-card textarea:focus-visible { outline: 2px solid var(--tejo); outline-offset: 2px; }
+  .grp-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .grp-msg { margin-top: 16px; padding: 12px 14px; border-radius: 8px; font-size: 14.5px; font-weight: 500; background: #E6F4EC; color: #1F6B43; }
+  .grp-msg.err { background: #FDECEA; color: var(--error); }
+  .tour-price .pp { width: 100%; font-size: 13px; color: var(--tejo); font-weight: 500; }
+  .tour-card.season .tour-price .pp { color: var(--electrico); }
+  .book-price .bp { width: 100%; font-size: 13px; font-weight: 500; color: var(--tejo); }
+  @media (max-width: 720px) {
+    .groups { padding: 56px 20px; }
+    .grp-wrap { grid-template-columns: 1fr; gap: 28px; }
+    .grp-card { padding: 20px 16px; }
+  }
+
   /* ---- Numbers ---- */
   .nums { background: var(--paper); padding: 72px 32px 24px; }
   .nums-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
@@ -1073,6 +1098,7 @@
     <nav class="nav-links" aria-label="Main">
       <a href="#tours" data-i18n="nav_tours">Tours</a>
       <a href="#book" data-i18n="nav_book">Book</a>
+      <a href="#grupos" data-i18n="nav_groups">Groups</a>
       <a href="#faq" data-i18n="nav_faq">FAQ</a>
     </nav>
     <div class="nav-right">
@@ -1467,6 +1493,46 @@
   </div>
 </section>
 
+<section class="groups" id="grupos">
+  <div class="wrap grp-wrap">
+    <div class="grp-text">
+      <div class="grp-kicker" data-i18n="grp_kicker">Companies & events</div>
+      <h2 data-i18n="grp_h2">Bigger groups, company outings and events</h2>
+      <p data-i18n="grp_p">Several tuk-tuks moving together through Lisbon, with a route built around your programme. Tell us what you need and we send a proposal by e-mail.</p>
+      <ul class="grp-list">
+        <li data-i18n="grp_b1">Team building and incentive trips</li>
+        <li data-i18n="grp_b2">Conference and congress guests</li>
+        <li data-i18n="grp_b3">Transfers, weddings and private events</li>
+        <li data-i18n="grp_b4">Invoice for your company</li>
+      </ul>
+    </div>
+    <form class="grp-card" id="grp-form" novalidate>
+      <div class="book-grid">
+        <div class="field"><label for="g-name" data-i18n="g_name">Name</label><input id="g-name" name="nome" autocomplete="name" maxlength="80"></div>
+        <div class="field"><label for="g-company" data-i18n="g_company">Company (optional)</label><input id="g-company" name="empresa" autocomplete="organization" maxlength="80"></div>
+        <div class="field"><label for="g-email" data-i18n="g_email">E-mail</label><input id="g-email" name="email" type="email" autocomplete="email" maxlength="120"></div>
+        <div class="field"><label for="g-phone" data-i18n="g_phone">Phone / WhatsApp</label><input id="g-phone" name="tel" type="tel" autocomplete="tel" maxlength="30"></div>
+        <div class="field"><label for="g-people" data-i18n="g_people">Number of people</label><input id="g-people" name="pessoas" type="number" min="5" max="500" inputmode="numeric" value="12"></div>
+        <div class="field"><label for="g-date" data-i18n="g_date">Date (if you know it)</label><input id="g-date" name="data" type="date"></div>
+        <div class="field field-full"><label for="g-type" data-i18n="g_type">Type of event</label>
+          <select id="g-type" name="tipo">
+            <option value="team" data-i18n="gt_team">Team building / incentive</option>
+            <option value="congress" data-i18n="gt_congress">Conference / congress</option>
+            <option value="transfer" data-i18n="gt_transfer">Transfer or wedding</option>
+            <option value="other" data-i18n="gt_other">Other</option>
+          </select></div>
+        <div class="field field-full"><label for="g-msg" data-i18n="g_msg">Tell us a bit more</label><textarea id="g-msg" name="msg" rows="4" maxlength="1500" data-i18n-ph="g_msg_ph" placeholder="Programme, times, places you'd like to include…"></textarea></div>
+        <div class="grp-hp" aria-hidden="true"><label for="g-web">Website</label><input id="g-web" name="website" tabindex="-1" autocomplete="off"></div>
+      </div>
+      <div class="book-foot">
+        <button type="submit" class="book-submit" id="g-submit" data-i18n="g_submit">Request a proposal</button>
+        <div class="book-fine" data-i18n="g_fine">We reply by e-mail within 24 hours. No commitment.</div>
+      </div>
+      <div class="grp-msg" id="g-status" role="status" aria-live="polite" hidden></div>
+    </form>
+  </div>
+</section>
+
 <section class="faq" id="faq">
   <div class="wrap">
     <h2 data-i18n="faq_h2">Questions</h2>
@@ -1569,6 +1635,34 @@
       hero_rating: "Google reviews",
       rv_h2: "What our guests say",
       rv_all: "See all reviews on Google",
+      pp_note: "≈ {p} per person (group of 4)",
+      pp_form: "≈ {p} per person",
+      nav_groups: "Groups",
+      grp_kicker: "Companies & events",
+      grp_h2: "Bigger groups, company outings and events",
+      grp_p: "Several tuk-tuks moving together through Lisbon, with a route built around your programme. Tell us what you need and we send a proposal by e-mail.",
+      grp_b1: "Team building and incentive trips",
+      grp_b2: "Conference and congress guests",
+      grp_b3: "Transfers, weddings and private events",
+      grp_b4: "Invoice for your company",
+      g_name: "Name",
+      g_company: "Company (optional)",
+      g_email: "E-mail",
+      g_phone: "Phone / WhatsApp",
+      g_date: "Date (if you know it)",
+      g_people: "Number of people",
+      g_type: "Type of event",
+      gt_team: "Team building / incentive",
+      gt_congress: "Conference / congress",
+      gt_transfer: "Transfer or wedding",
+      gt_other: "Other",
+      g_msg: "Tell us a bit more",
+      g_msg_ph: "Programme, times, places you'd like to include…",
+      g_submit: "Request a proposal",
+      g_fine: "We reply by e-mail within 24 hours. No commitment.",
+      g_ok: "Thank you! We received your request and will reply by e-mail within 24 hours.",
+      g_err: "Something went wrong. Please write to us on WhatsApp.",
+      g_need: "Please fill in your name and an e-mail or phone number.",
       elec_label: "100% electric",
       hero_fine: "Reply usually within the hour",
       why_h2: "Built for a city of seven hills.",
@@ -1715,6 +1809,34 @@
       hero_rating: "nas opiniões do Google",
       rv_h2: "O que dizem os nossos clientes",
       rv_all: "Ver todas as opiniões no Google",
+      pp_note: "≈ {p} por pessoa (grupo de 4)",
+      pp_form: "≈ {p} por pessoa",
+      nav_groups: "Grupos",
+      grp_kicker: "Empresas e eventos",
+      grp_h2: "Grupos grandes, empresas e eventos",
+      grp_p: "Vários tuk-tuks a circular juntos por Lisboa, com uma rota feita à volta do vosso programa. Diz-nos o que precisas e enviamos uma proposta por e-mail.",
+      grp_b1: "Team building e viagens de incentivo",
+      grp_b2: "Convidados de conferências e congressos",
+      grp_b3: "Transfers, casamentos e eventos privados",
+      grp_b4: "Fatura em nome da empresa",
+      g_name: "Nome",
+      g_company: "Empresa (opcional)",
+      g_email: "E-mail",
+      g_phone: "Telefone / WhatsApp",
+      g_date: "Data (se já souberes)",
+      g_people: "Número de pessoas",
+      g_type: "Tipo de evento",
+      gt_team: "Team building / incentivo",
+      gt_congress: "Conferência / congresso",
+      gt_transfer: "Transfer ou casamento",
+      gt_other: "Outro",
+      g_msg: "Conta-nos um pouco mais",
+      g_msg_ph: "Programa, horários, sítios que gostavas de incluir…",
+      g_submit: "Pedir proposta",
+      g_fine: "Respondemos por e-mail em 24 horas. Sem compromisso.",
+      g_ok: "Obrigado! Recebemos o teu pedido e respondemos por e-mail em 24 horas.",
+      g_err: "Algo correu mal. Escreve-nos no WhatsApp, por favor.",
+      g_need: "Preenche o nome e um e-mail ou telefone.",
       elec_label: "100% elétrico",
       hero_fine: "Normalmente respondemos em menos de uma hora",
       why_h2: "Pensado para uma cidade de sete colinas.",
@@ -1861,6 +1983,34 @@
       hero_rating: "sur les avis Google",
       rv_h2: "Ce que disent nos clients",
       rv_all: "Voir tous les avis sur Google",
+      pp_note: "≈ {p} par personne (groupe de 4)",
+      pp_form: "≈ {p} par personne",
+      nav_groups: "Groupes",
+      grp_kicker: "Entreprises et événements",
+      grp_h2: "Grands groupes, entreprises et événements",
+      grp_p: "Plusieurs tuk-tuks qui circulent ensemble dans Lisbonne, avec un itinéraire construit autour de votre programme. Dites-nous ce dont vous avez besoin et nous vous envoyons une proposition par e-mail.",
+      grp_b1: "Team building et voyages incentive",
+      grp_b2: "Invités de conférences et congrès",
+      grp_b3: "Transferts, mariages et événements privés",
+      grp_b4: "Facture au nom de votre entreprise",
+      g_name: "Nom",
+      g_company: "Entreprise (facultatif)",
+      g_email: "E-mail",
+      g_phone: "Téléphone / WhatsApp",
+      g_date: "Date (si vous la connaissez)",
+      g_people: "Nombre de personnes",
+      g_type: "Type d'événement",
+      gt_team: "Team building / incentive",
+      gt_congress: "Conférence / congrès",
+      gt_transfer: "Transfert ou mariage",
+      gt_other: "Autre",
+      g_msg: "Dites-nous-en un peu plus",
+      g_msg_ph: "Programme, horaires, lieux à inclure…",
+      g_submit: "Demander une proposition",
+      g_fine: "Nous répondons par e-mail sous 24 heures. Sans engagement.",
+      g_ok: "Merci ! Nous avons bien reçu votre demande et répondrons par e-mail sous 24 heures.",
+      g_err: "Un problème est survenu. Écrivez-nous sur WhatsApp, s'il vous plaît.",
+      g_need: "Indiquez votre nom et un e-mail ou un téléphone.",
       elec_label: "100% électrique",
       hero_fine: "Réponse généralement en moins d'une heure",
       why_h2: "Pensé pour une ville aux sept collines.",
@@ -2007,6 +2157,34 @@
       hero_rating: "en las reseñas de Google",
       rv_h2: "Lo que dicen nuestros clientes",
       rv_all: "Ver todas las reseñas en Google",
+      pp_note: "≈ {p} por persona (grupo de 4)",
+      pp_form: "≈ {p} por persona",
+      nav_groups: "Grupos",
+      grp_kicker: "Empresas y eventos",
+      grp_h2: "Grupos grandes, empresas y eventos",
+      grp_p: "Varios tuk-tuks recorriendo Lisboa juntos, con una ruta pensada para vuestro programa. Cuéntanos lo que necesitas y te enviamos una propuesta por e-mail.",
+      grp_b1: "Team building y viajes de incentivo",
+      grp_b2: "Invitados de conferencias y congresos",
+      grp_b3: "Traslados, bodas y eventos privados",
+      grp_b4: "Factura a nombre de tu empresa",
+      g_name: "Nombre",
+      g_company: "Empresa (opcional)",
+      g_email: "E-mail",
+      g_phone: "Teléfono / WhatsApp",
+      g_date: "Fecha (si ya la sabes)",
+      g_people: "Número de personas",
+      g_type: "Tipo de evento",
+      gt_team: "Team building / incentivo",
+      gt_congress: "Conferencia / congreso",
+      gt_transfer: "Traslado o boda",
+      gt_other: "Otro",
+      g_msg: "Cuéntanos un poco más",
+      g_msg_ph: "Programa, horarios, lugares que te gustaría incluir…",
+      g_submit: "Pedir propuesta",
+      g_fine: "Respondemos por e-mail en 24 horas. Sin compromiso.",
+      g_ok: "¡Gracias! Hemos recibido tu solicitud y te responderemos por e-mail en 24 horas.",
+      g_err: "Algo ha fallado. Escríbenos por WhatsApp, por favor.",
+      g_need: "Indica tu nombre y un e-mail o teléfono.",
       elec_label: "100% eléctrico",
       hero_fine: "Normalmente respondemos en menos de una hora",
       why_h2: "Pensado para una ciudad de siete colinas.",
@@ -2153,6 +2331,34 @@
       hero_rating: "in den Google-Bewertungen",
       rv_h2: "Das sagen unsere Gäste",
       rv_all: "Alle Bewertungen auf Google ansehen",
+      pp_note: "≈ {p} pro Person (Gruppe à 4)",
+      pp_form: "≈ {p} pro Person",
+      nav_groups: "Gruppen",
+      grp_kicker: "Firmen und Events",
+      grp_h2: "Größere Gruppen, Firmen und Events",
+      grp_p: "Mehrere Tuk-Tuks gemeinsam durch Lissabon, mit einer Route rund um euer Programm. Sag uns, was du brauchst, und wir schicken dir ein Angebot per E-Mail.",
+      grp_b1: "Teambuilding und Incentive-Reisen",
+      grp_b2: "Gäste von Konferenzen und Kongressen",
+      grp_b3: "Transfers, Hochzeiten und private Events",
+      grp_b4: "Rechnung auf deine Firma",
+      g_name: "Name",
+      g_company: "Firma (optional)",
+      g_email: "E-Mail",
+      g_phone: "Telefon / WhatsApp",
+      g_date: "Datum (falls bekannt)",
+      g_people: "Anzahl Personen",
+      g_type: "Art der Veranstaltung",
+      gt_team: "Teambuilding / Incentive",
+      gt_congress: "Konferenz / Kongress",
+      gt_transfer: "Transfer oder Hochzeit",
+      gt_other: "Sonstiges",
+      g_msg: "Erzähl uns etwas mehr",
+      g_msg_ph: "Programm, Zeiten, Orte, die dabei sein sollen…",
+      g_submit: "Angebot anfragen",
+      g_fine: "Wir antworten innerhalb von 24 Stunden per E-Mail. Unverbindlich.",
+      g_ok: "Danke! Wir haben deine Anfrage erhalten und antworten innerhalb von 24 Stunden per E-Mail.",
+      g_err: "Etwas ist schiefgelaufen. Bitte schreib uns per WhatsApp.",
+      g_need: "Bitte gib deinen Namen und eine E-Mail oder Telefonnummer an.",
       elec_label: "100% elektrisch",
       hero_fine: "Antwort meist innerhalb einer Stunde",
       why_h2: "Gemacht für eine Stadt auf sieben Hügeln.",
@@ -2299,6 +2505,34 @@
       hero_rating: "nelle recensioni Google",
       rv_h2: "Cosa dicono i nostri ospiti",
       rv_all: "Vedi tutte le recensioni su Google",
+      pp_note: "≈ {p} a persona (gruppo di 4)",
+      pp_form: "≈ {p} a persona",
+      nav_groups: "Gruppi",
+      grp_kicker: "Aziende ed eventi",
+      grp_h2: "Gruppi numerosi, aziende ed eventi",
+      grp_p: "Più tuk-tuk che girano insieme per Lisbona, con un percorso costruito sul vostro programma. Dicci di cosa hai bisogno e ti inviamo una proposta via e-mail.",
+      grp_b1: "Team building e viaggi incentive",
+      grp_b2: "Ospiti di conferenze e congressi",
+      grp_b3: "Transfer, matrimoni ed eventi privati",
+      grp_b4: "Fattura intestata alla tua azienda",
+      g_name: "Nome",
+      g_company: "Azienda (facoltativo)",
+      g_email: "E-mail",
+      g_phone: "Telefono / WhatsApp",
+      g_date: "Data (se la sai già)",
+      g_people: "Numero di persone",
+      g_type: "Tipo di evento",
+      gt_team: "Team building / incentive",
+      gt_congress: "Conferenza / congresso",
+      gt_transfer: "Transfer o matrimonio",
+      gt_other: "Altro",
+      g_msg: "Raccontaci qualcosa in più",
+      g_msg_ph: "Programma, orari, luoghi da includere…",
+      g_submit: "Richiedi una proposta",
+      g_fine: "Rispondiamo via e-mail entro 24 ore. Senza impegno.",
+      g_ok: "Grazie! Abbiamo ricevuto la tua richiesta e ti risponderemo via e-mail entro 24 ore.",
+      g_err: "Qualcosa è andato storto. Scrivici su WhatsApp, per favore.",
+      g_need: "Inserisci il nome e un'e-mail o un telefono.",
       elec_label: "100% elettrico",
       hero_fine: "Di solito rispondiamo entro un'ora",
       why_h2: "Pensato per una città sui sette colli.",
@@ -2470,7 +2704,8 @@
       if (!t || !box) return;
       var base = PRICES[t.durs[0]];
       box.innerHTML = (t.durs.length > 1 ? '<span class="pf">' + d.price_from + "</span>" : "") +
-        priceHTML(base, "p") + '<span class="pu">' + d.price_unit + "</span>";
+        priceHTML(base, "p") + '<span class="pu">' + d.price_unit + "</span>" +
+        '<span class="pp">' + d.pp_note.replace("{p}", money(Math.round(finalPrice(base) / 4))) + "</span>";
     });
   }
 
@@ -2483,6 +2718,7 @@
     var v = Math.ceil(n / 4);
     var html = '<span class="bl">' + d.f_price + "</span>" + priceHTML(base, "b") + '<span class="bd">' + d.price_unit + "</span>";
     if (v > 1) html += '<span class="bd">· ' + d.price_total.replace("{v}", v).replace("{t}", money(finalPrice(base) * v)) + "</span>";
+    html += '<span class="bp">' + d.pp_form.replace("{p}", money(Math.round(finalPrice(base) * v / n))) + "</span>";
     box.innerHTML = html;
   }
 
@@ -2648,6 +2884,33 @@
     });
   });
 
+  /* ---- Pedido de grupo / empresa: vai para a folha e por e-mail (Apps Script) ---- */
+  (function () {
+    var gf = document.getElementById("grp-form");
+    if (!gf) return;
+    var status = document.getElementById("g-status");
+    function show(msg, err) { status.textContent = msg; status.className = "grp-msg" + (err ? " err" : ""); status.hidden = false; }
+    gf.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var d = dict();
+      var v = function (id) { return (document.getElementById(id).value || "").trim(); };
+      if (!v("g-name") || (!v("g-email") && !v("g-phone"))) { show(d.g_need, true); return; }
+      var btn = document.getElementById("g-submit");
+      btn.disabled = true;
+      var body = new URLSearchParams();
+      body.set("t", "grupo");
+      body.set("nome", v("g-name")); body.set("empresa", v("g-company")); body.set("email", v("g-email"));
+      body.set("tel", v("g-phone")); body.set("pessoas", v("g-people")); body.set("data", v("g-date"));
+      body.set("tipo", document.getElementById("g-type").value); body.set("msg", v("g-msg"));
+      body.set("website", v("g-web")); body.set("lang", currentLang); body.set("ref", PARTNER || "");
+      // Resposta opaca (no-cors): se o pedido sair, o Apps Script grava e envia o e-mail.
+      fetch(TRACK_URL, { method: "POST", body: body, mode: "no-cors" })
+        .then(function () { show(d.g_ok, false); gf.reset(); })
+        .catch(function () { show(d.g_err, true); })
+        .then(function () { btn.disabled = false; });
+    });
+  })();
+
   /* ---- Planner ---- */
   var planQuiz = { time: null, interest: null, who: null };
 
@@ -2788,6 +3051,11 @@
         el.setAttribute("data-tracked", "1");
         el.addEventListener("click", function () { trackClick({ tour: "geral" }); });
       }
+    });
+
+    document.querySelectorAll("[data-i18n-ph]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-ph");
+      if (d[key]) el.setAttribute("placeholder", d[key]);
     });
 
     document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
