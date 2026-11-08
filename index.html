@@ -177,10 +177,17 @@
     background: linear-gradient(180deg, rgba(12,30,60,0.10) 0%, rgba(12,30,60,0.05) 35%, rgba(12,30,60,0.78) 100%);
   }
   @media (min-width: 721px) {
-    .hero { background: var(--tejo); align-items: center; }
-    .hero-bg { left: auto; right: 0; width: 52%; object-position: 70% 70%; }
-    .hero::after { background: linear-gradient(90deg, var(--tejo) 0%, var(--tejo) 48%, rgba(29,79,154,0) 60%); }
-    .hero h1 { text-shadow: none; }
+    .hero { background: var(--tejo); align-items: center; min-height: clamp(460px, 64vh, 580px); }
+    .hero-bg {
+      top: 44px; left: auto; height: calc(100% - 88px);
+      right: calc(max(0px, (100% - 1080px) / 2) + 32px);
+      width: min(400px, 40%);
+      border-radius: 16px;
+      object-position: 50% 82%;
+      box-shadow: 0 18px 44px rgba(8,22,48,0.35);
+    }
+    .hero::after { display: none; }
+    .hero .hero-inner h1 { text-shadow: none; }
   }
 
   .hero-inner {
@@ -639,7 +646,9 @@
   .bk-fields { grid-area: fields; align-content: start; }
   .bk-route {
     grid-area: route;
-    align-self: start;
+    position: relative;
+    align-self: stretch;
+    min-height: 380px;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 14px;
@@ -716,7 +725,7 @@
     .rg-next { right: 8px; }
   }
   @media (prefers-reduced-motion: reduce) { .rg-track { scroll-behavior: auto; } }
-  .map-svg { width: 100%; height: auto; display: block; border-radius: 6px; background: #EEF3FA; }
+  .map-svg { position: absolute; top: 14px; left: 14px; width: calc(100% - 28px); height: calc(100% - 28px); display: block; border-radius: 6px; background: #EEF3FA; }
   .map-svg .nss { vector-effect: non-scaling-stroke; }
   .map-route-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 24px; line-height: 1.1; }
   .map-route-meta { margin-top: 6px; font-size: 14px; color: rgba(12,30,60,0.55); }
@@ -962,7 +971,8 @@
     .book-layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: "tour" "gallery" "route" "side" "fields"; grid-template-rows: auto; }
     .bk-tour { max-width: none; }
     .bk-side { border-top: 0; padding: 0 2px 6px; }
-    .bk-route { padding: 0; border: 0; background: transparent; }
+    .bk-route { padding: 0; border: 0; background: transparent; min-height: 0; }
+    .map-svg { position: static; width: 100%; height: auto; aspect-ratio: 4 / 3; }
     .route-gallery .rg-slide, .rg-track { border-radius: 10px; }
     .book { padding: 56px 20px; }
     .book-card { padding: 18px 14px; }
@@ -2662,15 +2672,17 @@
     return d;
   }
 
-  function fitViewBox(pts) {
+  function fitViewBox(pts, aspect) {
+    aspect = aspect && isFinite(aspect) ? Math.min(Math.max(aspect, 0.6), 2) : 4 / 3;
     var xs = pts.map(function (p) { return p.x; }), ys = pts.map(function (p) { return p.y; });
     var minX = Math.min.apply(null, xs), maxX = Math.max.apply(null, xs);
     var minY = Math.min.apply(null, ys), maxY = Math.max.apply(null, ys);
     var pad = 38;
     var bw = maxX - minX + pad * 2, bh = maxY - minY + pad * 2;
-    if (bw / bh < 4 / 3) bw = bh * 4 / 3; else bh = bw * 3 / 4;
-    if (bw < 160) { bw = 160; bh = 120; }
-    if (bw > 400) { bw = 400; bh = 300; }
+    if (bw / bh < aspect) bw = bh * aspect; else bh = bw / aspect;
+    if (bw < 160) { bw = 160; bh = bw / aspect; }
+    if (bh > 300) { bh = 300; bw = bh * aspect; }
+    if (bw > 400) { bw = 400; bh = bw / aspect; }
     var x0 = Math.min(Math.max((minX + maxX) / 2 - bw / 2, 0), 400 - bw);
     var y0 = Math.min(Math.max((minY + maxY) / 2 - bh / 2, 0), 300 - bh);
     return { x: x0, y: y0, w: bw, h: bh };
@@ -2686,11 +2698,12 @@
     var stops = MAP_ROUTES[currentMapRoute];
     renderGallery(currentMapRoute);
     var pts = stops.map(function (key) { return MAP_PLACES[key]; });
-    var vb = fitViewBox(pts);
+    var box = svg.getBoundingClientRect();
+    var vb = fitViewBox(pts, box.height > 0 ? box.width / box.height : 4 / 3);
     svg.setAttribute("viewBox", vb.x.toFixed(1) + " " + vb.y.toFixed(1) + " " + vb.w.toFixed(1) + " " + vb.h.toFixed(1));
 
     // u = unidades do mapa por pixel no ecrã, para marcadores e traços terem o mesmo tamanho em qualquer zoom
-    var width = svg.getBoundingClientRect().width || 600;
+    var width = box.width || 600;
     var u = vb.w / width;
     function px(n) { return (n * u).toFixed(2); }
     var showLabels = width >= 340;
@@ -2769,6 +2782,16 @@
   }
 
   var mapResizeTimer = null;
+  if (window.ResizeObserver && document.getElementById("route-map")) {
+    var lastMapBox = "";
+    new ResizeObserver(function (entries) {
+      var r = entries[0].contentRect, key = Math.round(r.width) + "x" + Math.round(r.height);
+      if (key === lastMapBox) return;
+      lastMapBox = key;
+      clearTimeout(mapResizeTimer);
+      mapResizeTimer = setTimeout(renderRouteMap, 60);
+    }).observe(document.getElementById("route-map"));
+  }
   window.addEventListener("resize", function () {
     clearTimeout(mapResizeTimer);
     mapResizeTimer = setTimeout(renderRouteMap, 150);
