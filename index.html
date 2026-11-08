@@ -626,6 +626,66 @@
     min-width: 0;
   }
   .map-side { padding: 0 4px 4px; }
+  .route-gallery { position: relative; min-width: 0; }
+  .rg-track {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    border-radius: 8px;
+    outline: none;
+  }
+  .rg-track::-webkit-scrollbar { display: none; }
+  .rg-slide {
+    position: relative;
+    flex: 0 0 100%;
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #DCE4F1;
+    scroll-snap-align: start;
+  }
+  .rg-slide img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+  .rg-slide figcaption {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    display: flex; align-items: center; gap: 9px;
+    padding: 28px 14px 12px;
+    background: linear-gradient(180deg, rgba(12,30,60,0) 0%, rgba(12,30,60,0.78) 100%);
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 600;
+    text-shadow: 0 1px 6px rgba(12,30,60,0.5);
+  }
+  .rg-slide figcaption .map-stop-num { color: var(--ink); text-shadow: none; }
+  .rg-nav {
+    position: absolute;
+    top: calc(50% - 22px);
+    width: 38px; height: 38px;
+    display: flex; align-items: center; justify-content: center;
+    border: 0; border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    color: var(--tejo-deep);
+    box-shadow: 0 3px 10px rgba(12,30,60,0.25);
+    cursor: pointer;
+  }
+  .rg-nav svg { width: 20px; height: 20px; }
+  .rg-nav[disabled] { opacity: 0; pointer-events: none; }
+  .rg-prev { left: 10px; }
+  .rg-next { right: 10px; }
+  .rg-dots { display: flex; justify-content: center; gap: 6px; margin-top: 10px; }
+  .rg-dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(12,30,60,0.22); transition: background 0.2s, transform 0.2s; }
+  .rg-dots span.on { background: var(--tejo); transform: scale(1.25); }
+  .map-stops li.has-photo { cursor: pointer; }
+  .map-stops li.has-photo:hover span:last-child { text-decoration: underline; }
+  @media (max-width: 720px) {
+    .rg-slide { flex-basis: 88%; }
+    .rg-nav { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .rg-track { scroll-behavior: auto; } }
   .map-svg { width: 100%; height: auto; display: block; border-radius: 6px; background: #EEF3FA; }
   .map-svg .nss { vector-effect: non-scaling-stroke; }
   .map-route-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 24px; line-height: 1.1; }
@@ -1191,6 +1251,12 @@
           <select id="f-tour" name="tour"></select>
         </div>
         <div class="bk-route" aria-live="polite">
+          <div class="route-gallery" id="route-gallery" hidden>
+            <div class="rg-track" id="rg-track" tabindex="0" aria-roledescription="carousel"></div>
+            <button type="button" class="rg-nav rg-prev" id="rg-prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button type="button" class="rg-nav rg-next" id="rg-next" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="rg-dots" id="rg-dots" aria-hidden="true"></div>
+          </div>
           <svg class="map-svg" id="route-map" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated map of the selected route">
             <defs>
               <filter id="sketch" filterUnits="userSpaceOnUse" x="0" y="0" width="400" height="300">
@@ -2400,6 +2466,92 @@
     t6: ["camoes", "carmo", "comercio", "se", "alfama", "santaluzia", "castelo"]
   };
   var currentMapRoute = SEASON ? "t5" : "t3";
+
+  /* Fotos dos pontos (img/p/<chave>-640.jpg e -1100.jpg). O tour de Natal usa as versões com luzes. */
+  var PLACE_PHOTOS = ["jeronimos", "rossio", "comercio", "se", "castelo", "santaluzia", "alfama", "graca", "avenida", "marques", "carmo"];
+  var PHOTO_OVERRIDES = { t5: { avenida: "avenida-natal", rossio: "rossio-natal", comercio: "comercio-natal" } };
+  var galleryRoute = null;
+
+  function photoFor(route, key) {
+    var o = PHOTO_OVERRIDES[route] && PHOTO_OVERRIDES[route][key];
+    if (o) return o;
+    return PLACE_PHOTOS.indexOf(key) > -1 ? key : null;
+  }
+
+  function renderGallery(route) {
+    var box = document.getElementById("route-gallery");
+    var track = document.getElementById("rg-track");
+    var dots = document.getElementById("rg-dots");
+    if (!box || galleryRoute === route) return;
+    galleryRoute = route;
+    track.innerHTML = "";
+    dots.innerHTML = "";
+    var n = 0;
+    MAP_ROUTES[route].forEach(function (key, i) {
+      var ph = photoFor(route, key);
+      if (!ph) return;
+      var fig = document.createElement("figure");
+      fig.className = "rg-slide";
+      fig.setAttribute("data-stop", String(i));
+      var img = document.createElement("img");
+      img.src = "/img/p/" + ph + "-640.jpg";
+      img.srcset = "/img/p/" + ph + "-640.jpg 640w, /img/p/" + ph + "-1100.jpg 1100w";
+      img.sizes = "(max-width: 720px) 88vw, 560px";
+      img.alt = MAP_PLACES[key].name;
+      img.width = 1100; img.height = 825;
+      img.decoding = "async";
+      if (n > 0) img.loading = "lazy";
+      var cap = document.createElement("figcaption");
+      var num = document.createElement("span");
+      num.className = "map-stop-num";
+      num.textContent = String(i + 1);
+      var nm = document.createElement("span");
+      nm.textContent = MAP_PLACES[key].name;
+      cap.appendChild(num); cap.appendChild(nm);
+      fig.appendChild(img); fig.appendChild(cap);
+      track.appendChild(fig);
+      dots.appendChild(document.createElement("span"));
+      n++;
+    });
+    box.hidden = n === 0;
+    track.scrollLeft = 0;
+    updateGalleryUi();
+  }
+
+  function galleryIndex() {
+    var track = document.getElementById("rg-track");
+    var slides = track.children;
+    if (!slides.length) return 0;
+    var step = slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth;
+    return Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / step)));
+  }
+
+  function updateGalleryUi() {
+    var track = document.getElementById("rg-track");
+    var idx = galleryIndex(), total = track.children.length;
+    Array.prototype.forEach.call(document.getElementById("rg-dots").children, function (d, i) { d.className = i === idx ? "on" : ""; });
+    document.getElementById("rg-prev").disabled = idx <= 0;
+    document.getElementById("rg-next").disabled = idx >= total - 1 || track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+  }
+
+  function goToSlide(i) {
+    var track = document.getElementById("rg-track");
+    var s = track.children[i];
+    if (s) track.scrollTo({ left: s.offsetLeft - track.children[0].offsetLeft, behavior: reduceMotion ? "auto" : "smooth" });
+  }
+
+  (function () {
+    var track = document.getElementById("rg-track");
+    if (!track) return;
+    var t = null;
+    track.addEventListener("scroll", function () { clearTimeout(t); t = setTimeout(updateGalleryUi, 60); }, { passive: true });
+    document.getElementById("rg-prev").addEventListener("click", function () { goToSlide(galleryIndex() - 1); });
+    document.getElementById("rg-next").addEventListener("click", function () { goToSlide(galleryIndex() + 1); });
+    track.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); goToSlide(galleryIndex() + 1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); goToSlide(galleryIndex() - 1); }
+    });
+  })();
   var SVG_NS = "http://www.w3.org/2000/svg";
   var reduceMotion = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
 
@@ -2442,6 +2594,7 @@
     if (visibleTours().indexOf(currentMapRoute) === -1) currentMapRoute = visibleTours()[0];
 
     var stops = MAP_ROUTES[currentMapRoute];
+    renderGallery(currentMapRoute);
     var pts = stops.map(function (key) { return MAP_PLACES[key]; });
     var vb = fitViewBox(pts);
     svg.setAttribute("viewBox", vb.x.toFixed(1) + " " + vb.y.toFixed(1) + " " + vb.w.toFixed(1) + " " + vb.h.toFixed(1));
@@ -2512,6 +2665,14 @@
       name.textContent = MAP_PLACES[key].name;
       li.appendChild(num);
       li.appendChild(name);
+      if (photoFor(currentMapRoute, key)) {
+        li.className = "has-photo";
+        li.addEventListener("click", function () {
+          var slides = document.getElementById("rg-track").children;
+          for (var k = 0; k < slides.length; k++) if (slides[k].getAttribute("data-stop") === String(i)) goToSlide(k);
+          document.getElementById("route-gallery").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" });
+        });
+      }
       list.appendChild(li);
     });
 
