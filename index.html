@@ -167,7 +167,7 @@
     height: 100%;
     max-width: none;
     object-fit: cover;
-    object-position: 60% 78%;
+    object-position: 45% 45%;
   }
 
   .hero::after {
@@ -177,17 +177,7 @@
     background: linear-gradient(180deg, rgba(12,30,60,0.10) 0%, rgba(12,30,60,0.05) 35%, rgba(12,30,60,0.78) 100%);
   }
   @media (min-width: 721px) {
-    .hero { background: var(--tejo); align-items: center; min-height: clamp(460px, 64vh, 580px); }
-    .hero-bg {
-      top: 44px; left: auto; height: calc(100% - 88px);
-      right: calc(max(0px, (100% - 1080px) / 2) + 32px);
-      width: min(400px, 40%);
-      border-radius: 16px;
-      object-position: 50% 82%;
-      box-shadow: 0 18px 44px rgba(8,22,48,0.35);
-    }
-    .hero::after { display: none; }
-    .hero .hero-inner h1 { text-shadow: none; }
+    .hero::after { background: linear-gradient(90deg, rgba(12,30,60,0.62) 0%, rgba(12,30,60,0.25) 45%, rgba(12,30,60,0) 70%), linear-gradient(180deg, rgba(12,30,60,0) 50%, rgba(12,30,60,0.55) 100%); }
   }
 
   .hero-inner {
@@ -1098,7 +1088,7 @@
 </header>
 
 <section class="hero">
-  <img class="hero-bg" src="/img/hero-tuk-1200.jpg" srcset="/img/hero-tuk-700.jpg 700w, /img/hero-tuk-1200.jpg 1200w" sizes="(max-width: 720px) 100vw, 50vw" alt="A white tuk-tuk with passengers on a city street" width="1200" height="1707" fetchpriority="high">
+  <img class="hero-bg" src="/img/hero-1800.jpg" srcset="/img/hero-900.jpg 900w, /img/hero-1800.jpg 1800w" sizes="100vw" alt="Lisbon rooftops and the river Tagus seen from the Portas do Sol viewpoint" width="1800" height="1350" fetchpriority="high">
   <div class="hero-inner">
     <a class="hero-rating" href="https://search.google.com/local/reviews?placeid=ChIJH8rLvnoO_4cRIKuVReELICs" target="_blank" rel="noopener"><span class="stars" aria-hidden="true">★★★★★</span><b>5,0</b><span data-i18n="hero_rating">Google reviews</span></a>
     <h1 data-i18n="hero_h1">Lisbon, at a different pace.</h1>
