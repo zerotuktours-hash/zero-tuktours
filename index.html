@@ -606,15 +606,16 @@
   .planner-opt:focus-visible, .faq-item summary:focus-visible, .field input:focus-visible, .field select:focus-visible { outline: 2px solid var(--tejo); outline-offset: 2px; }
   .book-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-    grid-template-areas: "tour route" "fields route";
-    grid-template-rows: auto 1fr;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.35fr);
+    grid-template-areas: "tour route" "fields route" "side route";
+    grid-template-rows: auto auto 1fr;
     gap: 18px 32px;
   }
   .bk-tour { grid-area: tour; }
   .bk-fields { grid-area: fields; align-content: start; }
   .bk-route {
     grid-area: route;
+    align-self: start;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 14px;
@@ -626,6 +627,7 @@
     min-width: 0;
   }
   .map-side { padding: 0 4px 4px; }
+  .bk-side { grid-area: side; align-self: start; border-top: 1px solid rgba(12,30,60,0.1); padding: 18px 0 0; }
   .route-gallery { position: relative; min-width: 0; }
   .rg-track {
     display: flex;
@@ -682,8 +684,10 @@
   .map-stops li.has-photo { cursor: pointer; }
   .map-stops li.has-photo:hover span:last-child { text-decoration: underline; }
   @media (max-width: 720px) {
-    .rg-slide { flex-basis: 88%; }
-    .rg-nav { display: none; }
+    .rg-track { gap: 0; }
+    .rg-nav { width: 34px; height: 34px; top: calc(50% - 20px); }
+    .rg-prev { left: 8px; }
+    .rg-next { right: 8px; }
   }
   @media (prefers-reduced-motion: reduce) { .rg-track { scroll-behavior: auto; } }
   .map-svg { width: 100%; height: auto; display: block; border-radius: 6px; background: #EEF3FA; }
@@ -929,10 +933,12 @@
     .tour-body { padding: 18px 20px 22px; }
     .planner { padding: 56px 20px; }
     .planner-card { padding: 22px; }
-    .book-layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: "tour" "route" "fields"; grid-template-rows: auto; }
-    .bk-route { padding: 10px; }
+    .book-layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: "tour" "route" "side" "fields"; grid-template-rows: auto; }
+    .bk-side { border-top: 0; padding: 0 2px 6px; }
+    .bk-route { padding: 0; border: 0; background: transparent; }
+    .route-gallery .rg-slide, .rg-track { border-radius: 10px; }
     .book { padding: 56px 20px; }
-    .book-card { padding: 22px; }
+    .book-card { padding: 18px 14px; }
     .book-grid { grid-template-columns: 1fr; }
     .book-submit { width: 100%; }
     .nums { padding: 56px 20px 16px; }
@@ -1303,7 +1309,8 @@
             </g>
             <g id="map-route"></g>
           </svg>
-          <div class="map-side">
+        </div>
+          <div class="map-side bk-side">
             <div class="map-route-name" id="map-route-name"></div>
             <div class="map-route-meta" id="map-route-meta"></div>
             <p class="map-route-desc" id="map-route-desc"></p>
@@ -1311,7 +1318,6 @@
             <ol class="map-stops" id="map-stops"></ol>
             <div class="map-note" data-i18n="map_note">Illustrative map, not to scale. Stops can be adjusted on the day.</div>
           </div>
-        </div>
         <div class="book-grid bk-fields">
           <div class="field">
             <label for="f-dur" data-i18n="f_dur">Duration</label>
@@ -2468,7 +2474,7 @@
   var currentMapRoute = SEASON ? "t5" : "t3";
 
   /* Fotos dos pontos (img/p/<chave>-640.jpg e -1100.jpg). O tour de Natal usa as versões com luzes. */
-  var PLACE_PHOTOS = ["jeronimos", "rossio", "comercio", "se", "castelo", "santaluzia", "alfama", "graca", "avenida", "marques", "carmo"];
+  var PLACE_PHOTOS = ["jeronimos", "rossio", "comercio", "se", "castelo", "santaluzia", "alfama", "graca", "avenida", "marques", "carmo", "torre", "padrao", "maat", "estrela", "martimmoniz", "mouraria"];
   var PHOTO_OVERRIDES = { t5: { avenida: "avenida-natal", rossio: "rossio-natal", comercio: "comercio-natal" } };
   var galleryRoute = null;
 
@@ -2496,7 +2502,7 @@
       var img = document.createElement("img");
       img.src = "/img/p/" + ph + "-640.jpg";
       img.srcset = "/img/p/" + ph + "-640.jpg 640w, /img/p/" + ph + "-1100.jpg 1100w";
-      img.sizes = "(max-width: 720px) 88vw, 560px";
+      img.sizes = "(max-width: 720px) 92vw, 640px";
       img.alt = MAP_PLACES[key].name;
       img.width = 1100; img.height = 825;
       img.decoding = "async";
