@@ -935,9 +935,10 @@
     .planner-card { padding: 22px; }
     .book-layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: "tour" "route" "side" "fields"; grid-template-rows: auto; }
     .bk-side { border-top: 0; padding: 0 2px 6px; }
-    .bk-route { padding: 10px; }
+    .bk-route { padding: 0; border: 0; background: transparent; }
+    .route-gallery .rg-slide, .rg-track { border-radius: 10px; }
     .book { padding: 56px 20px; }
-    .book-card { padding: 22px; }
+    .book-card { padding: 18px 14px; }
     .book-grid { grid-template-columns: 1fr; }
     .book-submit { width: 100%; }
     .nums { padding: 56px 20px 16px; }
@@ -2473,7 +2474,7 @@
   var currentMapRoute = SEASON ? "t5" : "t3";
 
   /* Fotos dos pontos (img/p/<chave>-640.jpg e -1100.jpg). O tour de Natal usa as versões com luzes. */
-  var PLACE_PHOTOS = ["jeronimos", "rossio", "comercio", "se", "castelo", "santaluzia", "alfama", "graca", "avenida", "marques", "carmo", "torre", "padrao", "maat", "belem", "estrela", "martimmoniz", "mouraria"];
+  var PLACE_PHOTOS = ["jeronimos", "rossio", "comercio", "se", "castelo", "santaluzia", "alfama", "graca", "avenida", "marques", "carmo", "torre", "padrao", "maat", "estrela", "martimmoniz", "mouraria"];
   var PHOTO_OVERRIDES = { t5: { avenida: "avenida-natal", rossio: "rossio-natal", comercio: "comercio-natal" } };
   var galleryRoute = null;
 
