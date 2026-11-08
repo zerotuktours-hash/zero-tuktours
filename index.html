@@ -167,7 +167,7 @@
     height: 100%;
     max-width: none;
     object-fit: cover;
-    object-position: 45% 45%;
+    object-position: 60% 78%;
   }
 
   .hero::after {
@@ -177,7 +177,10 @@
     background: linear-gradient(180deg, rgba(12,30,60,0.10) 0%, rgba(12,30,60,0.05) 35%, rgba(12,30,60,0.78) 100%);
   }
   @media (min-width: 721px) {
-    .hero::after { background: linear-gradient(90deg, rgba(12,30,60,0.62) 0%, rgba(12,30,60,0.25) 45%, rgba(12,30,60,0) 70%), linear-gradient(180deg, rgba(12,30,60,0) 50%, rgba(12,30,60,0.55) 100%); }
+    .hero { background: var(--tejo); align-items: center; }
+    .hero-bg { left: auto; right: 0; width: 52%; object-position: 70% 70%; }
+    .hero::after { background: linear-gradient(90deg, var(--tejo) 0%, var(--tejo) 48%, rgba(29,79,154,0) 60%); }
+    .hero h1 { text-shadow: none; }
   }
 
   .hero-inner {
@@ -606,12 +609,12 @@
   .planner-opt:focus-visible, .faq-item summary:focus-visible, .field input:focus-visible, .field select:focus-visible { outline: 2px solid var(--tejo); outline-offset: 2px; }
   .book-layout {
     display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.35fr);
-    grid-template-areas: "tour route" "fields route" "side route";
-    grid-template-rows: auto auto 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    grid-template-areas: "tour tour" "gallery gallery" "fields route" "side route";
+    grid-template-rows: auto auto auto 1fr;
     gap: 18px 32px;
   }
-  .bk-tour { grid-area: tour; }
+  .bk-tour { grid-area: tour; max-width: calc(50% - 16px); }
   .bk-fields { grid-area: fields; align-content: start; }
   .bk-route {
     grid-area: route;
@@ -628,7 +631,7 @@
   }
   .map-side { padding: 0 4px 4px; }
   .bk-side { grid-area: side; align-self: start; border-top: 1px solid rgba(12,30,60,0.1); padding: 18px 0 0; }
-  .route-gallery { position: relative; min-width: 0; }
+  .route-gallery { grid-area: gallery; position: relative; min-width: 0; }
   .rg-track {
     display: flex;
     gap: 10px;
@@ -644,8 +647,8 @@
     position: relative;
     flex: 0 0 100%;
     margin: 0;
-    aspect-ratio: 4 / 3;
-    border-radius: 8px;
+    aspect-ratio: 16 / 10;
+    border-radius: 10px;
     overflow: hidden;
     background: #DCE4F1;
     scroll-snap-align: start;
@@ -658,7 +661,7 @@
     padding: 28px 14px 12px;
     background: linear-gradient(180deg, rgba(12,30,60,0) 0%, rgba(12,30,60,0.78) 100%);
     color: #FFFFFF;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 600;
     text-shadow: 0 1px 6px rgba(12,30,60,0.5);
   }
@@ -685,6 +688,8 @@
   .map-stops li.has-photo:hover span:last-child { text-decoration: underline; }
   @media (max-width: 720px) {
     .rg-track { gap: 0; }
+    .rg-slide { aspect-ratio: 4 / 3; }
+    .rg-slide figcaption { font-size: 15px; }
     .rg-nav { width: 34px; height: 34px; top: calc(50% - 20px); }
     .rg-prev { left: 8px; }
     .rg-next { right: 8px; }
@@ -933,7 +938,8 @@
     .tour-body { padding: 18px 20px 22px; }
     .planner { padding: 56px 20px; }
     .planner-card { padding: 22px; }
-    .book-layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: "tour" "route" "side" "fields"; grid-template-rows: auto; }
+    .book-layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: "tour" "gallery" "route" "side" "fields"; grid-template-rows: auto; }
+    .bk-tour { max-width: none; }
     .bk-side { border-top: 0; padding: 0 2px 6px; }
     .bk-route { padding: 0; border: 0; background: transparent; }
     .route-gallery .rg-slide, .rg-track { border-radius: 10px; }
@@ -1061,7 +1067,7 @@
 </header>
 
 <section class="hero">
-  <img class="hero-bg" src="/img/hero-1800.jpg" srcset="/img/hero-900.jpg 900w, /img/hero-1800.jpg 1800w" sizes="100vw" alt="Lisbon rooftops and the river Tagus seen from the Portas do Sol viewpoint" width="1800" height="1350" fetchpriority="high">
+  <img class="hero-bg" src="/img/hero-tuk-1200.jpg" srcset="/img/hero-tuk-700.jpg 700w, /img/hero-tuk-1200.jpg 1200w" sizes="(max-width: 720px) 100vw, 50vw" alt="A white tuk-tuk with passengers on a city street" width="1200" height="1707" fetchpriority="high">
   <div class="hero-inner">
     <a class="hero-rating" href="https://share.google/blm7hhTl7XKbdPOWV" target="_blank" rel="noopener"><span class="stars" aria-hidden="true">★★★★★</span><b>5,0</b><span data-i18n="hero_rating">Google reviews</span></a>
     <h1 data-i18n="hero_h1">Lisbon, at a different pace.</h1>
@@ -1256,13 +1262,13 @@
           <label for="f-tour" data-i18n="f_tour">Tour</label>
           <select id="f-tour" name="tour"></select>
         </div>
+        <div class="route-gallery" id="route-gallery" hidden>
+          <div class="rg-track" id="rg-track" tabindex="0" aria-roledescription="carousel"></div>
+          <button type="button" class="rg-nav rg-prev" id="rg-prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" class="rg-nav rg-next" id="rg-next" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="rg-dots" id="rg-dots" aria-hidden="true"></div>
+        </div>
         <div class="bk-route" aria-live="polite">
-          <div class="route-gallery" id="route-gallery" hidden>
-            <div class="rg-track" id="rg-track" tabindex="0" aria-roledescription="carousel"></div>
-            <button type="button" class="rg-nav rg-prev" id="rg-prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button type="button" class="rg-nav rg-next" id="rg-next" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <div class="rg-dots" id="rg-dots" aria-hidden="true"></div>
-          </div>
           <svg class="map-svg" id="route-map" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated map of the selected route">
             <defs>
               <filter id="sketch" filterUnits="userSpaceOnUse" x="0" y="0" width="400" height="300">
@@ -2474,8 +2480,8 @@
   var currentMapRoute = SEASON ? "t5" : "t3";
 
   /* Fotos dos pontos (img/p/<chave>-640.jpg e -1100.jpg). O tour de Natal usa as versões com luzes. */
-  var PLACE_PHOTOS = ["jeronimos", "rossio", "comercio", "se", "castelo", "santaluzia", "alfama", "graca", "avenida", "marques", "carmo", "torre", "padrao", "maat", "estrela", "martimmoniz", "mouraria"];
-  var PHOTO_OVERRIDES = { t5: { avenida: "avenida-natal", rossio: "rossio-natal", comercio: "comercio-natal" } };
+  var PLACE_PHOTOS = ["jeronimos", "rossio", "comercio", "se", "castelo", "santaluzia", "alfama", "graca", "avenida", "marques", "carmo", "torre", "padrao", "maat", "estrela", "martimmoniz", "mouraria", "camoes", "belem"];
+  var PHOTO_OVERRIDES = { t5: { avenida: "avenida-natal", rossio: "rossio-natal", comercio: "comercio-natal", camoes: "camoes-natal" } };
   var galleryRoute = null;
 
   function photoFor(route, key) {
@@ -2502,7 +2508,7 @@
       var img = document.createElement("img");
       img.src = "/img/p/" + ph + "-640.jpg";
       img.srcset = "/img/p/" + ph + "-640.jpg 640w, /img/p/" + ph + "-1100.jpg 1100w";
-      img.sizes = "(max-width: 720px) 92vw, 640px";
+      img.sizes = "(max-width: 720px) 92vw, 1020px";
       img.alt = MAP_PLACES[key].name;
       img.width = 1100; img.height = 825;
       img.decoding = "async";
